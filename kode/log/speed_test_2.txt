@@ -1,0 +1,56 @@
+0.0
+Deterministic capacity = 1000
+Deterministic solution = 2289
+Deterministic solution (robustness): [0.4990445703125,0.5048980859375001]
+Fat capacity = 590
+Fat solution = 1530
+Fat solution (robustness): [0.9594630859375,0.96101875]
+Attaching observers
+Starting solver
+Stepping solver
+- Completed in: 312 ms
+Best solution: 1523.0(obj),0.9686830835117772(robustness - high),0.950835954229122(robustness - low),9278116.0(fitness value)
+OBSERVER REPORTING ITERATION: 1
+Stepping solver
+- Completed in: 203 ms
+Best solution: 1523.0(obj),0.9686830835117772(robustness - high),0.950835954229122(robustness - low),9278116.0(fitness value)
+OBSERVER REPORTING ITERATION: 2
+Stepping solver
+- Completed in: 375 ms
+Best solution: 1523.0(obj),0.9686830835117772(robustness - high),0.950835954229122(robustness - low),9278116.0(fitness value)
+OBSERVER REPORTING ITERATION: 3
+Stepping solver
+- Completed in: 610 ms
+Best solution: 1530.0(obj),0.9737149532710281(robustness - high),0.9500321261682243(robustness - low),9363600.0(fitness value)
+OBSERVER REPORTING ITERATION: 4
+Stepping solver
+- Completed in: 750 ms
+Best solution: 1581.0(obj),0.986784140969163(robustness - high),0.9509846503303965(robustness - low),9998244.0(fitness value)
+OBSERVER REPORTING ITERATION: 5
+Stepping solver
+- Completed in: 953 ms
+Best solution: 1581.0(obj),0.986784140969163(robustness - high),0.9509846503303965(robustness - low),9998244.0(fitness value)
+OBSERVER REPORTING ITERATION: 6
+Stepping solver
+- Completed in: 890 ms
+Best solution: 1601.0(obj),0.9743276283618582(robustness - high),0.9508362622249389(robustness - low),1.0252804E7(fitness value)
+OBSERVER REPORTING ITERATION: 7
+Stepping solver
+- Completed in: 1000 ms
+Best solution: 1601.0(obj),0.9743276283618582(robustness - high),0.9508362622249389(robustness - low),1.0252804E7(fitness value)
+OBSERVER REPORTING ITERATION: 8
+Stepping solver
+- Completed in: 954 ms
+Best solution: 1601.0(obj),0.9743276283618582(robustness - high),0.9508362622249389(robustness - low),1.0252804E7(fitness value)
+OBSERVER REPORTING ITERATION: 9
+Stepping solver
+- Completed in: 1078 ms
+Best solution: 1601.0(obj),0.9948453608247423(robustness - high),0.9514215528350516(robustness - low),1.0252804E7(fitness value)
+OBSERVER REPORTING ITERATION: 10
+The best solution has a fitness value of 1.0252804E7
+It contained the following: 
+false, false, true, false, false, true, false, true, true, true, false, true, true, true, false, true, false, false, true, false, true, true, false, true, false, false, false, false, false, false, true, true, true, true, false, false, false, true, true, false, true, false, true, false, false, false, true, true, true, true, 
+
+Thank you for watching
+Best solution: 1601.0(obj),0.9948453608247423(robustness - high),0.9514215528350516(robustness - low),1.0252804E7(fitness value)
+OBSERVER REPORTING ITERATION: 10

@@ -1,0 +1,157 @@
+\subsection{Litterature on Robust Solutions}
+
+Martin: Vi har en plan for hvordan vi vil bruge litteraturen :)
+
+We have found that finding robust solutions (in the sense defined
+above) has been the subject of several and diverse published
+articles. Some articles deal specifically with mixed integer problems,
+while others look at more general problems. Below is a short review of
+the articles, the introduced methodologies and the problems they deal
+with.
+
+\emph{Genaro J. Gutierrez} and \emph{Panagiotis Kouvelis} in their
+article \emph{A robustness approach to international sourcing} discuss
+the problem of finding robust solutions to the \emph{international
+sourcing problem} \cite{kouvelis}. In this problem a firm needs to
+select suppliers in various countries to support the demands of the
+firm's international factory network. Robustness becomes an issue
+because solutions to this problem depend on the realization of
+uncertain parameters like the future exchange rate and macroeconomic
+parameters. They present an algorithm for the problem which will find
+the $N$ best robust solutions.
+
+\emph{Lin}, \emph{Janak}, and \emph{Floudas} in their article \emph{A
+new robust optimization approach for scheduling under uncertainty:
+I. Bounded uncertainty} discuss the problem of finding robust
+solutions to mixed integer problems in the domain of \emph{production
+scheduling} in which objective function coefficients, left hand sides
+and right hand sides are assumed to have a bounded uncertainty. By
+means of auxiliary variables and constraints, they formulate a
+deterministic robust counterpart problem to the stochastic problem. A
+solution to the deterministic counterpart problem is also a robust
+solution to the original stochastic problem \cite{lin} (NOTE: There
+are some details that we need to understand better). We discuss a
+similar topic in section \ref{sec:robust_subspace} on \emph{robust
+subspaces} of stochasic mixed integer problem.
+
+In their article \emph{Genetic Algorithms with a robust solution
+searching scheme}, authors \emph{Tsutsui} and \emph{Ghosh} present a
+genetic algorithm for finding solutions to problems that are sensitive
+to small pertubations of the parameter values, by avoiding ``brittle''
+solutions, i.e. solutions at sharp peaks \cite{tsutsui}. They point at
+previous work of Sebald and Fogel \cite{sebald}, where fault tolerant
+neural networks for pattern classification were designed by
+explicitily causing random faults in the networks during training
+using evolutionary programming. Tsutsui and Ghosh implement a similar
+technique in their GA by adding noise to the phenotypic parameter
+values of individuals before their fitness level is evaluated.
+
+
+\subsection{Ben-tal 1}
+
+% brugt 
+A linear program (LP) formulation of a problem with data $(A,b)$ is a problem on the form
+
+$min \lbrace{c^T x \vert  Ax\geq b\rbrace, x \in \mathbb{R}^n$.
+
+% brugt
+In robust optimization, convex optimization problems are studied for
+which the data $(A,b)$ is not specified exactly and is only known to
+belong to a given uncertainty set $\mathcal{U}$, yet for a solution
+$x$ the constraints must hold for all possible values of the data from
+$\mathcal{U}$, i.e. $Ax\geqb \forall(A,b) \in \mathcal{U}$. The
+ensuing optimization problem is called robust optimization \cite{bental1}.
+
+% brug i solving problems under uncertainty
+An approach often used when solving an uncertain LP is to replace it
+by an explicitly stated convex robust counterpart program (RC). If
+certain assumptions can be made about the uncertainty set $U$, such an
+RC is computationally tractable \cite{bental1}.
+
+The problem $min \lbrace c^T x \vert Ax \geq b, \forall(A,b) \in
+\mathcal{U} \lbrace}$ is such a robust counterpart (RC) of the uncertain LP
+problem, and the vector $x^*$ solving equation REF is called a robust
+solution of the uncertain problem \footnote{In section
+\ref{sec:non_convex} we show that the set $\lbrace x \vert Ax\geqb
+\forall(A,b) \in \mathcal{U} \rbrace$ is however not guaranteed to be convex.}. In our thesis 
+we shall use a notion of robustness which is more akin to chance
+constrained programming (see section \ref{sec:definition of
+robustness}).
+
+% brug i solving problems under uncertainty
+Other approaches to robust optimization include \emph{stochastic
+programming} (SP) \cite{steinwallace} (see section \ref{sec:stochastic_programming}),
+\emph{scenario optimization} \cite{rockafellar} (see sections \ref{sec:scenario} and \ref{scenario:optimization}).
+
+\subsection{Uncertain integer linear programs}
+
+Many NP-hard problems can be formulated as integer linear programs
+(IP), which are special cases of linear programs in which all decision
+variables are required to be integer. A deterministic IP has the form
+$min \lbrace{c^T x \vert Ax\geq b\rbrace$, where $x \in \mathbb{Z}^n$,
+$A \in \mathcal{R}^{n,m}$, and $b \in mathbb{R}^n$.
+
+An uncertain LP is similar to an uncertain IP with the only difference
+that all decision variables are required to be integer, with data $(A,b)
+\in \mathcal{U}$.
+
+\subsection{Scenarios}
+
+Given an instance of an uncertain IP $I$ with data $(A,b \in \mathcal{U})$, a
+\emph{scenario} $S$ is a deterministic IP that has been derived from $I$ by replacing the 
+data $(A,b) \in \mathcal{U}$ with the data $(A_S \in
+\mathcal{R}^{n,m}, b_S \in \mathcal{R}^n)$. $(A_S, b_S)$ has been obtained by
+sampling the uncertainty set $\mathcal{U}$. A scenario is thus a
+specific outcome of the stochastic variables underlying $\mathcal{U}$.
+
+\subsection{Definition of robustness}
+\label{sec:definition of robustness}
+In our thesis we'll consider uncertain integer linear programs
+(uncertain IP) on the form $min \lbrace c^t x \vert P(Ax\geqb
+\forall(A,b) \in
+\mathcal{U}) \geq 95\% \rbrace$. 
+
+We have thus relaxed the constraint that a solution $x$ must be
+feasible for all realizations of $(A,b)$, to the constraint that a
+solution $x$ must have probability of $95\%$ of being feasible given a
+realization of $(A,b)$. This approach is similar to chance constrained
+programming \cite{steinwallace}.
+
+A key point in this thesis is that we
+shall assume the underlying stochastic model of the data $(A,b) \in
+\mathcal{U}$ to be known, namely that data is
+\emph{normally distributed}.
+
+\section{Til introduction}
+
+The data $(A,b)$ associated with a linear program $min \lbrace c^T x
+\vert Ax \geq b$ are ``uncertain" to some degree in most real world
+problems \cite{bental}. In many models the uncertainty is ignored
+altogether, and a representative nominal value of the data is used
+(e.g. expected values).
+
+A classical approach to deal with uncertainty is stochastic
+programming (SP) (see e.g., [6,13] and references therein). But even
+in this approach constraints may be violated, with certain penalty
+(this is the case for SP with recourse [6,9], scenario optimization
+\cite{rockafellar}, entropic penalty methods [1]) or with certain probability
+(chance constraints). In the dominating penalty approach, even when
+the random variables are degenerate (deterministic), the corresponding
+SP model does not recover necessarily the original LP constraints, but
+only a relaxation of these constraints. Thus, although this was not
+stated explicitly in the past, SP treats in fact mainly soft
+constraints. These remarks apply also to the recent scenario-based
+penalty approach of Mulvey, Vanderbei and Zenios [11].
+
+
+
+In this paper we study uncertainty associated with hard constraints,
+i.e., those which must be satisfied whatever is the realization of the
+data (A; b) within, of course, a reasonable prescribed ``uncertainty
+set" U.  Feasibility of a vector x is thus interpreted as Ax>b forall(A; b)
+in U: Consequently, we call the problem min{c^T x | Ax>b forall(A; b) in U}
+the robust counterpart of the uncertain LP problem (1), and we
+call a vector x solving Eq. (3) a robust solution of the uncertain
+problem.
+
+

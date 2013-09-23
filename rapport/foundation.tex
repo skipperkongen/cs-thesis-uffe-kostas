@@ -1,0 +1,357 @@
+\chapter{Optimization and robustness}
+\label{sec:foundation}
+
+In this chapter we will describe the general type of optimization
+problem that we are working with. The description relies heavily on
+knowledge about optimization in general. Therefore our descriptions of the
+general optimization problems are very superficial and are only intended as a refresher and to clarify our
+use of the terminology. For an in-depth treatment of optimization we
+recommend \cite{wolsey}, \cite{taha} and \cite{cormen}.
+
+We will also define how we use the term \emph{robustness} in this
+thesis, as well as describe alternative definitions from the litterature and
+why these have not been chosen.
+
+\section{Linear programming}
+\label{sec:linear_programming}
+
+An often used approach to modelling problems is using a linear program
+(LP). A linear program of a minimization problem with data $(A,b)$ can
+be written on the form (\cite{cormen}, \cite{taha} and
+\cite{wolsey})
+\begin{eqnarray}\label{eqn:lp}
+\min \lbrace c^T x \vert Ax\geq b, x\geq 0\ x\in\mathbb{R} \rbrace
+\end{eqnarray}
+
+The term $c^T x$ is also known as the objective function.
+
+Linear programs are deterministic in that all coefficients $(c, A, b)$
+of the problem are fixed. A deterministic exact algorithm will always
+find the same optimal solution, and this solution will always be
+feasible. Linear programs have a convex solution space.
+
+%Integer programs differ from linear programs in that the variables $x$
+%are only allowed to take on integer values,
+%i.e. $x\in\mathbb{N}$. This often results in the solution space no longer
+%being convex and renders many of the solution methods for linear
+%programs useless on integer programs.
+%
+%Mixed integer programs are problems that allow variables that take on
+%only integer values as well as variables that take on real
+%values. Mixed integer programs, like integer programs, usually do not have convex solution spaces.
+%
+\section{Linear programs with uncertainty}
+\label{sec:linear_programs_with_uncertainty}
+
+For many real world problems, the data $(A,b)$ associated with a
+linear program are ``uncertain" to some degree \cite{bental}, and
+robust optimization is the study of optimization problems for which
+the data $(A,b)$ is not specified exactly and is only known to belong
+to a given uncertainty set $\mathcal{U}$. The goal in robust
+optimization is to find an optimal solution $x^*$, for which the
+constraints hold for all possible values of the data from
+$\mathcal{U}$ \cite{bental}.: 
+
+\begin{eqnarray}
+\label{eqn:robustsolutions}
+Ax^* \geq b, \forall (A,b) \in \mathcal{U}
+\end{eqnarray}
+
+Many interesting NP-hard problems can be formulated as integer
+programs (IP), which are special cases of linear programs in which the
+decision variables $\mathbf{x}$ are required to be integer. If we
+introduce both integrality and uncertainty to the linear program from
+before, we get an uncertain integer program on the
+form
+
+\begin{eqnarray}
+\label{eqn:uncertain_ip}
+\min \lbrace c^T x \vert A x \geq b, \forall(A,b) \in \mathcal{U},
+x\geq 0, x \in \mathbb{N} \rbrace
+\end{eqnarray}
+
+In chapter \ref{sec:solving_problems_under_uncertainty} we will be
+dealing with methods that apply to both linear programs and integer
+programs. In our implementation and experiments however we have only dealt with
+integer programs.
+
+%In this thesis we consider only problems with unbounded uncertainty,
+%which means that the set $S_I$ that can be derived by sampling
+%$\mathcal{U}$ associated with an uncertain problem $I$, is infinitely
+%big. Therefore deciding robustness by enumerating all scenarios and
+%testing feasibility for each of them is not possible. We will use
+%simulation to test the robustness of a solution $x$. Test of
+%robustness wil be covered in great detail in chapter \ref{sec:testing_robustness} which.
+%
+\section{Scenarios}
+\label{sec:scenarios}
+
+A scenario $s$ is a deterministic subproblem to an uncertain problem
+$I$. Where $I$ is an uncertain integer or linear problem with
+uncertain data $(A,b) \in \mathcal{U}$, the \emph{scenario} $s$ is a
+deterministic integer or linear problem with constant data $(A_s,
+b_s)$ that is derived from $I$ by considering a single outcome of the
+stochastic model underlying uncertainty set $\mathcal{U}$.
+
+The set $\mathcal{S}_I$ denotes the set of all scenarios that can be
+derived from $I$, which will be an infinitely big set if $\mathcal{U}$
+is unbounded or continous, e.g. if normal distributions are used as
+the underlying stochastic model. This is because infinitely many
+scenarios can be derived by repeatedly sampling $\mathcal{U}$.
+
+If $I$ is an uncertain integer program, then scenario $s \in S_I$ is a
+deterministic, integer program.
+
+\section{Partially robust solutions}
+\label{sec:robustness}
+In much of the robust optimization litterature, e.g. \cite{bental}, it is
+required that, for a solution to be robust, it must be feasible for all
+possible realizations of the uncertain data.
+
+As stated in the introduction we relax this a little bit by stating
+that solutions must have a certain high \emph{probability} of being
+feasible given a realization of the data. This is similar to chance
+constrained programming \cite{kallwallace}.
+
+We arrive at \emph{partial} robustness $\rho \in [0,1]$, where $\rho$ will be
+our measure for robustness of solutions in this thesis. $\rho$ is the
+\emph{ratio} of scenarios for which a solution must hold, in order to be
+considered robust.
+
+\begin{definition}
+\label{def:robustness}
+A solution $x$ to problem $I$ that has partial robustness $\rho$, is a solution that has probability $\rho$ of being feasible in
+a randomly drawn scenario from $\mathcal{S}_I$.
+\end{definition}
+
+Later we will use the terms \emph{robust} and \emph{partially robust}
+interchangeably, with the understanding that we are talking about
+partial robustness. If nothing else is mentioned we will be assuming
+that $\rho = 0.95$. This value has been chosen by us since we could
+not find a more reasonable value in the litterature.
+
+Given this new understanding of robustness, the problems we will solve
+in this thesis are uncertain integer programs on the form
+
+\begin{eqnarray}
+\label{eqn:chance_constrained_ip}
+\min \lbrace c^T x \vert P(Ax\geq b) \geq \rho, \forall(A,b) \in \mathcal{U} \rbrace
+\end{eqnarray}
+
+With $P(Ax\geq b)$ being the probability that the constraints of the
+problem will not be violated, given a random scenario.
+
+\section{Convexity and existence of partially robust solution space}
+\label{sec:non_convexity}
+
+Let $\mathcal{F}_s$ denote the set of feasible solutions to a scenario
+$s$. Furthermore for an uncertain problem $I$ let $\mathcal{F}_I$ be
+the set of solutions that are feasible for all scenarios $s \in
+\mathcal{S}_I$. This is also the solution space to problem
+\ref{eqn:uncertain_ip}. More formally this is written as:
+
+\begin{eqnarray}
+\mathcal{F}_I  = \bigcap_{s \in \mathcal{S}_I} \mathcal{F}_s
+\end{eqnarray}
+
+If $I$ is an uncertain linear program and all scenarios $s \in S_I$ consequently are linear programs with a convex solution
+spaces, it follows that $\mathcal{F}_I$ is a
+convex set, since the intersection of convex sets is itself a convex
+set.
+
+Let $\mathcal{H}_I$ be the set of solutions to $I$ that have a partial
+robustness of $\rho < 1$. It does not automatically follow that
+$\mathcal{H}_I$ is a convex set. In chapter
+\ref{sec:non_convex_example} we will show that a non-convex solution
+space can be the case for at least some problems $I$, for $\rho < 1$.
+
+\subsection{Example of a non-convex solution space}
+\label{sec:non_convex_example}
+
+Recall that we use a definition of partial robustness $\rho$ that requires a
+partially robust solution to have probability $\rho$ of being feasible
+in a random scenario. Such a constraint is a form of chance constraint
+\cite{kallwallace}.
+
+Convexity of the partially robust subspace is by no means guaranteed. In
+\cite{kallwallace} we find the following passage (p. 243) "On the other
+hand we also know (...) that chance constraints may easily define
+nonconvex feasible sets."
+
+The problem of a non-convex solution space for partially robust solutions arises very
+easily when we are working with discrete distibutions of the uncertain
+variables.  To illustrate the non-convexity of the solution space,
+consider this example taken from \cite{kallwallace} (with a few
+modifications).
+\begin{example}
+\label{ex:non_convex}
+We have a factory that processes two kinds of raw materials, $r_1$ and
+$r_2$. Using these raw materials two different products, $p_1$ and
+$p_2$, are produced. The following table describes the amount of
+each product that is produced when processing one unit of raw
+material. The table also contains the cost of one unit of raw
+material.\\
+\begin{align}
+\begin{tabular}{|l|l|l|l|}
+\hline
+ & $p_1$ & $p_2$ & cost \\
+\hline
+$r_1$ & 2 & 1 & 2 \\
+\hline
+$r_2$ & 1 & 2 & 3 \\
+\hline
+\end{tabular}
+\end{align}
+
+The factory has a limited procesing capacity, meaning that it can only
+process a total of one hundred units of raw materials per day. The
+demand for the products are the stochastic variables in this model and
+we will describe them with $d_1$ for the demand for $p_1$ and $d_2$
+for the demand for $p_2$. With these numbers the model to minimize the
+cost of production will look like this 
+{\setlength\arraycolsep{2pt}
+\begin{eqnarray}\label{Wallace_example}
+\min\  2r_1 + 3r_2 &&\\
+\textrm{s.t.  } r_1 + r_2 &\leq& 100\\
+2r_1 + r_2 &\geq& d_1\\
+r_1 + 2r_2 &\geq& d_2\\
+\label{Wallace_example_end}
+r_1, r_2 &\leq& 0 
+\end{eqnarray}}
+Assuming a deterministic demand of $(d_1,d_2) = (80,80)$ the problem
+could be illustrated using Figure \ref{fig:non-convex1}, where the
+blue area denotes the space containing the feasible solutions and the
+black dot represents the optimal solution.
+\figur{Graphical representation of problem \ref{Wallace_example}-\ref{Wallace_example_end}. Solution space marked in blue. The
+  isocost line is displayed to show in which direction we must move
+  for better solutions.}{fig:non-convex1}{figurer/nonconvex1.eps}
+
+We now find out that instead of a deterministic demand, there are
+actually 3 possible situations $(S_1, S_2, S_3)$
+of demand each with a specific probability. Describing a demand
+situation by the pair $(d_1, d_2)$ the situations and their
+probabilites are as follows:
+\begin{eqnarray}
+S_1: P((d_1,d_2) = (80,80)) &=& 0.85\\
+S_2: P((d_1,d_2) = (90,70)) &=& 0.08\\
+S_3: P((d_1,d_2) = (70,90)) &=& 0.07
+\end{eqnarray}
+
+The three situations can be seen in figure \ref{fig:non-convex_all_lines}
+\figur{Same problem as in figure \ref{fig:non-convex1} but with three
+  different demand situations. Each demand situtation is depicted with
+  two coloured dashed lines intersecting at the optimal solution for
+  that demand. Red lines correspond to demand situation 1, green
+  lines correspond to demand situtation 2,
+   and black dashed lines correspond to demand situation 3.}{fig:non-convex_all_lines}{figurer/nonconvex2_all_lines.eps}
+
+Only one of these situations will be realised but our goal is now to
+find production that minimizes cost while being at least $92\%$
+robust, that is to have $\rho \geq 0.92$. This can be done two
+ways. The first is to produce with the goal of satisfying the demand
+in situations 1 and 2, this would yield a robustness of $\rho = 0.85+0.08 =
+0.93$ and require that we produce at least $(90,80)$. The second way
+is to produce with the goal of satisfying the demand in situations 1
+and 3, this would yield a robustness of $\rho = 0.85+0.07 = 0.92$ and require
+that we produce at least $(80,90)$.
+
+Figure \ref{fig:non-convex_combined} depicts the solution space formed
+when we choose to produce either to satisfy situtation 1 and 2 or
+situation 1 and 3. Any point in this solution space will have at least
+$92\%$ chance of meeting the constraints, but as it can be seen, the
+solution space is not convex.
+\figur{Same as figure \ref{fig:non-convex_all_lines}. Here the
+  solution space for satisfying situations 1 and 2 is marked in grey,
+  the solution space for satisfying situations 1 and 3 are marked in
+  blue and the intersection of the two solution spaces is marked in
+  purple. The fully drawn lines are the lines defining the solution
+  space for each of the demand constraints $(90,70)$ and $(70,90)$.}{fig:non-convex_combined}{figurer/nonconvex2_selected_lines.eps}
+\end{example}
+
+Even though we know that the partially robust solution space is not
+generally convex this may not be a problem. We have from
+\cite{kallwallace} (p.244) that for discrete distributions and
+``sufficiently high'' partial robustness we will have a convex
+problem. The problem is that a ``sufficiently high'' partial
+robustness may be significantly higher than what we actually need to
+achieve. Solutions that are feasible in this convex
+robust subspace, will quite probably be significantly more expensive
+than the ones just matching our desired partial robustness.
+
+\subsection{Existence of partially robust solution space}
+\label{sec:existence_of_robust_subspace}
+It should be mentioned that even though there exists some scenario $s
+\in \mathcal{S}_I$ such that $\mathcal{F}_s \neq \emptyset$, it is not
+guaranteed that $\mathcal{F}_I \neq \emptyset$ or $\mathcal{H}_I \neq
+\emptyset$. In other words, just because there exist some feasible
+solution to a scenario, doesn't mean that there exists a solution that
+is feasible in all scenarios or some arbitrary fraction of all
+scenarios.
+
+To show this we continue with the example from chapter
+\ref{sec:non_convex_example} of the factory that processes two raw
+materials.
+\begin{example}
+\label{ex:non-existence}
+We use the same model as in example \ref{ex:non_convex} but we change
+the possible demand situations. Instead of three possible demand
+situations we now only have two:
+\begin{eqnarray}
+S_1: P(200,100) &=& 0.5\\
+S_2: P(100,200) &=& 0.5
+\end{eqnarray}
+The only way to achieve a robustness $\rho \geq 0.95$, is to produce
+at least 200 of each product which would require $66\frac23$ of each
+raw material in the optimal solution. This is not feasible given the
+capacity constraint of $r_1+r_2 \leq 100$, thus $\mathcal{H}_I =
+\emptyset$ in this situation although we can satisfy one of the two
+situations and achieve a solution that is $0.5$ robust, indicating
+that there exists an $\mathcal{F}_s$ that is not empty.
+\end{example}
+
+\section{Uncertainty set and underlying stochastic model}
+\label{sec:stochasticity}
+
+Up until now we have merely talked about an uncertainty set
+$\mathcal{U}$, without going into depth about what this means. For us
+to be able to work with uncertain problems there must exist some kind
+of regularity about them. That is we must be able to simulate them
+using some kind of probability distribution.
+
+Many different distributions exist which would be applicable to the
+problems we are working with. For the sake of simplicity however we
+are forced to reduce our thesis to working with only a few distributions.
+
+When nothing else is mentioned we will be assuming that our stochastic
+elements can be simulated using a normal (or Gaussian) distribution
+\cite{statistik}. The normal distribution describes many natural
+phenomenae and it has the nice property of being relatively easy to
+work with. It is a continous distribution as opposed to a discrete
+distribution which means we can model things to a very high precision
+if we so desire.
+
+Sometimes we will need discrete distributions and for this purpose we
+will be using a multinomial distribution, and sometimes the special
+case of the binomial distribution, \cite{sandsynlighed}.  
+
+These distributions make up the underlying stochastic model of the
+uncertainty sets $\mathcal{U}$ used to describe the data $(A,b)$.
+
+It is important to note that our choice of distributions is based on
+the desire to have something easy to work with. We are not under the
+impression that the normal distribution is a more realistic model of
+reality, but have chosen it for its ease-of-use. If we were aiming for
+a maximum of realism we might have chosen a $\Gamma$ distribution or
+the Weibull distribution, when these were more appropriate.
+
+\section{Other definitions of robustness}
+
+In the litterature on robust optimization other notions of robustness
+exist. Some try to find robust solutions by avoiding what they call
+``brittle'' solutions \cite{tsutsui}.  The definition of ``brittle''
+is not specified and thus the definition is not tenable for us to base
+our work on.  The notion is in general the same as our definition,
+namely that solutions that will ``often'' be infeasible are rejected
+in favour of solutions that are ``rarely'' infeasible. The greatest
+difference here lies in the fact that we wish to put a specific number
+on ``often'' and ``rarely''.

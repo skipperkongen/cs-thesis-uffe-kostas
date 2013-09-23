@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.diku.dk/robust/autogen/sclsp_solution" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.diku.dk/robust/autogen/sclsp_solution">
+
+    <xsd:complexType name="CLSPSolution">
+    	<xsd:sequence>
+    		<xsd:element name="global_parameters" type="GlobalParameters">
+    		</xsd:element>
+    		<xsd:element name="on_stock" type="StockTimePeriods" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="being_produced" type="ProductionTimePeriods" minOccurs="1" maxOccurs="1"></xsd:element>
+    		<xsd:element name="is_setup" type="IsSetupTimePeriods" minOccurs="1" maxOccurs="1">
+    		</xsd:element>
+    		<xsd:element name="being_setup" type="BeingSetupTimePeriods" minOccurs="1" maxOccurs="1">
+    		</xsd:element>
+    		
+    	</xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="solution" type="CLSPSolution"></xsd:element>
+
+    <xsd:complexType name="GlobalParameters">
+    	<xsd:attribute name="time_periods" type="xsd:positiveInteger"
+    		use="required">
+    	</xsd:attribute>
+    	<xsd:attribute name="resources" type="xsd:positiveInteger" use="required"></xsd:attribute>
+    	<xsd:attribute name="items" type="xsd:positiveInteger" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+
+
+
+    <xsd:complexType name="StockTimePeriods">
+    	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    		<xsd:element name="stock_time_period" type="StockTimePeriod"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="StockTimePeriod">
+    	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    		<xsd:element name="item_on_stock" type="ItemOnStock"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="time_period" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ItemOnStock">
+    	<xsd:attribute name="item_id" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    	<xsd:attribute name="amount" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ProductionTimePeriods">
+    	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    		<xsd:element name="production_time_period" type="ProductionTimePeriod"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="ProductionTimePeriod">
+    	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    		<xsd:element name="item_production" type="ItemProduction"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="time_period" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ItemProduction">
+    	<xsd:attribute name="item_id" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    	<xsd:attribute name="resource_id" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    	<xsd:attribute name="amount" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="IsSetupTimePeriods">
+    	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    		<xsd:element name="is_setup_time_period" type="IsSetupTimePeriod"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="IsSetupTimePeriod">
+    	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    		<xsd:element name="resource_is_setup" type="ResourceIsSetup"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="time_period" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ResourceIsSetup">
+    	<xsd:attribute name="item_id" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    	<xsd:attribute name="resource_id" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    	<xsd:attribute name="is_setup" type="xsd:boolean" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="BeingSetupTimePeriods">
+    	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    		<xsd:element name="being_setup_time_period" type="BeingSetupTimePeriod"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="BeingSetupTimePeriod">
+    	<xsd:sequence minOccurs="1" maxOccurs="unbounded">
+    		<xsd:element name="resource_being_setup" type="ResourceBeingSetup"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="time_period" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ResourceBeingSetup">
+    	<xsd:attribute name="item_id" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    	<xsd:attribute name="resource_id" type="xsd:nonNegativeInteger" use="required"></xsd:attribute>
+    	<xsd:attribute name="being_setup" type="xsd:boolean" use="required"></xsd:attribute>
+    </xsd:complexType>
+</xsd:schema>

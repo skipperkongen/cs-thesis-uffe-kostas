@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<knapsack xmlns="http://www.diku.dk/robust/autogen/stochknapsack" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.diku.dk/robust/autogen/stochknapsack ../schema/knapsack/knapsack_instance.xsd ">
+  <items>
+    <item>
+      <profit>2.0</profit>
+      <weight>4.0</weight>
+    </item>
+    <item>
+    	<profit>5.0</profit>
+    	<weight>7.0</weight>
+    </item>
+    <item>
+    	<profit>3.0</profit>
+    	<weight>7.0</weight>
+    </item>
+    <item>
+    	<profit>6.0</profit>
+    	<weight>5.0</weight>
+    </item>
+    <item>
+    	<profit>3.0</profit>
+    	<weight>2.0</weight>
+    </item>
+    <item>
+    	<profit>1.0</profit>
+    	<weight>4.0</weight>
+    </item>
+    <item>
+    	<profit>1.0</profit>
+    	<weight>1.0</weight>
+    </item>
+    
+    <item>
+    	<profit>2.0</profit>
+    	<weight>2.0</weight>
+    </item><item>
+    	<profit>1.0</profit>
+    	<weight>3.0</weight>
+    </item>
+    <item>
+    	<profit>2.0</profit>
+    	<weight>6.0</weight>
+    </item>
+    
+  </items>
+  <stochasticCapacity>
+  	<normal mean="20.0" variance="4.0" />
+  </stochasticCapacity>
+  
+  
+  
+  
+  
+  
+</knapsack>

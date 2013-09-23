@@ -1,0 +1,346 @@
+\chapter{Problems}
+\label{sec:problem}
+
+In order to create our framework for finding robust solutions we need
+to work on some problems. We have chosen two problems to work on, the
+knapsack problem and the capacitated lot-sizing problem. These two problems are
+both optimization problems that can be modeled using integer
+programming and thus fit perfectly into what we have discussed
+earlier. The reason for choosing two problems is that the knapsack
+problem has some very well established solution methods and problem
+instances that we can use to show that our approach actually
+works. The only problem with the knapsack problem is that it is
+perhaps \emph{too} well described in the litterature and thus not much
+interesting can be gained from our treatment of the subject.
+
+This is why we have then applied our developed framework to the
+lot-sizing problem, in order to find a field where our framework might
+have some value in real life. 
+
+%Production planning, of which the
+%lot-sizing problem is a part, is used in many real-life instances
+%where many stochastic factors are at work. It is thus easier for us to
+%create realistic and understandable examples than what we feel capable
+%of with the knapsack problem.
+
+We will now present the two problems as well as the stochastic factors
+that can be introduced. We will also specify which stochastic factors
+we will be working with and which we choose to omit for simplicity
+reasons.
+
+\section{Knapsack problem}
+\label{sec:knapsack_problem}
+
+The easiest way to describe the knapsack problem is by example
+\begin{example}
+Imagine a robber who is robbing an art exhibit. The robber has brought
+only one bag with him (the knapsack) and with him he has a list of how
+much each item in the art exhibit is worth and how much space it will
+take up in the knapsack. The object of the robber is to fill the
+knapsack with the objects that will give him the largest amount of
+profit.
+\end{example}
+Although optimizing criminal activity may not be a good career move
+for us, this problem is nevertheless a very well studied problem and
+actually has applications outside the world of crime (whew).
+
+The problem can be formulated as an integer programming model:
+{\setlength\arraycolsep{2pt}
+\begin{eqnarray}\label{knapsack_definition}
+\max & & \sum_{j=1}^n p_j x_j\\
+\textrm{s.t. }& & \sum_{j=1}^n w_j x_j \leq c \\
+& & x_j \in \{0,1\}, j=1,\dots,n
+\end{eqnarray}}
+
+In this model the parameters are follows:
+\begin{align}
+\begin{tabular}{cl}\label{knapsack_variables}
+$p_j$ & The profit associated with item $j$.\\
+$w_j$ & The weight associated with item $j$.\\
+$c$   & The total capacity of the knapsack.
+\end{tabular}
+\end{align}
+And the variables are:
+\begin{align}
+\begin{tabular}{cl}\label{knapsack_variables}
+$x_j$ & 1 if item $j$ is added to the knapsack and 0 otherwise.\\
+\end{tabular}
+\end{align}
+When we consider the problem as a stochastic one, then the constants
+$p_j, w_j$ and $c$ are the stochastic elements. The validity of this
+can be explained in real-life terms as follows. The profit of an item
+may be decided by a free market in which the price fluctuates, thus a
+stochastic $p_j$. If the weight of an item is based on some estimate,
+then the actual weight of the item when it is to be packed may differ
+from the one estimated, and so it makes sense to use a stochastic
+$w_j$. The exact size of the knapsack may not be something we
+control, and so it too may have a different size than what was
+planned, making a stochastic $c$ plausible.
+
+In our work with robustness we have chosen to leave the profit, $p_j$
+as a deterministic constant, since the stochasticity of $p_j$ doesn't
+affect the robustness of a solution but only the objective value of
+the solution.
+
+
+\section{Production Planning}
+\label{sec:production_planning}
+The second problem that we are trying to find robust solutions for is
+the capacitated lot-sizing problem \cite{wolsey}. This is a problem in the field
+of production planning, and after we have briefly
+introduced production planning, we will give a thorough introduction to
+lot-sizing problems and the many forms they can take in section \ref{sec:lot_sizing_problem}.
+
+Production planning problems are a branch of optimization problems
+specifically targeted at production planning. Thus in production
+planning problems we try to optimize production outputs, production
+cost, facility utilization, employee utilization, warehouse usage or
+other factors involved in production. Each factor based on the knowledge we
+have before production starts.
+
+Depending on the problem being optimized, the time horizon we are
+planning for will vary. Common for most problems is that the time
+horizon will be divided into a number of smaller time intervals known
+as buckets. A solution to the planning problem will yield a production
+scheme for each bucket.
+
+There are many different characteristics that define a specific
+production planning problem. Here we will describe the four most
+important characeristics with relation to the problem we will be working
+on.
+
+\subsection{Resources}
+\label{sec:resources}
+
+For production to occur something must exist which can transform raw
+materials (or unfinished end-products) into finished
+end-products. This can be one of many things e.g. people, machinery,
+tools or budget if we view the problem more abstractly. No matter what
+we are using to produce our end-products we shall refer to the
+producer as a resource.
+
+Problems are typically divided into single- or multi-resource
+problems, which allows for production of one or more types of
+end-products in each bucket.
+
+\subsection{Capacity}
+\label{sec:capacity}
+When considering \emph{what} to produce in each bucket, that is what
+the resources are set to produce, we also consider \emph{how much} is to be
+produced in each bucket. In some models this amount can be set
+to anything we desire (uncapacitated) or there may be a limit to the
+amount each resource can produce (capacitated).
+
+\begin{example} 
+As an example of uncapacitated production consider an assembly of
+tables that is done by untrained labourers, hired on a day-to-day
+basis. We can (almost) always hire more labourers if we need to
+assemble more tables, or hire fewer labourers if we need to assemble
+fewer tables. In practice the amount of production in this example
+will be uncapacitated.
+\end{example}
+Examples of capacitated problems are plentiful, just imagine a factory
+with a set amount of machines. Getting a new machine takes a long time
+and so the factory will be restricted (capacitated) in production by
+the number of machines that they own.
+
+\subsection{Items}
+\label{sec:items}
+Production planning problems can also deal with either one or more
+end-products. In many models each of the resources can then produce
+several or all of the end-products, but naturally with different cost
+for each item. Whether a resource can produce just one or several
+types of end-products in a bucket is dependant on the model and,
+eventually, how the real world works of course.
+
+\subsection{Levels}
+\label{sec:levels}
+The final characteristic that is important to our specific production
+planning problem is whether the problem is single- or multi-level. 
+In a single-level problem products are produced (using resources) from
+raw materials that are available from external suppliers. 
+\begin{example}
+This could be the case if we manufactured flour made from wheat. The
+wheat is available from farmers or wholesalers and we do not produce
+anything from the wheat but merely sell it to stores or wholesalers.
+\end{example}
+In a multi-level problem each end-product has a bill of materials that
+states which items are required to build which items. Thus each
+end-product can possibly be required in another end-product (no cyclic
+dependencies of course).
+\begin{example}
+As an example consider a factory manufacturing cars. To produce a car
+several items must be available (chassis, engine, wheels etc.).  Each
+of these items must also be either produced at the factory or bought
+from external suppliers. If these items are produced at the factory
+they will most likely also have subcomponents that need to be either
+produced or purchased. Figure \ref{fig:car_factory} provides a small
+illustration of the example.  \figur{Illustration of production flow
+in a car factory}{fig:car_factory}{figurer/car_factory.eps}
+\end{example}
+
+There exist many other factors that depend on what production planning
+problem is being solved but the four we have just presented are the
+ones that are most pertinent to the problem we will be dealing with,
+which will be described in the following chapter.
+
+\section{Lot-sizing}
+\label{sec:lot_sizing_problem}
+One production planning problem is the capacitated lot-sizing problem
+which models a manufacturer trying to minimize the cost of storage and
+production of items, while meeting demands for those items from
+costumers at the time of the demand. Other production planning
+problems might focus on maximizing output or utilizing all resources.
+
+One assumption in a lot-sizing problem is that there is some penalty to be paid if
+a demand is not met, this could model the real-life situation of
+having a contract with a customer for which there is a penalty if a
+deadline is missed. It could also model the fact that customers are
+lost if delivery is not reliable. Sometimes this assumption is
+circumvented in the model by disallowing the situation of a demand not
+being met.
+
+Another assumption is that keeping products in storage incurs a
+cost. This can be viewed as an actual storing cost (cost of
+warehouses) but more realistically it should be viewed as the lost
+potential income from having capital tied up in the stocked items.
+
+Optimally we will have an inventory of zero and only produce
+end-products at the time they are demanded by the customer, but this
+is not always a feasible strategy. Since the problem is capacitated
+(see section \ref{sec:capacity}) it may be necessary to produce items
+in advance since a full order may not be producable within the same
+timeslot that it is demanded.
+
+Within lot-sizing problems there are many different variations, primarily from
+choosing different settings of the four factors just described in
+section \ref{sec:production_planning}
+
+We will now sketch some of the problems here:
+
+\begin{description}
+
+\item[Capacitated lot-sizing problem] In the capacitated lot-sizing
+problem the production of items consumes capacity on resources,
+with an upper limit existing on the capacity of each resource.
+
+Each item produced consumes a share of the available capacity on a
+resource. This creates a limit on the number of items that can
+be scheduled for production on a single resource during a time period.
+
+One can also model setup times for the resources as a capacity drain,
+such that the production of an item consumes an additional fixed
+amount of capacity on the resource, normally only during the first
+time period of production.
+
+\item[Multi-resource lot-sizing problem] In lot-sizing the production of
+items may be assigned to a single resource, or to several
+resources. In the latter case we speak of the multi-resource
+lot-sizing problem. In a real-life instance
+where there are several resources, we may still choose to model the
+situation as a single resource problem if all the resources are
+capable of the same in matters of production speed and products to be
+processed. 
+\begin{example}
+In a shoe factory with 500 workers, the workers may be viewed as one
+resource with 500 times the capacity of a single worker. 
+\end{example}
+This can be done if the production of items is fast and the buckets we
+are planning for are sufficiently large.
+
+\item[Multi-level/Multi-item/Single-item] Multi-level lot-sizing problem,
+ is the case where the production of an item consumes other
+items as part of the production process. Such dependencies among items
+form a tree refered to as the bill of materials as described in
+section \ref{sec:items}.
+
+If several items are produced, but no items are required for the
+production of other items (i.e. the bill of materials consists of only
+leaves), the problem is refered to as multi-item lot-sizing problem.
+
+If only a single item is produced the problem is refered to simply as
+lot-sizing.
+\end{description}
+
+The mathematical formulation of a lot-sizing problem depends on the
+specific problem that is being treated. In our thesis we will be
+dealing with the multi-item capacitated lot-sizing problem since it is
+sufficiently complex in respect to our goal of finding robust
+solutions to hard problems. There are plenty of stochastic parameters to tweak in this
+problem as we will describe in the next section.
+
+
+\subsection{Modeling the capacitated lot-sizing problem}
+\label{sec:modelling_clsp}
+
+In this chapter we will present the mathematical formulation of the multi-item
+capacitated lot-sizing problem and explain the meaning of the individual variables and constants.
+
+The model looks like this
+{\setlength\arraycolsep{2pt}
+\begin{eqnarray}\label{clsp_definition}
+\min  \sum_{i\in items}^{}&& \left( h_0^i s_0^i + \sum_{t\in T} (
+h_t^i s_t^i + p_t^i x_t^i) \right) \\
+\textrm{s.t. } s_{t-1}^i + x_{t}^i &=& d_t^i + s_{t}^i, \textrm{ }t
+\in T,\ i \in items \\
+\alpha_t^i x_t^i + \beta_t^i z_t^i &\leq& c_t y_t^i, \textrm{ }t \in
+T, \ i \in items\\
+\sum_{i \in items} y_t^i &\leq& 1,\textrm{ }t \in T, \ i \in items\\
+x_t^i \geq 0,\ s_t^i \geq 0&,&\ y_t^i, z_t^i \in \mathbb{B}
+\end{eqnarray}}
+
+Here the variables are
+\begin{itemize}
+\item $s_t^i$ is the number of units of item $i$ on stock at time $t$
+\item $x_t^i$ is the number of units of item $i$ being produced at time $t$
+\item $z_t^i$ indicates if production is being set up at time $t$
+\item $y_t^i$ indicates if production of item $i$ can occur at time $t$
+\end{itemize}
+
+The constants are
+\begin{itemize}
+\item $h_t^i$ is the inventory cost at time $t$ for one unit of item $i$
+\item $p_t^i$ is the production cost at time $t$ for one unit of item $i$
+\item $d_t^i$ is the demand at time $t$ for item $i$
+\item $c_t$ is the capacity of production at time $t$
+\item $\alpha_t^i$ is the capacity consumed by producing one unit of
+  item $i$ at time $t$
+\item $\beta_t^i$ is the capacity consumed by setting up for
+  production of item $i$ at time $t$.
+\end{itemize}
+
+The set $T$ indicates all the time intervals (buckets) that we are
+planning for. The set $items$ contains all the items that can be produced.
+
+\subsection{Uncertainty in multi-item capacitated lot-sizing}
+As with the knapsack problem any constant in our model of capacitated
+lot-sizing problem can be stochastic. We
+will now describe briefly how this could be a reflection of a
+real-world situation.
+
+\begin{itemize}
+\item Demand, $d_t$, being stochastic is easy to imagine if the demand
+  is from a free market, and not some long-term contract. Many
+  industries are subject to this kind of demand and often experience
+  fluctuations in demand.
+\item Capacity, $c_t$, can also vary stochastically. If the resource
+  being used are people, then the fluctuations could represent how
+  many people are sick, or that the entire group of people may be less
+  productive at one time than at another. Other factors that could
+  make capacity vary are products that must be discarded. They have
+  used up capacity but do not ontribute to satisfying demand.
+\item Setup times, $\beta^i _t$, may have stochastic duration. e.g. as
+a consequence of differences in skill level of the worker setting up a
+resource for production in a factory. This would lead to a smaller or
+bigger waste of capacity depending on the skill of the worker.
+\item Inventory cost, $h_t$, can also very easily be stochastic since
+  it is the ``cost'' incurred by having money tied up in inventory
+  this value will rise and fall with the current interest rates in
+  real-life.
+\item Production cost, $p_t$, could be stochastic if for example a
+  varying amount of end-product is produced from the same amount of
+  raw material. Here the discarded products will also influence the
+  constant, since a discarded end-product will still have consumed some
+  amount of raw material.
+\end{itemize}
+

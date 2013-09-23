@@ -1,0 +1,1890 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sclsp_instance xmlns="http://www.diku.dk/robust/autogen/sclsp_instance" num_periods="15" num_items="6">
+    <item initial_cost="10000" item_id="1">
+        <time_period time_period="1">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>119</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="2">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>76</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="3">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>116</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="4">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>102</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="5">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>109</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="6">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>100</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="7">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>93</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="8">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>98</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="9">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>93</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="10">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>118</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="11">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>83</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="12">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>122</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="13">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>77</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="14">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>123</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="15">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>125</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+    </item>
+    <item initial_cost="10000" item_id="2">
+        <time_period time_period="1">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>85</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="2">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>0</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="3">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>95</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="4">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>0</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="5">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>101</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="6">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>120</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="7">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>99</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="8">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>120</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="9">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>114</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="10">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>94</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="11">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>78</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="12">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>91</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="13">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>86</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="14">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>104</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="15">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>5</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>97</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+    </item>
+    <item initial_cost="10000" item_id="3">
+        <time_period time_period="1">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>0</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="2">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>77</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="3">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>124</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="4">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>106</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="5">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>79</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="6">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>123</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="7">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>107</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="8">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>85</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="9">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>98</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="10">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>105</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="11">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>119</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="12">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>98</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="13">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>125</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="14">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>114</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="15">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>109</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+    </item>
+    <item initial_cost="10000" item_id="4">
+        <time_period time_period="1">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>102</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="2">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>101</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="3">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>92</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="4">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>0</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="5">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>118</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="6">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>108</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="7">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>95</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="8">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>78</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="9">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>108</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="10">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>84</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="11">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>111</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="12">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>121</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="13">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>122</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="14">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>102</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="15">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>3</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>80</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="1.5" mean="30.0"/>
+            </cap_setup>
+        </time_period>
+    </item>
+    <item initial_cost="10000" item_id="5">
+        <time_period time_period="1">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>84</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="2">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>111</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="3">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>87</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="4">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>94</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="5">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>91</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="6">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>90</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="7">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>111</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="8">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>106</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="9">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>117</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="10">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>105</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="11">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>91</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="12">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>97</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="13">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>107</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="14">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>83</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="15">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>2</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>103</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="2.5" mean="50.0"/>
+            </cap_setup>
+        </time_period>
+    </item>
+    <item initial_cost="10000" item_id="6">
+        <time_period time_period="1">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>89</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="2">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>0</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="3">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>0</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="4">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>83</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="5">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>86</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="6">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>118</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="7">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>108</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="8">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>83</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="9">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>79</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="10">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>80</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="11">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>99</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="12">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>92</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="13">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>98</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="14">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>78</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+        <time_period time_period="15">
+            <production_cost>
+                <constant_value>0</constant_value>
+            </production_cost>
+            <holding_cost>
+                <constant_value>1</constant_value>
+            </holding_cost>
+            <fixed_cost>
+                <constant_value>0</constant_value>
+            </fixed_cost>
+            <demand>
+                <constant_value>95</constant_value>
+            </demand>
+            <cap_usage>
+                <constant_value>1</constant_value>
+            </cap_usage>
+            <cap_setup>
+                <normal standard_deviation="3.0" mean="60.0"/>
+            </cap_setup>
+        </time_period>
+    </item>
+    <capacity time_period="1">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="2">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="3">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="4">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="5">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="6">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="7">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="8">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="9">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="10">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="11">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="12">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="13">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="14">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+    <capacity time_period="15">
+        <value>
+            <constant_value>728</constant_value>
+        </value>
+    </capacity>
+</sclsp_instance>

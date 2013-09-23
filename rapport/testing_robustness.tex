@@ -1,0 +1,240 @@
+\chapter{Testing robustness}
+\label{sec:testing_robustness}
+
+Until now we have talked about solutions being so and so robust but we
+have not gone into detail about how we determine the robustness of a
+solution. That is however the subject of this chapter. First we will
+go into a discussion of how the robustness could be calculated using
+other approaches than ours and then we will describe what ways we
+could calculate robustness and then how we do calculate it.  Next we
+will talk a little about the simulations used for calculating
+robustness and how the knapsack problem and the lot-sizing problem
+simulations differ in key areas.  Last but not least we shall go into
+depth about the statistical background used when calculating the
+robustness, which should leave the reader (you) comlpletely
+enlightened as to how we find robustness for our solutions.
+
+\section{Different approaches}
+\label{sec:different_approaches}
+If we used a method like stochastic programming we could
+mathematically calculate how robust a solution is, but as discussed in
+section \ref{sec:stochastic_programming} this is not a feasible
+approach for us. Since we are not able to arrive at the robustness
+mathematically we must arrive at it empirically. This can be done by
+sampling the stochastic variables and testing if the resulting
+scenario can be solved using the current solution. This can then be
+repeated a number of times and a percentage of robust outcomes can be
+calculated. This is however not a very good approach since we must
+create a lot of scenarios to be able to trust the robustness
+percentage. An example of how heavily reliant this approach is in the
+number of scenarios we set up the following example
+\begin{example}
+Imagine that we have a solution that is in fact $0.5$ robust. When we
+test this solution there is thus equal chance that it will be
+categorized as feasible or infeasible. If we generate only 4 scenarios
+then there is a $\frac12^4 = \frac{1}{16}$ chance that it will be
+categorized as completely which would clearly be wrong. If however
+we generated 100 scenarios the chance of this solution being
+categorized as completely would drop to $\frac12^{100} =
+\frac1{1024^{10}}$ which is indeed very low.
+\end{example}
+For the genetic algorithm the number of generated scenarios will have
+a decisive impact on the running time of the algorithm. This is
+because we must test many solutions for robustness in each generation
+of the genetic algorithm. In section \ref{sec:statistics} we will
+explain how we achieve robustness figures that are reliable while
+minimizing the computational time.
+
+\section{Statistics}
+\label{sec:statistics}
+As mentioned in section \ref{sec:different_approaches} it is important
+to keep the number of generated scenarios to a minimum in order to
+ensure fast execution of the algorithms. We accomplish this through
+the use of statistics. 
+
+In statistics, empirical observations are used to gain useful
+information about what the chances are of certain events happening. In
+our case the ``event'' we are interested in is whether a solution is
+feasible given a random scenario.  Using statistics we will not be
+able to find the exact robustness of a solution but we will be able to
+tell in what range of probabilities it is most likely that the
+robustness will be. To do this we first need to categorize the
+distribution we are attempting to find probabilities for. Since a
+solution is either feasible or infeasible in respect to a specific
+scenario we can view this as a binomial distribution.
+
+As described in section \ref{sec:simulation} we generate a number of
+scenarios of the uncertain problem being used. This leads us to an
+observed \emph{frequency} of scenarios for which a specific solution
+is feasible. This frequency can now be used as an estimate of the
+actual robustness, i.e. $robustness \approx \frac{feasible \text{ }
+scenarios}{experiments}$. As described earlier this estimate may be
+very poor if the number of experiments is very low. To compensate for
+this we now use the statistical tools of \emph{hypothesis test}
+(\cite{statistik} chapter 4) to find an \emph{acceptance area}.
+
+\subsection{Hypothesis test}
+In a hypothesis test for the binomial distribution we have a number of
+experiments, $n$, and an observed number of positive outcomes, $k$.
+For a hypothesis test we guess at a value of $p$, calling the
+guess $p_0$ and then the test will either \emph{accept} or
+\emph{reject} our hypothesis of $p = p_0$. A hypothesis is
+  never actually accepted it is merely \emph{not rejected}, this is
+  however a distinction we will not be very fussy about. The
+acceptance or rejection of each hypothesis is based on $n$ and $k$ as
+well as the type of test being used and the \emph{level of
+significance}. In this thesis we use the $\chi^2$ test and a
+significance level of $0.95$ meaning that in up to 5$\%$ of all cases we
+accept a hypothesis that should have been rejected and vice versa.
+
+A short example might help illustrate the method of a hypothesis test.
+\begin{example}
+\label{ex:coin1}
+Imagine a coin being tossed. Let's assume the coin is symmetric and it
+is being tossed fairly. We describe the result \emph{heads} as a
+positive result and the result \emph{tails} as a negative result. The
+true value of $p$ will be $0.5$ but we are interested in how the
+testing works. If we toss the coin 10 times we will expect 5 positive
+results, but few people would find it odd if we get 6 or 7 positive
+results. A hypothesis test will help us in determining if an observed
+outcome could be the result of $p=0.5$. In the following table can be
+seen the probability (rounded to 4 decimals) of a specific outcome,
+the probaility of achieving that outcome or a lower one (accumulated probability) and the result of the
+hypothesis test $p=0.5$.\\
+\begin{align}
+\begin{tabular}{c|cccccc}
+Positives       & 0    & 1    & 2    & 3    & 4    & 5\\
+Probability     &0.0010&0.0098&0.0439&0.1172&0.2051&0.2461\\
+Acc. probability&0.0010&0.0108&0.0547&0.1717&0.3768&0.6229\\
+Hypothesis test &Reject&Reject&Accept&Accept&Accept&Accept\\
+\hline
+Positives  & 6    &7     & 8    & 9     & 10 &\\ 
+Probability     &0.2051&0.1172&0.0439&0.0098&0.0010 &\\
+Acc. probability&0.8280&0.9452&0.9891&0.9989&0.9999&\\
+Hypothesis test &Accept&Accept&Accept&Reject&Reject& 
+\end{tabular}
+\end{align}
+In this case we will accept the coin as being fair if we observe
+between 2 and 8 positives. The coin may still be fair if we observe a
+different amount of positives but it is very unlikely. As can be seen
+from the table the results of 0, 1, 9 and 10 positives have a combined
+probability of less than 5$\%$ which is why they would result in a
+rejection by the hypothesis test.
+\end{example}
+
+\subsection{Acceptance area}
+Using the hypthesis test we can verify whether a specific probability
+could be the probability generating an observed outcome. The
+acceptance area is an interval of
+probabilities $[p_{low},p_{high}]$. All probabilities in the
+acceptance area will be accepted by the hypothesis test with the
+current observations. We find the acceptance area by performing a
+number of hypothesis tests, in fact we perform a binary search to find
+the end-points of the interval. 
+
+In example \ref{ex:coin1} we illustrated how the hypothesis test can be
+used to find what values will result in acceptance of a specific
+hypothesis. When we test for robustness we are not interested in this
+interval but instead we are interested in the acceptance area. 
+
+An example might illustrate our usage better.
+\begin{example}
+\label{ex:coin2}
+Continuing with the coin example, let's assume that we don't know how
+fair the coin is, but that we wish to use the hypothesis test to find
+out. This time we assume that we tossed the coined 100 times and that
+we get 36 positives. For this result we will get that probabilites,
+$p_0 \in [0.28,0.45]$ will result in an acceptance by the hypothesis test
+of $p=p_0$, or in other words that $[0.28,0.45]$ constitutes the
+acceptance area. In this case we would say that the coin is not fair since
+$0.5$ is not in the acceptance area. It is not entirely certain that this
+is true, but is is highly unlikely since a result of 36 positives (or
+fewer) has only a probability of $0.0033$ if there is a $0.5$
+probability of a positive outcome. The acceptance area we arrived at
+might be too big for us to say anything useful about the probability of a positive
+outcome. If we want the area
+to be smaller we would have to increase the number of experiments. If
+we increased it ten-fold to 1000 and got 360 positives our acceptance area
+would be reduced to $[0.33,0.39]$, in this case only a reduction of
+$\frac23$ of the area size at the cost of 10 times as many simulations.
+\end{example}
+
+As illustrated by our example \ref{ex:coin2} the decrease in the acceptance
+area is not linearily correlated to the increase in the amount of
+simulations. Indeed the relationship is closer to being inversely
+exponential. This relationship does however allow us to make a
+trade-off between the number of simulations and the precision of our
+acceptance area. 
+
+As a note the size of the acceptance area is not solely dependant on
+the number of experiments but also on the probability of of the
+positive outcome, the closer the probability is to $0.5$, the larger
+the acceptance area will be. This helps us since we are looking for
+probabilities around $0.95$ (our desired robustness) which will allow
+us to conduct fewer experiments to get a small acceptance area.
+
+
+\section{Simulation}
+\label{sec:simulation}
+When we look for robust solutions to uncertain optimization problems
+we will be testing each new solution to see if it is robust or
+not. The way we will do this is that we will generate a number of
+scenarios as described earlier. For each new scenario we will test if
+our solution is feasible. This will give us a number of experiments
+(the number of generated scenarios) and a number of positive
+observation (the number of scenarios for which our solution
+is feasible). As explained in section \ref{sec:statistics} this can
+then yield an acceptance area.
+
+One way of using the acceptance area is to perform enough experiments
+that the distance between the endpoints becomes sufficiently small
+(e.g. 0.01), this will enable us to say with greater
+certainty what the exact robustness of a solution is.
+However we are not always interested in the exact robustness of a
+solution. Our main focus is to find robust solutions, and to find the
+ones that have the best objective value while being robust. Thus in
+an optimization problem a solution that yields a profit of 100 and is
+$0.99$ robust, is not as good as one that yields a profit of 101 and
+is $0.95$ robust, at least not if we are looking for solutions that
+are $0.95$ robust.
+
+When we are not interested in the specific robustness of our
+solutions, but merely whether the solution is robust or not, the
+acceptance area can help us speed up the process by reducing the
+number of required simulations.
+The general algorithm we will be using is this
+\begin{codebox}
+\Procname{$\proc{Decide-Robustness}(s, r, I)$}
+\li $s$, solution.
+\li $r$, desired robustness
+\li $I$, uncertain optimization problem
+\li $n$ = 0
+\li $k$ = 0
+\li \Do \While robustness of $s$ is undecided
+\li Generate a scenario $D$ by sampling $I$
+\li $n = n + 1$
+\li \If $s$ is a feasible solution to $D$
+\li \Do $k = k + 1$ 
+\End
+%\li \kw{end} \li{if}
+\li Calculate acceptance area, $[p_{low}, p_{high}]$, using $(n,k)$
+\li \If $p_{low} \geq r$
+\li \Do Declare $s$ as robust and terminate
+\End%\li \kw{end} \li{if}
+\li \If $p_{high} \leq r$
+\li \Do Declare $s$ as non-robust and terminate
+\End%\li \kw{end} \li{if}
+\li Generate a new $D$
+\End%\li \kw{end} \kw{while}
+\label{alg:decide_robustness}
+\end{codebox}
+
+The algorithm helps us to determine if a solution is robust or
+non-robust by looking at the acceptance area. If the desired
+robustness is outside the acceptance area we can stop simulating since
+the robustness of the solution is the either above or below the
+desired level of robustness. The algorithm does have some problems
+when $n$ is very low (below 10 to 15) since the acceptance area at
+this point can fluctuate quite a lot. In implementing the algorithm we
+thus take this into consideration and we do not perform the lines
+11-14 of the algorithm if $n\leq 15$.

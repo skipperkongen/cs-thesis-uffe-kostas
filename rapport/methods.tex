@@ -1,0 +1,551 @@
+\chapter{Methods}
+\label{sec:methods}
+
+In this chapter we will present the methods we use to find good robust
+solutions. Our general approach is rather simple and can be summarized
+in this three-step list:
+\begin{enumerate}
+\item Find some solutions to the problem at hand (possibly just one).
+\item Test the robustness of the solutions found.
+\item Find new solutions that are expected to be better than the
+  existing solutions, based on some heuristic.
+\end{enumerate}
+
+We then loop through steps 2 and 3 until some pre-defined condition
+has been met. This could be that we achieve a certain solution
+value, but in our implementations we only use the number of iterations as
+a stopping criteria.
+
+The rest of the chapter will deal with steps 1 and 3 of
+our approach, step 2 has been dealt with in chapter
+\ref{sec:testing_robustness}. Furthermore we will describe a
+three-stage approach to robust optimization that we have applied to
+the lot-sizing problem.
+
+First we will introduce seeding, a way of generating initial
+solutions, the alternative to seeding is using randomly generated
+solutions.
+
+Next we will briefly present some of the search heuristics
+that can be used to find robust solutions for optimization
+problems or indeed solutions to any optimization problem. The issue of
+how we arrive at the different values of robustness is treated in
+chapter \ref{sec:testing_robustness}.
+
+After presenting the different search heuristics we will present two
+different search strategies that can be used to find robust solutions
+and naturally emphasize the ones we will be using.
+
+We will then give an in-depth presentation of genetic algorithms, the
+heuristic we have used to find robust solutions.
+
+After presenting genetic algorithms we will describe how it will be
+used on the knapsack problem and on the lot-sizing problem.
+
+\section{Seeding}
+\label{sec:scenario_sampling}
+
+In this chapter we will describe the concept of \emph{seeding}.
+In chapter \ref{sec:scenarios} we described the concept of a scenario,
+a concept that is integral to the concept of seeding. 
+
+When generating solutions to start our approach the easiest way is to
+simply generate random solutions. These may be non-robust as well as
+have poor objective values, which in general would lead us to expect
+that it will take a long time to find good robust solutions.
+
+As an alternative to the random solutions we can instead generate a
+number of scenarios, $s_1, \ldots, s_n$, based on the instance, $I$,
+that we are trying to find good robust solutions for. We then solve
+the scenarios to optimality 8or near-optimality) using an already
+established solver. For the knapsack problem we use a dynamic
+programming approach to find optimal solutions. For the lot-sizing
+problem we use a heuristic solver developed by Simon Spoorendonk.
+These solutions will possibly be non-robust but their solution values
+will be much better than simply generating random solutions.
+
+In the following sections we will describe the algorithms we will
+use to find good robust solutions, but before we describe the search
+algorithms in detail, we'll go into how such searching algorithms can
+be seeded with starting solutions. We use a technique that we'll call
+\emph{scenario sampling}. 
+
+
+
+
+
+
+\section{A brief introduction to (Local) Search heuristics}
+\label{sec:search_heuristics}
+The idea behind a search heuristic is that it can quickly and
+(hopefully) efficiently find good solutions to complex problems that
+would take a long time to solve by other methods.
+A search heuristic doesn't guarantee that a solution is optimal, but
+often has some guarantees about the quality of the solution it finds,
+which improves the longer the heuristic runs.
+
+A search heuristic starts with some feasible solution and then finds
+some new solution which is then evaluated and used as a basis for
+finding yet another solution, and so on. Some of the most common
+criteria for stopping a search heuristic are
+\begin{itemize}
+\item Finding a solution that is ``good enough''
+\item Running for a set number of iterations
+\item Running for a set amount of time
+\item Running for a set amount of time/iterations without finding a
+  better solution
+\end{itemize}
+The term ``good enough'' can be described more precisely in terms of
+bounds. If we can find a bound (upper or lower) on the problem we are
+trying to solve, then ``good enough'' will usually mean that a
+solution is found that is within some range of this bound, typically
+the range is given in percent, but it may also be a constant.
+
+Many different search heuristics exist and a lot of them are treated
+in \cite{russel}. We will now briefly describe some search heuristics
+after which we will give an in-depth introduction to the heuristic we
+will be using: Genetic algorithms. The heuristics that will be briefly
+discussed are:
+\begin{itemize}
+\item Hill climbing
+\item Simulated annealing
+\item Taboo search
+\end{itemize}
+
+%DETTE ER MANGELFULDT!!!!\\
+%Single point local search simply alters one variable in a
+%multivariable problem in the direction where the highest increase in
+%solution value is found.
+
+In a Hill climbing search heuristic, the algorithm always selects the
+best solution that is ``close'' to the current solution. The definiton
+of ``close'' varies with the problems, but could be something like
+altering a single variable of the problem by no more than a constant
+amount. If no better solutions than the current one can be found in
+the neighbourhood, the algorithm stops. This is a very fast alogrithm,
+that is prone to stopping at local maxima since it never chooses worse
+solutions than it had before. Several variations exist that improve
+the efficiency of hill climbing, such as restarting the algorithm
+seeding it with a different starting point each time. We will not use
+Hill climbing due to its rather simplistic nature and the fact that at every
+iteration all members of a neighbourhood must be examined, which in
+our problems can tend to become rather time-consuming.
+
+
+Simulated annealing uses the a different approach than Hill climbing
+in that it chooses a random solution in the neighbourhood of the
+current solution. If this new solution is better than the current one
+, then it is chosen. If the new solution is worse than the current
+one, then it is only selected with some probability. This probability
+decreases with the number of iterations of the algorithm, thus
+allowing for great decreases in solution values early on, but only
+slight decreases later on.  The idea is to jump around the solution
+space a bit to begin with before settling down. If the chosen random
+neighbour solution is discarded due to it being too poor, and possibly
+low probability of selecting poor solutions, a new random neighbour is
+chosen. This approach examines far fewer neighbours than Hill climbing
+and should thus perform faster. It does however restrict us to
+examining a very small area of the solution space at the time.
+
+A Taboo search algorithm searches through its neighbourhood like Hill
+climbing but chooses the best among the neighbours even if it is worse
+than the current solution. It then maintains a list of the most recent
+``moves'' that have been performed. A move is the alteration made to
+the current solution to obtain the new solution. This list of moves is
+now called the taboo list. When considering the neighbourhood of a
+solution all solutions that are a result of performing an inverse of a
+move in the taboo list is forbidden. This way it should be avoided
+that the algorithm is caught in an infinite loop jumping back and
+forth between the same solutions. The algorithm keeps track of the
+best solution so far which is the one returned when the algorithm
+terminates, which it often does due to a cap on the number of
+iterations or CPU time.
+
+\section{Genetic algorithms}
+\label{sec:genetic_algorithm}
+
+%%% Kostas' tidligere afsnit om GA
+%\section{Genetic algorithm for robust solutions}
+%We will apply a genetic algorithm (GA) to a start solution provided by the deterministic
+%solver. We will use a fitness function that factors in both cost and robustness!
+%
+%The following are the most important elements of any genetic
+%algorithm, here with notes added that are specific to our problem.
+
+A genetic algorithm works through an emulation of life in the real
+world. It uses a sort of adapted Darwinism to model how organisms
+evolve. 
+
+In the real world living organisms adapt to their environment in order
+to survive. Those that are best at adapting, have the highest chance
+of surviving. Those that survive the longest, usually have the highest
+chance of mating and procreating, thus they also have the highest
+chance of propagating their genes in the gene pool. Since food supply
+is finite, the population will be limited and so, over time, the genes
+from succesful individual organisms will dominate the gene pool at the
+expense of genes from less succesful individuals.
+
+The algorithmic way of modelling this is to have a number of different
+solutions to the problem that we are trying to solve. Each of these
+solutions is equivilant to an individual in the real world
+example. Each solution is then rated using a fitness function. The
+purpose of the fitness function is to give good solutions a high score
+and bad solutions a low score. After rating each solution, a new
+generation of solutions is created based on the existing generation
+and the ratings of the fitness function. Individuals in the new
+generation are created by selecting two parents from the existing
+generation. The chance of an individual being selected as a parent is
+proportional to the rating of the fitness function. The genes of the
+two parents are then recombined in some way and possibly a mutation is
+introduced, creating the new individual.
+
+A genetic algorithm requiring only one parent is also known as a local
+beam search \cite{russel}. We will be ignoring this largely irrelevant
+fact and refer to both types of search heuristics as genetic
+algorithms.
+
+The algorithm continues to create generations until an optimal or
+near-optimal solution is found or a fixed number of generations have
+been created.
+
+There are several different variables that must be tuned when using a
+genetic algorithm:
+\begin{itemize}
+\item A suitable \emph{genetic representation} of solutions from the
+problem domain is chosen. Such a representation of a solution is
+called an individual. A number of individuals make up each generation of
+the population. Each generation of a population usually has a fixed size $n$.
+
+\item A \emph{fitness function} is formulated that maps solutions to a
+numerical value. These numerical values allow us to sort the solutions
+from best to worst. In many implementations of genetic algorithms low
+fitness values indicate good solutions, but the opposite can also be
+used.
+
+\item Initialization of the first generation is often done by choosing
+random (possibly non-feasible) solutions. For some cases choosing
+which starting solutions to use may speed up the algorithm and improve
+the quality of solutions. 
+ 
+\item A \emph{selection strategy} is chosen. Usually a roulette wheel
+(or fitness proportionate selection) scheme or a tournament scheme is
+used. The important thing is that the selection strategy ensures that
+individuals with a good fitness value are more likely to be selected
+than those with a bad fitness value since selection is a step in
+forming the next generations of individuals or solutions.
+
+\item \emph{Reproduction} is the process of creating generation $i+1$
+from generation $i$ by applying \emph{recombination} and/or
+\emph{mutation} to the individuals selected by the selection strategy.
+
+\item \emph{Recombination} is the process of selecting by which
+  methods the genes of two individuals are to be combined into one new
+  individual. The simplest is to choose a point in the genetic
+  representation where a cut is then made. The part before the cut is
+  then taken from one individual and the part after the cut is taken
+  from another individual. The two parts are then put together,
+  forming a new individual.
+
+\item The \emph{mutation rate} is the chance that the genes of a new
+  individual will change to a different value than the one inherited
+  from its parent.
+
+%\item Island hopping if using more than one population.
+%\item Cross-over patterns. How two individuals are combined to form a
+%new one that is introduced in the next generation.
+\end{itemize}
+
+From this list of variables the fitness function requires the most
+attention. The reason for this is that the fitness function decides
+which individuals and therefore which behaviour is to be rewarded and
+procreated. 
+
+We now turn to designing genetic algorithms for finding robust
+solutions to the knapsack problem and the lot-sizing problem. First we
+will treat all the issues that are dealt with in the same manner in
+both problems. Next we will look into the genetic representation, and
+the fitness function for the two problems seperately as the two
+problems naturally differ.
+
+\subsection{Designing a genetic algorithm for robustness problems}
+\label{sec:ga_robustness}
+In this chapter we will describe what decisions we have made in our
+design of the genetic algorithms concerning the following variables:
+
+\begin{itemize}
+\item Selection strategy
+\item Reproduction (Recombination and Mutation)
+\item Initialization
+\end{itemize}
+
+The selection strategy we have chosen is known as Roulette Wheel
+selection. each individual in the population is given a percentage of
+the roulette wheel proportionate to its fitness value. Each time a new
+individual for the new generation is to be created the wheel is then
+spun twice selecting the two lucky parents of the new individual. This
+strategy ensures that those with high fitness values will be more
+numerously represented in the next generation. This leads to faster
+convergence but also comes at the cost of losing diversity in the
+population faster.
+
+Recombination is done by simply cutting the genes of the parents in
+two at the same point and then recombining the first part from one
+parent with the second part from the other parent. This has been
+chosen for the simplicity of the method. 
+
+The rates of mutation vary with the two problems, and in each case
+several different values are tried to see the impact.
+
+Initialization of the genetic algorithm is done by seeding as
+described in section \ref{sec:scenario_sampling}. Our hope is that
+this approach provides us with enough diversity of solutions to cover
+the interesting parts of the solution space. We especially believe
+that this approach is better than starting with merely random
+solutions which we also try to back up with our investigation in
+chapter \ref{sec:effect_of_seeding}
+
+The fitness function needs to be tailored specifically to each of the
+problems, but there is however one common issue when dealing with
+robustness. We would like robust solutions to have a higher fitness
+than solutions that are not robust, but we do not want to discard a
+solution merely because it is not robust. If we did discard all
+non-robust solutions we might end up having no solutions at all, since
+it is very likely that we will start with no robust solutions. This
+would lead to the gene pool being completely empty after a single
+generation or perhaps containing only a single solution, which would
+narrow the search too much and too fast. We thus need to reward
+solutions that are not robust but not to the extent that they crowd
+out solutions that are robust. We will say that we want the robust
+solutions to \emph{dominate} the non-robust solutions, and will design
+the fitness functions with this in mind.
+
+Our implementation of the genetic algorithms has used the genetic
+algorithm framework JGAP (\emph{http://jgap.sourceforge.net/}).
+
+\subsection{Designing a genetic algorithm for the knapsack problem}
+\label{sec:ga_kp}
+As you may recall from section \ref{sec:knapsack_problem} the Knapsack
+problems objective is to maximize profit given a capacity constraint
+on weight.
+
+The decisions made by a solution are very simple, for each item the
+item is either added to the knapsack or it isn't. This leads very
+naturally to the representation of a solution as a string of boolean
+variables, one boolean variable per item in the problem.
+
+This representation is easy to understand, it never becomes very large
+unless the problem instance itself is very large and the solution
+value can be found in linear time. The only problem with this
+representation is that it only allows boolean variables which can be a
+problem when mutating, since the effect of mutation will be
+severe. This is however something dictated by the nature of the
+problem (knapsack) and therefore not something we will be concerned about.
+
+Turning our eyes to the fitness function we must first be clear about
+what we deem to be a good solution. We have two criteria by which we
+evaluate a solution
+\begin{itemize}
+\item[1.] How much profit does the solution generate?
+\item[2.] How robust is the solution?
+\end{itemize}
+From the first criteria we have that higher profit is better. Thus we
+make the easy choice of letting high fitness values equal good fitness
+values. If we were only interested in finding profitable solutions we
+would probably let profit equal fitness and be done with it, alas this
+is not the case.
+
+The second criteria is a bit more tricky. We want solutions that are
+at least $\rho$ robust, but if we simply give solutions with less
+robutness a fitness of 0, then we will probably discard solutions that
+could evolve into good solutions. As mentioned in section
+\ref{sec:ga_robustness} we want the robust solutions to \emph{dominate}
+but not necessarily to eliminate the non-robust solutions. As is usually the case with genetic
+algorithms we try a couple of different approaches. The approaches
+combine the two criteria in different ways, emphasizing different
+aspects, we will let the experiments we conduct decide which
+combination of the two criteria works best. This experimentation will
+be described in chapter \ref{sec:experimentation_and_results}.
+
+\subsection{Designing a genetic algorithm for the lot-sizing problem}
+\label{sec:ga_lsp}
+
+With the capacitated lot-sizing problem we now look at a minimization problem
+instead of maximization. This will naturally require a different
+fitness function and the problem structure will also require a very
+different genetic representation. 
+
+Since a solution to a capacitated lot-sizing problem is an assignment of how much
+to produce, it is natural to represent a solution as a list of
+integers, one for each time period and one for initial stock. For
+multi-item LSP we simply add a list for each new item. This
+representation is simple and it allows us to check solution values and
+feasibility quite easily.
+
+As for the knapsack problem, there are two properties of solutions besides 
+feasibility that we are interested in. For the capacitated lot-sizing problem
+these two properties are
+
+\begin{itemize}
+\item[1.] How much does the solution cost?
+\item[2.] How robust is the solution?
+\end{itemize}
+
+A fitness function for the capacitated lot-sizing problem must ideally
+reward both properties. The capacitated lot-sizing problem is however
+much harder than the knapsack problem.
+
+It is trivial to arrive at a feasible solution, by simply adding
+initial storage. This solution will be very expensive in the instances
+that we consider, as initial stock is intentionally penalized. It is
+not trivial to arrive at a feasible solution, i.e. a solution that
+satisfies all demands, that does not rely simply on saturating demand
+from initial stock.
+
+For this reason we shall not attempt to optimize both low cost and
+robustness at the same time, but rather attempt a two-stage genetic
+algorithm. In the first stage we shall use a fitness function that
+rewards robustness and while penalizing initial stock. We continue the
+first stage until we have reached a threshold for robust individuals
+in the population. We then shift to stage two, where we attempt to
+lower the cost of the robust solutions.
+
+The fitness function that evaluates a solution (or
+individuals) in stage one, incorporates an expression that adds or multiplies the
+reciprocal initial cost of the solution with a binary variable that is $1$ if
+the solution is robust, and $0$ otherwise. Larger values are considered better.
+
+The fitness function that evaluates a solution (or
+individuals) in stage two, incorporates an expression that adds or multiplies the
+overall cost of the solution with a binary variable that i $1$ if
+the solution is robust, and $0$ otherwise. Larger values are considered better.
+
+\section{Implementation of scenario optimization for the lot-sizing problem}
+\label{sec:methods_scenario_optimization}
+
+The objective of scenario optimization is to arrive at a partially
+robust solution by looking for the scenario that has this solution as
+the optimal solution. Such a scenario will surely take a pessimistic
+view on the outcome of the uncertain data of the
+problem. We will explain in the following how we intend to arrive at a
+partially robust solution by generating a sufficiently pessimistic
+scenario. Like always we prove the robustness of the solution by
+simulation.
+
+\subsection{Generating pessimistic scenarios for the lot-sizing problem}
+
+An instance of the single resource capacitated lot-sizing problem has a capacity $c_t$ for
+each time period $t$. It has a setup time $\beta_t^i$ for each item $i$ and each time period $t$.
+
+Either one or both of these properties of an instance are considered
+under uncertainty, and if so are assumed to be normally distributed with normal distribution $\mathcal{N}(\mu, \sigma^2)$.
+
+For the mean value of an uncertain capacity $c_t$ we use the term $\mu
+\lbrack c_t \rbrack$, and for the standard deviation the term $\sigma
+\lbrack c_t \rbrack$. Likewise for uncertain setup times.
+
+Let us quantify the degree of pessimism we are looking for in a
+scenario by the parameter $\chi \in \rbrack 0, 1 \lbrack$, where higher values of $\chi$ means
+that we want a more pessimistic scenario, and lower values of $\chi$ means that
+we want a more optimistic scenario.
+
+When we generate a pessimistic scenario, we generate constant
+values $\bar{c}_t$ and $\bar{\beta}^i_t$ for each uncertain capacity $c_t$ and uncertain setup time $\beta_t^i$.
+
+For each uncertain capacity $c_t$ with mean $\mu \lbrack c_t \rbrack$
+we calculate a constant equivalent $\bar{c}_t$ for the pessimistic
+scenario such that the drawing a sample that is greater than
+$\bar{c}_t$ from $\mathcal{N}(\mu[c_t], \sigma[c_t]^2)$ has
+probability $\chi$.
+
+For each uncertain setup time $\beta_t^i$ with mean $\mu \lbrack \beta_t^i \rbrack$ we
+calculate a constant equivalent $\bar{\beta}^i_t$ for the pessimistic scenario
+such that drawing a sample that is less than $\bar{\beta}_t^i$ from
+$\mathcal{N}(\mu[\beta_t^i], \sigma[c_t^i]^2)$ has a probability $\chi$.
+
+We thus obtain a ``pessimistic'' scenario that is a deterministic
+instance of the capacitated lot-sizing problem, and we say that the
+degree of pessimism for this instance is $\chi$.
+
+We should note that for an instance of the capacitated lot-sizing
+problem with $m$ items and $n$ time periods, the optimal solution to a
+pessimistic scenario with degree $\chi$  does
+not have partial robustness $\rho$. This is because we treat each
+realization of uncertain capacity and setup time as a separate and
+independent event. As an example, the likelihood of all uncertain
+capacities $c_t$ simultaneously having an outcome that
+is greater than $\bar{c}_t$ is not $\chi$, it is $\sqrt[n]{\chi}$.
+
+In section \ref{sec:experiments_lsp} we experiment with different
+values of $\chi$ an try to arrive at a good value for $\chi$
+experimentally.
+
+%\section{A three-stage approach to robust optimization}
+%\label{sec:three_stage_approach_to_robust_optimization}
+%
+%For some problems finding a robust solution is easy, especially if one
+%ignores the objective value completely. It is always a robust solution
+%to the knapsack problem with stochastic capacity and stochastic weight
+%to put zero items in the knapsack. Similarly it's a robust solution to
+%the lot-sizing problem to increase initial storage of all items to
+%such a large amount, that all demands of the lot-sizing problem can be
+%satisfied with near $100\%$ probability without ever producing
+%anything.
+%
+%The point of using seeds obtained by using scenario sampling is that
+%we are able to calculate good solutions within a sampled
+%scenario. Such a solution will either be robust or non-robust with
+%regard to the stochastic problem instance as a whole. Furthermore such
+%a robust solution to a different scenario might have a higher
+%objective value.
+%
+%Given a solution there is thus a need to either make the solution
+%robust if it is not already robust, or try and improve its objective
+%value, if it is already a robust solution. Using a two-stage approach
+%simplifies achieving these two separate goals.
+%
+%\subsection{Generating the seeds}
+%\label{sec:generating_seeds}
+%
+%\subsection{Improving robustness}
+%\label{sec:improving_robustness}
+%
+%A set of solutions (seeds) to a stochastic problem can be split into
+%two disjoint sets of solutions where one contains only robust
+%solutions, and the other contains only non-robust solutions. In the
+%first stage of finding good robust solutions, we will focus on finding
+%robust solutions using the non-robust seeds as a starting point. (see
+%figure \ref{fig:seeds}).
+%
+%While not strictly necessary, we'll try to search in a way that
+%preserves the quality of the objective value in the original
+%non-robust seeds. As we discussed before it is often easy to find a
+%robust solution if one completely ignores the objective value, but
+%that defeats the purpose of using seeds in the first place. 
+%
+%An algorithm that implements this stage generally works on the entire
+%set of non-robust solutions, and in each iteration moves each solution
+%in the set to a new solution by choosing from its neighbours. Each of these
+%solutions are then tested for robustness. The algorithm terminates
+%when a fixed percentage of the solutions are robust or a termination
+%criteria has been met, e.g. when a fixed number of iterations have been
+%executed.
+%
+%\figur{Using good solutions to sampled scenarios as seeds to
+%an algorithm that finds good robust solutions to a stochastic
+%problem}{fig:seeds}{figurer/seeds.eps}
+%
+%
+%\figur{Improving the robustness of non-robust solutions by a search
+%algorithm that optimizes
+%robustness}{fig:improvingseeds}{figurer/improving_seeds.eps}
+%
+%\subsection{Improving objective value}
+%\label{sec:improving_objective_value}
+%
+%The subset of robust solutions from the first stage is merged with the
+%set of robust seeds. A second search algorithm that optimizes objective
+%value is applied to the new set of robust solutions in the second stage. 
+%
+%\figur{Improving the objective value of robust solutions using a search
+%algorithm that optimizes objective
+%value}{fig:improvingseeds2}{figurer/improving_seeds2.eps}

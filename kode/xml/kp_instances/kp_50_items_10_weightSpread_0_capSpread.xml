@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<knapsack xmlns="http://www.diku.dk/robust/autogen/stochknapsack" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.diku.dk/robust/autogen/stochknapsack ../../schema/knapsack/knapsack_instance.xsd ">
+    <items>
+        <item>
+            <profit>72.0</profit>
+            <stochasticWeight>
+                <normal variance="1.21" mean="22.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>49.0</profit>
+            <stochasticWeight>
+                <normal variance="1.1024998" mean="21.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>56.0</profit>
+            <stochasticWeight>
+                <normal variance="1.5625" mean="25.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>32.0</profit>
+            <stochasticWeight>
+                <normal variance="1.0" mean="20.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>76.0</profit>
+            <stochasticWeight>
+                <normal variance="1.44" mean="24.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>71.0</profit>
+            <stochasticWeight>
+                <normal variance="2.1025002" mean="29.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>41.0</profit>
+            <stochasticWeight>
+                <normal variance="1.21" mean="22.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>71.0</profit>
+            <stochasticWeight>
+                <normal variance="1.9599999" mean="28.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>53.0</profit>
+            <stochasticWeight>
+                <normal variance="1.44" mean="24.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>45.0</profit>
+            <stochasticWeight>
+                <normal variance="2.1025002" mean="29.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>20.0</profit>
+            <stochasticWeight>
+                <normal variance="1.5625" mean="25.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>39.0</profit>
+            <stochasticWeight>
+                <normal variance="1.0" mean="20.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>42.0</profit>
+            <stochasticWeight>
+                <normal variance="1.0" mean="20.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>68.0</profit>
+            <stochasticWeight>
+                <normal variance="1.21" mean="22.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>50.0</profit>
+            <stochasticWeight>
+                <normal variance="1.5625" mean="25.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>41.0</profit>
+            <stochasticWeight>
+                <normal variance="1.8225001" mean="27.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>45.0</profit>
+            <stochasticWeight>
+                <normal variance="1.21" mean="22.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>70.0</profit>
+            <stochasticWeight>
+                <normal variance="1.6899998" mean="26.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>55.0</profit>
+            <stochasticWeight>
+                <normal variance="1.44" mean="24.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>67.0</profit>
+            <stochasticWeight>
+                <normal variance="1.0" mean="20.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>57.0</profit>
+            <stochasticWeight>
+                <normal variance="1.5625" mean="25.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>49.0</profit>
+            <stochasticWeight>
+                <normal variance="1.6899998" mean="26.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>46.0</profit>
+            <stochasticWeight>
+                <normal variance="1.8225001" mean="27.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>35.0</profit>
+            <stochasticWeight>
+                <normal variance="1.1024998" mean="21.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>35.0</profit>
+            <stochasticWeight>
+                <normal variance="2.1025002" mean="29.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>60.0</profit>
+            <stochasticWeight>
+                <normal variance="1.21" mean="22.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>67.0</profit>
+            <stochasticWeight>
+                <normal variance="1.0" mean="20.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>41.0</profit>
+            <stochasticWeight>
+                <normal variance="1.9599999" mean="28.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>71.0</profit>
+            <stochasticWeight>
+                <normal variance="1.0" mean="20.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>64.0</profit>
+            <stochasticWeight>
+                <normal variance="1.5625" mean="25.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>73.0</profit>
+            <stochasticWeight>
+                <normal variance="1.3225" mean="23.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>40.0</profit>
+            <stochasticWeight>
+                <normal variance="1.44" mean="24.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>29.0</profit>
+            <stochasticWeight>
+                <normal variance="1.5625" mean="25.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>46.0</profit>
+            <stochasticWeight>
+                <normal variance="1.3225" mean="23.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>40.0</profit>
+            <stochasticWeight>
+                <normal variance="1.6899998" mean="26.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>75.0</profit>
+            <stochasticWeight>
+                <normal variance="1.44" mean="24.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>51.0</profit>
+            <stochasticWeight>
+                <normal variance="1.0" mean="20.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>30.0</profit>
+            <stochasticWeight>
+                <normal variance="1.3225" mean="23.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>74.0</profit>
+            <stochasticWeight>
+                <normal variance="1.9599999" mean="28.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>55.0</profit>
+            <stochasticWeight>
+                <normal variance="2.1025002" mean="29.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>75.0</profit>
+            <stochasticWeight>
+                <normal variance="1.5625" mean="25.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>35.0</profit>
+            <stochasticWeight>
+                <normal variance="1.3225" mean="23.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>19.0</profit>
+            <stochasticWeight>
+                <normal variance="1.5625" mean="25.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>31.0</profit>
+            <stochasticWeight>
+                <normal variance="1.6899998" mean="26.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>69.0</profit>
+            <stochasticWeight>
+                <normal variance="1.8225001" mean="27.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>30.0</profit>
+            <stochasticWeight>
+                <normal variance="1.9599999" mean="28.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>42.0</profit>
+            <stochasticWeight>
+                <normal variance="1.1024998" mean="21.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>45.0</profit>
+            <stochasticWeight>
+                <normal variance="2.1025002" mean="29.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>75.0</profit>
+            <stochasticWeight>
+                <normal variance="1.1024998" mean="21.0"/>
+            </stochasticWeight>
+        </item>
+        <item>
+            <profit>28.0</profit>
+            <stochasticWeight>
+                <normal variance="1.3225" mean="23.0"/>
+            </stochasticWeight>
+        </item>
+    </items>
+    <stochasticCapacity>
+        <normal variance="0.0" mean="1000.0"/>
+    </stochasticCapacity>
+</knapsack>

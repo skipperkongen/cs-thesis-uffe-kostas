@@ -1,0 +1,85 @@
+p.6
+171-270 og 1-100 er begge uniforme fordelinger men kun 1-100 står som uniform.
+
+p.8 
+Vi skriver aldrig noget om future work.
+
+p. 11, section 2.3, Sidste linie af 1. paragraph. 
+ Dårlig formulering men jeg forstår hvad der menes.
+
+p. 11, section 2.4
+Definitionen af rho som både en ratio og en sandsynlighed gør det lidt uklart.
+
+
+p. 13, section 2.5 (2.11)
+r_1, r_2 skal være >= 0
+
+p. 13, næstsidste paragraph.
+Der står ikke hvilken løsning der er bedst, men meningen med eksemplet er også kun at illustrere
+at der kan opstå ikke-konvekse løsningsrum.
+
+p. 19, 3.1.1
+Akilleshæl.
+Worst case er ikke generelt veldefineret for unbounded uncertainty.
+Den blive det med vores definition.
+Der findes værre scenarier end vores "worst case" scenarie.
+
+p.19 næstsidste linie,
+The fat solution... for rho. [skal slettes]
+
+
+p.21
+C står for containers, ikke for capacity.
+Parentesen skal starte før 100 og slutte efter |
+
+P. 22-24, eksemplet med containere og skib (fig. 3.4)
+Eksemplet kunne godt indregne capacity som en del af det simultane, men eksemplet illustrerer allerede at 
+man vinder noget ved at betragte de stokastiske elementer under et, fremfor separat.
+
+p. 25, 3.2.3, 1. paragraph
+Vores idé om en helt generel metode der kunne bruges på alle problemer fungerede ikke.
+TANSTAAFL i optimering.
+
+p.34, 5.1, example 11
+"as completely" => "as completely robust" (2 gange)
+
+p.38, 5.2
+correlated => proportional
+
+p.41, 6.1
+8 => (
+scenario sampling. Der mangler at stå hvor det beskrives.
+
+p.41, 6.2
+"often has some guarantees about the quality of the solution"
+"a search heuristic starts" => "a search heuristic usually starts"
+
+p.46, 6.4
+brugen af pessimistic er ikke 100% kosher idet det for meget lave værdier af rho vil være underligt at snakke om pessimisme.
+Men det er ikke helt forkert at bruge ordet.
+
+
+p. 47, 6.4
+"chi does not have partial robustness rho" => "chi does not have partial robustness chi"
+
+
+p. 49, 7.1
+"imperative" er måske lidt i overkanten. Vi forbedrer ikke alle knapsack løsninger i forhold til fat solution.
+
+p. 49-50, 7.1 slutningen
+Vi skriver at en robust løsning ikke kan få bedre løsningsværdi end den "deterministiske" løsning. Det er forkert hvis
+den robusthed vi kræver, er MINDRE end robustheden af den "deterministiske" løsning. Den deterministiske løsning skal
+vel i øvrigt forstås i konteksten usikkerhed med normal fordeling, hvor deterministiske værdier = middelværdien.
+
+p. 52, 7.1.1
+Item construction er lavet ved at udvælge vægte og profit uniformt fra de beskrevne intervaller.
+
+p. 61, 7.2.2
+High precision (haha!)
+Der er kun en instans for lot-sizing, den er bare duplikeret og maskeret til at ligne forskellige instanser.
+Pessimistic scenarios er et dårligt navn.
+
+
+Vi skal have et eksempel på en løsningsmetode der kræver konveksitet af løsningsrummet.
+- Simplex
+- Cutting plane

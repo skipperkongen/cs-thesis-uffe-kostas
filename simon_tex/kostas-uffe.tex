@@ -1,0 +1,325 @@
+%-shell-escape to create figures
+%\write18{rm -f cap.eps ; fig2dev -L eps cap.fig cap.eps}
+
+\documentclass[a4paper,11pt,final]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Alle pakkerne
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{a4wide}
+%\usepackage{pstricks}
+\usepackage{amsfonts}
+\usepackage[latin1]{inputenc}
+%\usepackage{mathptm}
+%\usepackage{fixme}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{dsfont}
+%\usepackage{clrscode}
+\usepackage[final]{graphicx}
+%\usepackage{boxedminipage}
+%\usepackage{longtable}
+%\usepackage{varioref}
+%\vrefshowerrors
+%\usepackage{placeins}
+%\usepackage{rotating}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+%\usepackage{booktabs}
+\usepackage[all]{xy}
+\usepackage{float}
+\usepackage{lscape}
+%\usepackage[nottoc]{tocbibind}
+\usepackage{url}
+\usepackage{eqnarray}
+\usepackage{subeqnarray}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[english]{babel}
+%\usepackage[numbers]{natbib}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definitioner, teoremer ovs.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \newtheorem{theo}{Theorem}
+% \newtheorem{defi}[theo]{Definition}
+% \newtheorem{prop}[theo]{Proposition}
+% \newtheorem{procedure}[theo]{Procedure}
+% \newtheorem{obs}[theo]{Observation}
+% \newtheorem{con}[theo]{Conjecture}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Figure og tabel numre
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\numberwithin{equation}{section}
+%\numberwithin{figure}{section}
+%\numberwithin{table}{section}
+
+\newcommand{\slsp}{MLMR-CLSSP}
+\newcommand{\sit}{MIMR-CLSSP}
+\newcommand{\blsp}{MLMR-CLSP}
+\newcommand{\bres}{ML-CLSP}
+\newcommand{\bit}{MIMR-CLSP}
+\newcommand{\bitres}{MI-CLSP}
+
+\newcommand{\NP}       {\mbox{$\cal N\rule{-1mm}{0mm}P$}}
+\newcommand{\note}[1]{\rule{0mm}{0mm}\\ ({\red SS: #1})}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header og footer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\addtolength{\headheight}{2pt} \pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\rhead{Spoorendonk}
+%\fancyhead[LE]{\nouppercase{\leftmark}}
+%\fancyhead[RO]{\nouppercase{\rightmark}}
+%\fancyfoot[RO,LE]{\thepage}
+\lhead{Multi-Level, Multi-Resource Lot Sizing Problems}
+
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Example enviroment
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\floatstyle{ruled}
+%\newcounter{ex}
+%\setcounter{ex}{1}
+\newfloat{ex}{tbhp}{aux}
+\floatname{ex}{Example}
+
+%% to do cite with names and number, Author [?]
+\renewcommand{\cite}[1]{\citet{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Titel og alt det stas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Multi-Level, Multi-Resource Lot Sizing Problems}
+\author{
+Simon Spoorendonk \\
+\texttt{spooren@diku.dk}\\
+\emph{DIKU Department of Computer Science, University of Copenhagen}\\
+\emph{Universitetsparken 1, DK-2100 Copenhagen Ø, Denmark} \\
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Presentation of models and basic heuristics for Multi-Level, Multi-Resource Lot Sizing Problems.
+
+%\paragraph{Keywords:} Lot Sizing Problems
+\end{abstract}
+
+
+\section{Modelling}
+
+\subsection{Sets}
+\begin{itemize}
+\item $I$ is the set of items
+\item $S(i)$ is the set of items that uses $i$ in their production, i.e., one
+  level below in the bill of material (BOM)
+\item $K$ is the set of resources
+\item $T$ is the set of time periods
+\end{itemize}
+
+\subsection{Variables}
+\begin{itemize}
+\item $s_t^i$ is the number of units of item $i$ on stock at time $t$
+\item $x_t^{ik}$ is the number of units of production of item $i$ on resource $k$ at
+  time $t$. No resource ($k$) index for big-bucket model.
+\item $y_t^{ik}$ indicates if resource $k$ is set up for production of
+  item $i$ at time $t$. No resource ($k$) index for big-bucket model.
+\item $z^{ik}_t$ indicates if resource $k$ is being set up to produce item $i$ at time $t$, and is thus consuming capacity at time $t$
+\end{itemize}
+
+\subsection{Constants}
+\begin{itemize}
+\item $h^i_t$ is the unit inventory cost of item $i$ at time $t$
+\item $p^{ik}_t$ is the unit production cost of item $i$ on resource $k$ at time $t$
+\item $f_t^{ik}$ is the fixed cost of resource $k$ for having it set up
+  for item $i$ at time $t$
+\item $d_t^i$ is the demand of item $i$ at time $t$
+\item $r^{ij}$ is the number of units of item $j$ used for the production of
+  item $i$
+\item $\alpha^{ik}_t$ is the unit capacity for producing item $i$ at
+  resource $k$ at time $t$
+\item $\beta^{ik}_t$ is the capacity used for setting up the
+  production of item $i$ at
+  resource $k$ at time $t$
+\item $C^k_t$ is the capacity of resource $k$ at time $t$
+\item $M$ is a large constant
+\item $\gamma^{ik}_t$ is the amount of time it takes to set produce item $i$ on  resource $k$ at time $t$.
+\end{itemize}
+
+\subsection{Small-bucket}
+Multi-Level Multi-Resource Capacitated Lot Sizing and Scheduling Problem with
+Setup Times (\slsp):
+  \begin{align}
+\label{eq:s:obj}
+\min ~ & \sum_{i\in I} \left [ h^i_0 s_0^i + \sum_{t\in
+T} \left ( h^i_t s_t^i + \sum_{k\in K} ( p^{ik}_t x_t^{ik} +
+          f^{ik}_t y_t^{ik}) \right ) \right ] \\
+\label{eq:s:flow} \text{s.t. } & s_{t-1}^i + \sum_{k\in
+K}x_{t-\gamma^{ik}}^{ik} = d_t^i + \sum_{j \in
+S(i)} \sum_{k\in K} r^{ij} x_t^{jk}  +
+    s_t^i &  t \in T, ~ i \in I \\
+\label{eq:s:cap} &   \alpha^{ik}_t x_t^{ik} + \beta^{ik}_t z_t^{ik}
+\leq C_t^{k} y_t^{ik} & t \in T, ~ i \in I, ~  k \in K \\
+\label{eq:s:one} &    \sum_{i \in I} y_t^{ik} \leq 1 &  t \in T
+~ , k \in K    \\
+\label{eq:s:setup} &    y_t^{ik} \geq z_t^{ik} \geq y_t^{ik}- y_{t-1}^{ik} &
+t \in T, ~ i \in I, ~ k \in K\\
+\label{eq:s:bound} &    s_t^i, s_0^i \geq 0,~x_t^{ik} \in \mathds{Z}^+ ,~ y_t^{ik}, z_t^{ik} \in \mathds{B} &t \in T ,~ i \in I,~
+k \in K
+  \end{align}
+A big issue when solving this model is the possibility for an item to
+be produced in parallel on different resources.
+
+If $r^{ij}=0$ for all items $i,j$ then \eqref{eq:s:flow} can be
+rewritten to:
+  \begin{align}
+\label{eq:s:flow1} \text{s.t. } & s_{t-1}^i + \sum_{k\in
+K}x_{t-\gamma^{ik}}^{ik} = d_t^i +  s_t^i &  t \in T, ~ i \in I
+  \end{align}
+That is, by substituting \eqref{eq:s:flow} with \eqref{eq:s:flow1} one
+obtains the Multi-Item Multi-Resource Capacitated Lot Sizing and Scheduling Problem with
+Setup Times (\sit).
+
+\subsection{Big-Bucket}
+By aggregating the time slots in the small-bucket model one obtains a
+big-bucket-model. Now items can share resources in the same time slot
+and an item can consume capacity of several resources in the same time
+slot (this is not equivalent with parallel production as described
+for the small-bucket model, but is an estimate of the production of a
+big-bucket item consisting of part of a product structure for a
+small-bucket item). Multi-Level Multi-Resource Capacitated Lot Sizing Problem with
+Setup Times (\blsp):
+\begin{align}
+\label{eq:big:obj}
+\min ~ & \sum_{i\in I} \left ( h^i_0 s_0^i + \sum_{t\in
+T} ( h^i_t s_t^i + p^i_t x_t^i +
+          f^i_t y_t^i ) \right ) \\
+\label{eq:big:flow} \text{s.t. } & s_{t-1}^i + x_{t-\gamma^i}^i = d_t^i + \sum_{j \in
+S(i)} r^{ij} x_t^j  +
+    s_t^i & t \in T, ~ i \in I \\
+\label{eq:big:prod}
+& x_t^i \leq M y_t^i & t \in T, ~  i \in I \\
+\label{eq:big:cap} & \sum_{i \in I} \left (  \alpha^{ik}_t x_t^i +
+  \beta^{ik}_t y_t^i \right )
+\leq C_t^{k}  & t \in T, ~  k \in K \\
+\label{eq:big:bound} &    s_t^i, s_t^0,x_t^i \geq 0,~ y_t^i \in \mathds{B} &t \in T ,~i \in I
+\end{align}
+
+This can be aggregated further into a single resource.
+\begin{align}
+\label{eq:big:cap1} & \sum_{i \in I} \left (  \alpha^i_t x_t^i +
+  \beta^i_t y_t^i \right )
+\leq C_t  & t \in T
+\end{align}
+Substitute \eqref{eq:big:cap} with \eqref{eq:big:cap1} to obtain the
+Multi-Level Capacitated Lot Sizing Problem with Setup Times (\bitres).
+
+By aggregating time further one can aim for a single-level product
+structure.
+\begin{align}
+\label{eq:big:flow1} \text{s.t. } & s_{t-1}^i + x_{t-\gamma^i}^i = d_t^i + s_t^i & t \in T, ~ i \in I
+\end{align}
+Substitute \eqref{eq:big:flow} with \eqref{eq:big:flow1} to obtain the
+Multi-Item Multi-Resource Capacitated Lot Sizing Problem with Setup
+Times (\bit).
+
+Obviously both can be applied simultaneously to obtain the Multi-Item Capacitated
+Lot Sizing Problem with Setup Times (\bitres).
+
+\section{Construction Heuristics}
+Two basic approaches to construct solutions for the small- and
+big-bucket models.
+
+For simplicity we assume that the problem to solve is the \blsp. The
+heuristics are adaptable to the \slsp{}
+
+Both heuristics solve a series of sub-problems of the original
+formulation. The sub-problems are also \NP-hard but due to their size they
+are expected to be manageable with the use of general MIP heuristics
+available in CPLEX, e.g., diving and Relaxation Induced Neighborhood
+Search (RINS).
+
+\subsection{Per Product Structure Level}
+Given the product structure of the demanded items partition the
+structures into sets given by their level in a given product
+structure. In this case there are two approaches to divide the items:
+(i) an item that occur on different levels in different production
+structures can either be put in several sets according to the levels
+or (ii) the item is put in the set given by the lowest level of the structures.
+
+Next the a \bit{} for each set is solved starting from the top
+down. The solution of on iteration is fixed before proceeding to the
+next iteration. Due to initial stock settings a feasible solution can
+always be obtained.
+
+The algorithm is sketched as follows:
+\begin{enumerate}
+\item Divide items into sets each corresponding to a level in the
+  product structures.
+\item For each set of items sorted with top level items first
+\item Solve a \bit{} for a given set of items.
+\item Fix the solution and goto step 2.
+\end{enumerate}
+
+An obvious drawback of such a heuristic is the potential of producing
+a lot of initial stock for the lower level items of the product
+structure since these items are placed last. Hence, the production
+plan for first time periods are not expected to be very good compared
+to later time periods.
+
+\subsection{Per Item Demand}
+An alternative simple procedure is to plan the production of a product
+structure one at a time. Two basic approaches are suggested: (i) plan the product structure for one
+unit of end item demanded at a given time, or (ii) plan the product
+structure for the entire demand of end item at a given time. If (i) is
+used the end items should be planned with some kind of randomization
+to diversify the production. If (ii) is used the end items can be
+planned in decreasing order of time for the demand.
+
+Planning a the product structure of an end item is done by solving a
+\blsp. The problem is easier than the original problem since only the
+demand of one time period is considered. However, if the product
+structure is very deep, we suggest to split product structure into
+smaller subtrees and solve them top down.
+
+The algorithm is sketched as follows:
+\begin{enumerate}
+\item Produce a list of end items for planning
+\item For each end item in list
+\item Solve a \blsp{} for the demand of the end item
+\item Fix the solution and goto step 2.
+\end{enumerate}
+
+The drawback with this heuristic is the possibility of high initial
+stock for the end items being planned late in the procedure. This is,
+due to capacity restrictions and consumed capacity by the production
+of the first planned product structures.
+
+\section{Uncertainty}
+In the classical stochastic approach the problem is decomposed using
+Benders Decomposition and the numerous scenarios (samples) are solved
+as Benders subproblems. Examples of uncertain events are:
+\begin{itemize}
+\item Demand
+\item Capacity
+\item Lead-time
+\end{itemize}
+In principle, any constant in the above models can be considered under uncertainty.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

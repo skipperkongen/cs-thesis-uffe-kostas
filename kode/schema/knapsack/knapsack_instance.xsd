@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.diku.dk/robust/autogen/stochknapsack" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.diku.dk/robust/autogen/stochknapsack">
+
+	<!--  DATATYPES -->
+	<xsd:simpleType name="distribution">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="discrete" />
+			<xsd:enumeration value="normal" />
+			<xsd:enumeration value="uniform" />
+			<xsd:enumeration value="gamma" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+
+    <xsd:element name="knapsack" type="stochasticKnapsackProblem"></xsd:element>
+    
+    <xsd:complexType name="stochasticKnapsackProblem">
+    	<xsd:sequence>
+
+    		<xsd:element name="items" type="itemList" maxOccurs="1"
+    			minOccurs="1">
+    		</xsd:element>
+
+
+    		<xsd:choice maxOccurs="1" minOccurs="1">
+    			<xsd:element name="stochasticCapacity"
+    				type="distributionType" maxOccurs="1" minOccurs="1">
+    			</xsd:element>
+    			<xsd:element name="capacity" type="xsd:float" maxOccurs="1" minOccurs="1"></xsd:element>
+    		</xsd:choice>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+
+
+
+    <xsd:complexType name="itemList">
+    	<xsd:sequence>
+    		<xsd:element name="item" type="itemType" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+    
+
+
+    <xsd:complexType name="distributionType">
+    	<xsd:choice maxOccurs="1" minOccurs="1">
+    		<xsd:element name="normal" type="normalDistribution"></xsd:element>
+    		<xsd:element name="uniform" type="uniformDistribution"></xsd:element>
+    		<xsd:element name="gamma" type="gammaDistribution"></xsd:element>
+    		<xsd:element name="polynomial" type="polynomialDistribution"></xsd:element>
+    	</xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="normalDistribution">
+    	<xsd:attribute name="mean" type="xsd:float" use="required"></xsd:attribute>
+    	<xsd:attribute name="variance" type="xsd:float" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="uniformDistribution">
+    	<xsd:attribute name="lower" type="xsd:float" use="required"></xsd:attribute>
+    	<xsd:attribute name="upper" type="xsd:float" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="gammaDistribution">
+    	<xsd:attribute name="shape" type="xsd:float" use="required"></xsd:attribute>
+    	<xsd:attribute name="scale" type="xsd:float" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="polynomialDistribution">
+    	<xsd:sequence>
+    		<xsd:element name="incident" type="incidentType" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="incidentType">
+    	<xsd:attribute name="value" type="xsd:float" use="required"></xsd:attribute>
+    	<xsd:attribute name="likelyhood" type="xsd:float" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="itemType">
+    	<xsd:sequence maxOccurs="1" minOccurs="1">
+    		<xsd:choice maxOccurs="1" minOccurs="1">
+    			<xsd:element name="profit" type="xsd:float"></xsd:element>
+    			<xsd:element name="stochasticProfit" type="distributionType"></xsd:element>
+    		</xsd:choice>
+    		<xsd:choice maxOccurs="1" minOccurs="1">
+    			<xsd:element name="weight" type="xsd:float"></xsd:element>
+    			<xsd:element name="stochasticWeight" type="distributionType"></xsd:element>
+    		</xsd:choice>
+    	</xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

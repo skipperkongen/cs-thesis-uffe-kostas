@@ -1,0 +1,52 @@
+ToDo torsdag den 15. januar
+
+Centralt:
+---------
+Finde et fokus
+ - Statistik, specifikt Decide-Robustness.
+ - Seeding (it works!)
+	Blandt de seedede scenarier vil en stor procentdel være "fornuftige" scenarier.
+ -
+
+Finde en struktur for oplægget
+
+
+Andet:
+------
+Skrive en mail til arangementer 
+Oprette en FB gruppe
+Planlægge reception
+
+
+Struktur for oplæg
+-----------
+Introduktion
+ Robusthed
+ Knapsack
+ Prod planlægning
+ Simulation
+
+Robusthed
+ Bounded uncertainty
+ Unbounded uncertainty
+ Robust optimization
+  Stochastic programming
+ (Fat solution)
+
+*** Selling points ***
+
+Simulation & Statistik
+ Afprøvning af løsninger
+ Hypothesis test og acceptance area
+ Dum måde (teste 10.000 gange)
+ Halv-smart måde (teste 1000 gange og bruge acc. area)
+ Smart måde (vores måde :))
+ S&S reducerer antallet af scenarier med cirka 2/3
+
+Seeding
+ Hvad: At bruge løsningen til en deterministisk instans som start
+ Altid bedre resultater for KP
+ Til LSP lavede vi kun seeds, det virkede.
+
+Pumpe KP op 
+ præsentere gode løsninger på KP

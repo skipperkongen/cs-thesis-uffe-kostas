@@ -1,0 +1,18 @@
+Normalfordelinger kan ganges med Binomialfordelinger for at simulere maskinnedbrud, sygefravær etc.
+Altså reduktion af kapacitet til 0.
+
+Vi får et resultat fra Simons Solver (SS). 
+Derefter tager vi de konstanter der kan variere og genererer et antal (eksempelvis 10.000) udfald af disse baseret på de givne fordelinger.
+Hver af disse instansieringer af konstanter sættes så ind i constraints 2 og 3 sammen med de værdier for variablene som SS har fundet, og
+hvis en af constraintsne fejler rapporteres denne instansiering som "ikke-robust".
+
+Herefter udføres en Chi^2 test på de mange simulationer for at finde et konfidensinterval for hvorvidt løsningen er robust.
+Hvis konfidensintervallet opfylder vores kriterier (f.eks. indeholder 99%) er vi færdige, ellers skal vi igang med vores søgealgoritme.
+
+(vi vil ikke tage stilling til løsninger som er FOR robuste)
+
+[INDSÆT KERNEDEL AF SPECIALE HER]
+
+Med den nye opsætning af konstanter kaldes SS som leverer en løsning.
+Som før kastes denne løsning sammen med et antal simulerede konstantopsætninger. 
+Hver af disse checkes igen for robusthed og et nyt konfidensinterval opbygges.

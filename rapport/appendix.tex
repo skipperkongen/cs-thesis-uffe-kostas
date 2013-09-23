@@ -1,0 +1,253 @@
+\chapter{Data of instance E of the knapsack problem}
+\label{app:kp_scenario}
+The problem is structured as XML and is included here.
+\begin{small}
+\verbatimtabinput{../kode/xml/kp_instances/kp_50_items_10_weightSpread_50_capSpread.xml}
+\end{small}
+
+\section{Results of simulating lot-sizing solutions for all instances}
+
+\begin{table}[!hbp]
+\label{tab:instance1_results}
+\begin{tabular}{lllll}
+\hline
+Solution 	& Robust  	& Robustness bounds 	& Cost 	& Cost (excl. initial) \\
+\hline
+\hline
+dim70-cap-b.xml 	& No 	&  [0.01, 0.01] 	& 9061247.0 	& 51247.0\\
+dim70-cap-s.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim70-cap-setup-b.xml 	& No 	&  [0.01, 0.02] 	& 9301714.0 	& 51714.0\\
+dim70-cap-setup-s.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim70-setup-b.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim70-setup-s.xml 	& No 	&  [0.0, 0.0] 	& 8310435.0 	& 50435.0\\
+dim80-cap-b.xml 	& No 	&  [0.04, 0.05] 	& 12753835.0 	& 53835.0\\
+dim80-cap-s.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim80-cap-setup-s.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim80-setup-b.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim80-setup-s.xml 	& No 	&  [0.0, 0.01] 	& 8310441.0 	& 50441.0\\
+dim90-cap-s.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim90-cap-setup-s.xml 	& No 	&  [0.01, 0.01] 	& 8310822.0 	& 50822.0\\
+dim90-setup-b.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim90-setup-s.xml 	& No 	&  [0.0, 0.0] 	& 8310441.0 	& 50441.0\\
+fat-cap-s.xml 	& No 	&  [0.01, 0.01] 	& 8431018.0 	& 51018.0\\
+fat-cap-setup-s.xml 	& No 	&  [0.01, 0.01] 	& 8541100.0 	& 51100.0\\
+fat-setup-b.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+fat-setup-s.xml 	& No 	&  [0.0, 0.01] 	& 8310810.0 	& 50810.0\\
+nroot-cap-b.xml 	& Yes 	&  [0.95, 0.95] 	& 51890237.0 	& 120237.0\\
+nroot-cap-s.xml 	& No 	&  [0.02, 0.03] 	& 10205879.0 	& 55879.0\\
+opt-deterministic.xml 	& No 	&  [0.0, 0.01] 	& 8310429.0 	& 50429.0\\
+\hline
+\end{tabular}
+\caption{Simulation results for instance cap-b.xml}
+\end{table}
+
+
+\begin{table}[!hbp]
+\label{tab:instance2_results}
+\begin{tabular}{lllll}
+\hline
+Solution 	& Robust  	& Robustness bounds 	& Cost 	& Cost (excl. initial) \\
+\hline
+\hline
+dim70-cap-b.xml 	& No 	&  [0.89, 0.9] 	& 9061247.0 	& 51247.0\\
+dim70-cap-s.xml 	& No 	&  [0.68, 0.7] 	& 8310810.0 	& 50810.0\\
+dim70-cap-setup-b.xml 	& No 	&  [0.92, 0.93] 	& 9301714.0 	& 51714.0\\
+dim70-cap-setup-s.xml 	& No 	&  [0.69, 0.71] 	& 8310810.0 	& 50810.0\\
+dim70-setup-b.xml 	& No 	&  [0.69, 0.71] 	& 8310810.0 	& 50810.0\\
+dim70-setup-s.xml 	& No 	&  [0.22, 0.23] 	& 8310435.0 	& 50435.0\\
+dim80-cap-b.xml 	& Yes 	&  [0.99, 0.99] 	& 12753835.0 	& 53835.0\\
+dim80-cap-s.xml 	& No 	&  [0.69, 0.71] 	& 8310810.0 	& 50810.0\\
+dim80-cap-setup-s.xml 	& No 	&  [0.68, 0.7] 	& 8310810.0 	& 50810.0\\
+dim80-setup-b.xml 	& No 	&  [0.7, 0.71] 	& 8310810.0 	& 50810.0\\
+dim80-setup-s.xml 	& No 	&  [0.22, 0.23] 	& 8310441.0 	& 50441.0\\
+dim90-cap-s.xml 	& No 	&  [0.68, 0.7] 	& 8310810.0 	& 50810.0\\
+dim90-cap-setup-s.xml 	& No 	&  [0.7, 0.72] 	& 8310822.0 	& 50822.0\\
+dim90-setup-b.xml 	& No 	&  [0.69, 0.71] 	& 8310810.0 	& 50810.0\\
+dim90-setup-s.xml 	& No 	&  [0.22, 0.24] 	& 8310441.0 	& 50441.0\\
+fat-cap-s.xml 	& No 	&  [0.77, 0.78] 	& 8431018.0 	& 51018.0\\
+fat-cap-setup-s.xml 	& No 	&  [0.79, 0.8] 	& 8541100.0 	& 51100.0\\
+fat-setup-b.xml 	& No 	&  [0.68, 0.7] 	& 8310810.0 	& 50810.0\\
+fat-setup-s.xml 	& No 	&  [0.68, 0.7] 	& 8310810.0 	& 50810.0\\
+nroot-cap-b.xml 	& Yes 	&  [0.99, 1.0] 	        & 51890237.0 	& 120237.0\\
+nroot-cap-s.xml 	& Yes 	&  [0.97, 0.97] 	& 10205879.0 	& 55879.0\\
+opt-deterministic.xml 	& No 	&  [0.22, 0.24] 	& 8310429.0 	& 50429.0\\
+\hline
+\end{tabular}
+\caption{Simulation results for instance cap-s.xml}
+\end{table}
+
+
+\begin{table}[!hbp]
+\label{tab:instance3_results}
+\begin{tabular}{lllll}
+\hline
+Solution 	& Robust  	& Robustness bounds 	& Cost 	& Cost (excl. initial) \\
+\hline
+\hline
+dim70-cap-b.xml 	& No 	&  [0.01, 0.02] 	& 9061247.0 	& 51247.0\\
+dim70-cap-s.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim70-cap-setup-b.xml 	& No 	&  [0.01, 0.02] 	& 9301714.0 	& 51714.0\\
+dim70-cap-setup-s.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim70-setup-b.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim70-setup-s.xml 	& No 	&  [0.0, 0.01] 	& 8310435.0 	& 50435.0\\
+dim80-cap-b.xml 	& No 	&  [0.05, 0.06] 	& 12753835.0 	& 53835.0\\
+dim80-cap-s.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim80-cap-setup-s.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim80-setup-b.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim80-setup-s.xml 	& No 	&  [0.0, 0.01] 	& 8310441.0 	& 50441.0\\
+dim90-cap-s.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim90-cap-setup-s.xml 	& No 	&  [0.01, 0.01] 	& 8310822.0 	& 50822.0\\
+dim90-setup-b.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+dim90-setup-s.xml 	& No 	&  [0.0, 0.01] 	& 8310441.0 	& 50441.0\\
+fat-cap-s.xml 	& No 	&  [0.01, 0.01] 	& 8431018.0 	& 51018.0\\
+fat-cap-setup-s.xml 	& No 	&  [0.01, 0.01] 	& 8541100.0 	& 51100.0\\
+fat-setup-b.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+fat-setup-s.xml 	& No 	&  [0.01, 0.01] 	& 8310810.0 	& 50810.0\\
+nroot-cap-b.xml 	& Yes 	&  [0.95, 0.95] 	& 51890237.0 	& 120237.0\\
+nroot-cap-s.xml 	& No 	&  [0.02, 0.03] 	& 10205879.0 	& 55879.0\\
+opt-deterministic.xml 	& No 	&  [0.0, 0.01] 	& 8310429.0 	& 50429.0\\
+\hline
+\end{tabular}
+\caption{Simulation results for instance cap-setup-b.xml}
+\end{table}
+
+
+\begin{table}[!hbp]
+\label{tab:instance4_results}
+\begin{tabular}{lllll}
+\hline
+Solution 	& Robust  	& Robustness bounds 	& Cost 	& Cost (excl. initial) \\
+\hline
+\hline
+dim70-cap-b.xml 	& No 	&  [0.89, 0.9] 	& 9061247.0 	& 51247.0\\
+dim70-cap-s.xml 	& No 	&  [0.69, 0.71] 	& 8310810.0 	& 50810.0\\
+dim70-cap-setup-b.xml 	& No 	&  [0.92, 0.93] 	& 9301714.0 	& 51714.0\\
+dim70-cap-setup-s.xml 	& No 	&  [0.68, 0.7] 	& 8310810.0 	& 50810.0\\
+dim70-setup-b.xml 	& No 	&  [0.69, 0.7] 	& 8310810.0 	& 50810.0\\
+dim70-setup-s.xml 	& No 	&  [0.22, 0.23] 	& 8310435.0 	& 50435.0\\
+dim80-cap-b.xml 	& Yes 	&  [0.99, 0.99] 	& 12753835.0 	& 53835.0\\
+dim80-cap-s.xml 	& No 	&  [0.69, 0.71] 	& 8310810.0 	& 50810.0\\
+dim80-cap-setup-s.xml 	& No 	&  [0.68, 0.7] 	& 8310810.0 	& 50810.0\\
+dim80-setup-b.xml 	& No 	&  [0.69, 0.71] 	& 8310810.0 	& 50810.0\\
+dim80-setup-s.xml 	& No 	&  [0.22, 0.24] 	& 8310441.0 	& 50441.0\\
+dim90-cap-s.xml 	& No 	&  [0.69, 0.71] 	& 8310810.0 	& 50810.0\\
+dim90-cap-setup-s.xml 	& No 	&  [0.71, 0.72] 	& 8310822.0 	& 50822.0\\
+dim90-setup-b.xml 	& No 	&  [0.69, 0.7] 	& 8310810.0 	& 50810.0\\
+dim90-setup-s.xml 	& No 	&  [0.22, 0.24] 	& 8310441.0 	& 50441.0\\
+fat-cap-s.xml 	        & No 	&  [0.76, 0.77] 	& 8431018.0 	& 51018.0\\
+fat-cap-setup-s.xml 	& No 	&  [0.79, 0.8] 	& 8541100.0 	& 51100.0\\
+fat-setup-b.xml 	& No 	&  [0.69, 0.7] 	& 8310810.0 	& 50810.0\\
+fat-setup-s.xml 	& No 	&  [0.69, 0.71] 	& 8310810.0 	& 50810.0\\
+nroot-cap-b.xml 	& Yes 	&  [0.99, 1.0] 	        & 51890237.0 	& 120237.0\\
+nroot-cap-s.xml 	& Yes 	&  [0.96, 0.97] 	& 10205879.0 	& 55879.0\\
+opt-deterministic.xml 	& No 	&  [0.21, 0.23] 	& 8310429.0 	& 50429.0\\
+\hline
+\end{tabular}
+\caption{Simulation results for instance cap-setup-s.xml}
+\end{table}
+
+
+\begin{table}[!hbp]
+\label{tab:instance5_results}
+\begin{tabular}{lllll}
+\hline
+Solution 	& Robust  	& Robustness bounds 	& Cost 	& Cost (excl. initial) \\
+\hline
+\hline
+dim70-cap-b.xml 	& Yes 	&  [0.99, 1.0] 	& 9061247.0 	& 51247.0\\
+dim70-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim70-cap-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 9301714.0 	& 51714.0\\
+dim70-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim70-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim70-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310435.0 	& 50435.0\\
+dim80-cap-b.xml 	& Yes 	&  [0.99, 1.0] 	& 12753835.0 	& 53835.0\\
+dim80-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim80-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim80-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim80-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310441.0 	& 50441.0\\
+dim90-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim90-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310822.0 	& 50822.0\\
+dim90-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim90-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310441.0 	& 50441.0\\
+fat-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8431018.0 	& 51018.0\\
+fat-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8541100.0 	& 51100.0\\
+fat-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+fat-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+nroot-cap-b.xml 	& Yes 	&  [0.99, 1.0] 	& 51890237.0 	& 120237.0\\
+nroot-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 10205879.0 	& 55879.0\\
+opt-deterministic.xml 	& Yes 	&  [0.99, 1.0] 	& 8310429.0 	& 50429.0\\
+\hline
+\end{tabular}
+\caption{Simulation results for instance deterministic.xml}
+\end{table}
+
+
+\begin{table}[!hbp]
+\label{tab:instance6_results}
+\begin{tabular}{lllll}
+\hline
+Solution 	& Robust  	& Robustness bounds 	& Cost 	& Cost (excl. initial) \\
+\hline
+\hline
+dim70-cap-b.xml 	& Yes 	&  [0.99, 1.0] 	& 9061247.0 	& 51247.0\\
+dim70-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim70-cap-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 9301714.0 	& 51714.0\\
+dim70-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim70-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim70-setup-s.xml 	& No 	&  [0.37, 0.39] 	& 8310435.0 	& 50435.0\\
+dim80-cap-b.xml 	& Yes 	&  [0.99, 1.0] 	& 12753835.0 	& 53835.0\\
+dim80-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim80-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim80-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim80-setup-s.xml 	& No 	&  [0.38, 0.4] 	& 8310441.0 	& 50441.0\\
+dim90-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim90-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310822.0 	& 50822.0\\
+dim90-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim90-setup-s.xml 	& No 	&  [0.39, 0.4] 	& 8310441.0 	& 50441.0\\
+fat-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8431018.0 	& 51018.0\\
+fat-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8541100.0 	& 51100.0\\
+fat-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+fat-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+nroot-cap-b.xml 	& Yes 	&  [0.99, 1.0] 	& 51890237.0 	& 120237.0\\
+nroot-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 10205879.0 	& 55879.0\\
+opt-deterministic.xml 	& No 	&  [0.37, 0.38] 	& 8310429.0 	& 50429.0\\
+\hline
+\end{tabular}
+\caption{Simulation results for instance setup-b.xml}
+\end{table}
+
+
+\begin{table}[!hbp]
+\label{tab:instance7_results}
+\begin{tabular}{lllll}
+\hline
+Solution 	& Robust  	& Robustness bounds 	& Cost 	& Cost (excl. initial) \\
+\hline
+\hline
+dim70-cap-b.xml 	& Yes 	&  [0.99, 1.0] 	& 9061247.0 	& 51247.0\\
+dim70-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim70-cap-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 9301714.0 	& 51714.0\\
+dim70-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim70-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim70-setup-s.xml 	& No 	&  [0.82, 0.84] 	& 8310435.0 	& 50435.0\\
+dim80-cap-b.xml 	& Yes 	&  [0.99, 1.0] 	& 12753835.0 	& 53835.0\\
+dim80-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim80-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim80-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim80-setup-s.xml 	& No 	&  [0.89, 0.9] 	& 8310441.0 	& 50441.0\\
+dim90-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim90-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310822.0 	& 50822.0\\
+dim90-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+dim90-setup-s.xml 	& No 	&  [0.89, 0.9] 	& 8310441.0 	& 50441.0\\
+fat-cap-s.xml 	        & Yes 	&  [0.99, 1.0] 	& 8431018.0 	& 51018.0\\
+fat-cap-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8541100.0 	& 51100.0\\
+fat-setup-b.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+fat-setup-s.xml 	& Yes 	&  [0.99, 1.0] 	& 8310810.0 	& 50810.0\\
+nroot-cap-b.xml 	& Yes 	&  [0.99, 1.0] 	& 51890237.0 	& 120237.0\\
+nroot-cap-s.xml 	& Yes 	&  [0.99, 1.0] 	& 10205879.0 	& 55879.0\\
+opt-deterministic.xml 	& No 	&  [0.62, 0.64] & 8310429.0 	& 50429.0\\
+\hline
+\end{tabular}
+\caption{Simulation results for instance setup-s.xml}
+\end{table}
+

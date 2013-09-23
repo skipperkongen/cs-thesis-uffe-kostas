@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<experiment num_seeds="50" path_to_instance="xml/lsp_instances/12cap_xtr6_15.xml" path_to_log="log" path_to_seeds="xml/lsp_scenario_solutions/12cap_xtr6_15/" seed_base_name="solution" xmlns="http://www.diku.dk/robust/autogen/sclsp_experiment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.diku.dk/robust/autogen/sclsp_experiment ../../schema/lotsizing/sclsp_experiment.xsd ">
+  <num_iterations>2000</num_iterations>
+  <simulation num_simulations="10000"></simulation>
+  <visualization>true</visualization>
+  <desired_robustness>0.95</desired_robustness>
+  <genetic_algorithm population_size="50" use_scenario_seeding="false"/>
+</experiment>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<knapsack_experiment path_to_instance="xml/kp_instances/kp_50_items_0_weightSpread_10_capSpread.xml" path_to_log="log/log_kp_50_items_0_weightSpread_10_capSpread_false_seed.txt" xmlns="http://www.diku.dk/robust/autogen/knapsackexperiment" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.diku.dk/robust/autogen/knapsackexperiment ../../schema/knapsack/knapsack_experiment.xsd ">
+  <genetic_algorithm population_size="50" use_scenario_seeding="false"/>
+  <num_iterations>100</num_iterations>
+  <simulation num_simulations="1000"/>
+  <visualization>false</visualization>
+  <desired_robustness>0.95</desired_robustness>
+</knapsack_experiment>

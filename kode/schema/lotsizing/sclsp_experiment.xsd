@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.diku.dk/robust/autogen/sclsp_experiment" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.diku.dk/robust/autogen/sclsp_experiment">
+    <element name="experiment" type="tns:Experiment"></element>
+    
+    <complexType name="Experiment">
+    	<sequence>
+
+
+    		<element name="num_iterations" type="nonNegativeInteger"></element>
+    		<element name="simulation" type="tns:Simulation"></element>
+    		<element name="visualization" type="boolean"></element>
+    		<element name="desired_robustness" type="double"></element>
+    		<element name="genetic_algorithm"
+    			type="tns:GeneticAlgorithmSetup">
+    		</element>
+    	</sequence>
+
+    	<attribute name="path_to_instance" type="string"></attribute>
+
+
+    	<attribute name="path_to_log" type="string"></attribute>
+    	<attribute name="path_to_seeds" type="string"></attribute>
+    	<attribute name="seed_base_name" type="string"></attribute>
+    	<attribute name="num_seeds" type="int"></attribute>
+    </complexType>
+
+    <complexType name="GeneticAlgorithmSetup">
+    	<attribute name="population_size" type="nonNegativeInteger"></attribute>
+    	<attribute name="use_scenario_seeding" type="boolean"></attribute>
+    </complexType>
+
+
+    <complexType name="LocalSearchSetup">
+    </complexType>
+
+    <complexType name="ExperimentParameters">
+    	<attribute name="num_simulations" type="nonNegativeInteger"></attribute>
+    	<attribute name="num_iterations" type="nonNegativeInteger"></attribute>
+    </complexType>
+
+    <complexType name="Simulation">
+    	<attribute name="num_simulations" type="nonNegativeInteger"></attribute>
+    </complexType>
+
+</schema>

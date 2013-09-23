@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.diku.dk/robust/autogen/sclsp_instance" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.diku.dk/robust/autogen/sclsp_instance">
+
+    <xsd:element name="sclsp_instance" type="SCLSPInstance"></xsd:element>
+    
+    <xsd:complexType name="SCLSPInstance">
+    	<xsd:sequence>
+    		<xsd:element name="item" type="Item"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</xsd:element>
+
+    		<xsd:element name="capacity" type="Capacity" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="num_items" type="xsd:int" use="required"></xsd:attribute>
+    	<xsd:attribute name="num_periods" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="Item">
+    	<xsd:sequence>
+    		<xsd:element name="time_period" type="TimePeriod"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="item_id" type="xsd:int" use="required"></xsd:attribute>
+    	<xsd:attribute name="initial_cost" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="Capacity">
+    	<xsd:sequence>
+    		<xsd:element name="value" type="Value"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="time_period" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="TimePeriod">
+    	<xsd:sequence>
+    		<xsd:element name="production_cost" type="Value"
+    			maxOccurs="1" minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="holding_cost" type="Value"
+    			maxOccurs="1" minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="fixed_cost" type="Value" maxOccurs="1"
+    			minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="demand" type="Value" maxOccurs="1"
+    			minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="cap_usage" type="Value" maxOccurs="1"
+    			minOccurs="0">
+    		</xsd:element>
+    		<xsd:element name="cap_setup" type="Value" maxOccurs="1" minOccurs="0"></xsd:element>
+    	</xsd:sequence>
+    	<xsd:attribute name="time_period" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+
+
+    <xsd:complexType name="Value">
+    	<xsd:choice maxOccurs="1" minOccurs="1">
+    		<xsd:element name="constant_value" type="xsd:int"></xsd:element>
+    		<xsd:element name="normal" type="Normal"></xsd:element>
+    	</xsd:choice>
+    </xsd:complexType>
+
+    <xsd:complexType name="Normal">
+    	<xsd:attribute name="mean" type="xsd:float" use="required"></xsd:attribute>
+    	<xsd:attribute name="standard_deviation" type="xsd:float" use="required"></xsd:attribute>
+    </xsd:complexType>
+</xsd:schema>

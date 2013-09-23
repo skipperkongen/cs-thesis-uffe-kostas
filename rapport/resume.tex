@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%IMPORT AF PAKKER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{a4}                          % A4 papirstørrelse
+\usepackage[danish]{babel}               % Dansk orddeling osv.
+\usepackage[latin1]{inputenc}            % æøåÆØÅ
+\usepackage{dsfont}
+\usepackage{amsfonts}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%TITEL, FORFATTER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Robusthed i produktions-planlægning} 
+\author{af Pimin Konstantin Balic Kefaloukos (kostas@diku.dk) \\
+og Uffe Gram Christensen (uffe@diku.dk)}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%TEKST STARTER HER%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\maketitle
+
+\section*{Resume}
+\label{sec:resume}
+I dette speciale der vedrører robust optimering, vil vi vise hvordan
+robuste løsninger til problemer med usikkerhed, kan beregnes ved hjælp
+af genetiske algoritmer og scenarie optimering. We definerer en
+løsning med partiel robusthed $\rho$ som værende en løsning som har
+sandsynligheden $\rho$ for at være feasible givet et udfald af
+stokastiske parametre i et problem med usikkerhed. 
+
+Vi benytter simulering til at bevise den partielle robusthed af
+løsninger på problemer med usikkerhed, indenfor statistisk præcise
+grænser. 
+
+Vi har med succes anvendt vores metoder til at løse knapsack problemet
+med usikkerhed, og capacitated lot-sizing problemet med usikkerhed. For
+instanser af capacitated lot-sizing problemet med usikkerhed, fandt vi
+robuste løsninger der kun var $0.001\%$ dyrere end den ikke-robuste
+optimale løsning på det deterministiske problem. For knapsack problemet
+fandt vi robuste løsninger med en profit der kun var $0.04\%$ mindre
+en den ikke-robuste optimale løsning på det deterministiske problem.
+
+\end{document}
+
+
+

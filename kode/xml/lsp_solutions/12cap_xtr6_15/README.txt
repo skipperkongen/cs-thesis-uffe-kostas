@@ -1,0 +1,1 @@
+s1-s50 er løsninger på deterministiske lsp problemer i mappen sp12_cap_xtr6_15_scenarios.

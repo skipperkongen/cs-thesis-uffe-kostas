@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.diku.dk/robust/autogen/test" xmlns:t="http://www.diku.dk/robust/autogen/test" elementFormDefault="qualified">
+
+    <element name="some_numbers" type="t:Test"></element>
+
+    <complexType name="Numbers">
+    	<attribute name="a" type="int"></attribute>
+    	<attribute name="b" type="int"></attribute>
+    </complexType>
+
+    <complexType name="Test">
+    	<sequence maxOccurs="unbounded" minOccurs="1">
+    		<element name="numbers" type="t:Numbers"></element>
+    	</sequence>
+    </complexType>
+</schema>

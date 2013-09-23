@@ -1,0 +1,315 @@
+\chapter{Solving problems under uncertainty}
+\label{sec:solving_problems_under_uncertainty}
+
+Having described the partially robust optimization problems in broad terms and
+defined our use of terminology, we now turn to how uncertain problems
+may be solved using conventional methods as well as how we plan to
+solve them. We have identified three approaches to solving problems
+under uncertainty.
+
+\section{Scenario optimization}
+\label{sec:scenario_optimization}
+
+In chapter \ref{sec:scenarios} we introduced the concept of a scenario
+$s \in \mathcal{S}_I$ given an uncertain problem $I$. In practice, a
+common approach to finding robust solutions to uncertain problems is
+to rely on scenario analysis \cite{rockafellar}. 
+
+As described in chapter \ref{sec:scenarios}, a scenario is a
+deterministic subproblem of the uncertain problem and can be modelled
+as a regular linear program or integer program. A solution that holds
+for a particular scenario can be found using a conventional,
+deterministic solution method, and the robustness of this solution can
+then be estimated using e.g. simulation.
+
+In scenario optimization the uncertainty about parameters or
+components of the system is modeled by a small number of subproblems
+(scenarios). The idea is that by studying the different scenarios and
+their optimal solutions, one may be able to discover similarities and
+trends and eventually come up with a ``well hedged'' solution to the
+uncertain problem. This can be expected to perform rather
+well under all possible scenarios, relative to some weighting of scenarios
+\cite{rockafellar}.
+
+We describe our implementation of this approach in chapter
+\ref{sec:methods_scenario_optimization}, where we describe how we
+generate and solve a small set of representative scenario subproblems,
+given an instance of an uncertain problem, and then proceed to
+estimate the partial robustness of these solutions using simulation.
+
+\subsection{Fat solutions}
+\label{sec:fat_solutions}
+A solution that can be expected to hold for all scenarios, is the
+solution to the ``worst case'' scenario. We refer to such a solution
+as the \emph{fat solution}.
+
+We define the ``worst case'' scenario of a problem as the scenario
+having the ``worst'' outcome for each of the stochastic elements.
+The worst outcome of a stochastic element is the outcome that
+constrains our solution space the most. Since this definition is more
+suited for complete robustness rather than partial robustness, we use
+a more relaxed definition.
+
+\begin{definition}
+The worst outcome of a stochastic element is the outcome that is worse
+than $\rho$ of all outcomes of that stocastic element.
+\end{definition}
+Perhaps this can best be understood by an example
+\begin{example}
+We have a problem where wish to maximize the amount of items we can
+bring with us, but we can take a maximum of 10 kg of items with us.
+If an item has stochastic weight, then a higher weight will be worse
+than a low one. Assume we have an item with equal distribution between
+1 and 1000 grammes, then for $\rho=0.95$, 951 grammes would be the
+worst outcome since it is worse than $1000 \rho = 950$ of the outcomes. 
+\end{example}
+
+The definition of worst may not be completely obvious for all
+stochastic parameters but it is the case for the problems we are
+working with.
+
+We have now established that the value of each parameter considered
+under uncertainty can be changed in a direction which can only make
+the solution worse. With this we feel that it is well defined what we
+mean by ``worst case'' scenario.
+
+Assuming that uncertain parameters are normally distributed, we can
+ensure that a solution is partially robust for some $\rho < 1$, by
+finding the optimal solution to a worst-case scenario generated in the
+following way. For all uncertain data $\pi$ in $(A,b)$, let $\pi$
+assume a constant value equal to a threshold $v$ such that $v$ would
+statistically dominate $\rho$ of all samples that were drawn from
+the normal distribution associated with $\pi$. (see figure
+\ref{fig:std_deviation} for various thresholds). This is of course not
+possible for $\rho = 1$ as no absolute threshold exists that will
+dominate all samples that can be drawn from a normal distribution.
+
+The threshold we are looking for depends on $\rho$ and whether $v$
+should be greater than $\rho$ of the samples drawn the distribution,
+or less than $\rho$ of the samples, which again depends on whether
+smaller or larger $\pi$ are considered bad (see example
+\ref{ex:worst_case_example}). If smaller values of an uncertain
+parameter $\pi$ have a negative impact on the objective value of
+$x^*$, e.g. the capacity in an instance of the knapsack problem with
+uncertain capacity, we would for the deterministic worst-case
+scenario, choose a constant setting of the capacity such that this
+value is statistically \emph{smaller} than $\rho$ of all outcomes of
+the stochastic capacity.
+
+For normal distributions this is possible as long as the uncertain
+parameter $\rho < 1$.
+
+\figur{In the normal distribution shown, the threshold at $\mu$ is
+statistically greater than $50 \%$ of values that are drawn from the
+distribution, while $\mu + 1 \sigma$ is $50 \% + 34.1 \% = 84.1 \%$
+greater than such values, and $\mu + 2 \sigma$ is statistically greater than $84.1
+\% + 13.6 \% = 97.7 \%$ of values sampled from the
+distribution}{fig:std_deviation}{figurer/Standard_deviation_diagram2.eps}
+
+By solving the problem of this worst-case scenario we get a \emph{fat solution}
+that is ensured to have a partial robustness of at least $\rho$. The
+fat solution will likely be partially robust also for $\rho$. The
+downside is that this solution is very expensive.
+
+When having unbounded uncertainty it is infeasible to require complete
+robustness. In these cases
+the worst case scenario would be impossible to formulate, as it would
+be infinitely bad. We will be using discretized normal
+distributions to model data, which are discrete, but infinite, and we
+look for solutions that are less than 100$\%$ robust. This means that
+we can formulate a worst-case scenario, because we can calculate the
+value $v$ for each normal distribution that will dominate $\rho = 0.95$ of
+samples from that normal distribution.
+
+With these two alterations in mind we now redefine the term \emph{fat
+solution} as we will be using it in our thesis.
+
+\begin{definition} A fat solution is an optimal solution $x$
+to a deterministic subproblem, the worst case scenario, $s \in
+\mathcal{S}_I$ which has been derived from the uncertain problem $I$
+in the following way: The deterministic problem is generated by
+realizing the values of the stochastic parameters $(A,b) \in
+\mathcal{U}$ of the uncertain problem such that the new deterministic
+value is the \emph{best} value that is still \emph{worse} than $\rho$
+of the possible outcomes of the stochastic parameter. 
+\end{definition}
+The terms worse and best are naturally dependant on the problem being
+treated. If for instance we are trying to maximize profit and profit
+is a stochastic parameter, then the worst profit is defined as: The
+highest profit that is still lower than other sampled profits in
+$\rho$ of the cases. This is the profit that we will choose for the
+scenario that generates the fat solution. 
+
+We will now present an example to help understand our definition of
+the fat solution. This example will also demonstrate how the fat
+solution is sometimes too expensive when looking for partially robust
+solutions.
+
+\begin{example}
+\label{ex:worst_case_example}
+Our example is based on the knapsack problem which will be described
+in detail in chapter \ref{sec:knapsack_problem} but since this example
+is very small it should be possible to make do without the formal
+introduction of the problem. The example is the same as the one we
+briefly sketched in chapter \ref{sec:introduction}.
+
+We have a ship of stochastic size. The ship can carry between 171 and
+270 containers. Each of the integer values in the range $[171,270]$
+have the same probability, i.e. $0.01$. We have two customers who want
+their orders shipped. The size of the customers' orders is also
+stochastic and lies in the range $[1,100]$, also with a $0.01$
+probability for each outcome. Our objective is now to bring orders from
+as many customers as possible while still being $0.95$ certain that
+the ship will be able to carry those orders, in other words, we want a
+robustness $\rho = 0.95$.
+
+The fat approach to this problem will be to assume that the ship has a
+capacity of 176 since there exist 95 outcomes (of 100) that are as good or
+better. The fat approach will also assume that each of the
+customers need to ship 95 containers, again this is because there
+exist 95 outcomes (of 100) that are as good or better. This is
+illustrated in figure \ref{fig:fat_solution}.
+
+\figur{Fat approach to the shipping problem. The green areas are the
+  outcomes that are worse than the one selected. As can be seen the
+  green areas represents only 5$\%$ of the possible outcomes for each
+  stochastic element.}{fig:fat_solution}{figurer/fat_solution.eps}
+
+Now the fat solution will be to bring only the order from one customer
+since bringing the orders from both customers would result in a total
+of 190 expected containers while we only have expected capacity for 176.
+
+So the fat solution solves our problem, but is not an optimal
+situation. We will now argue that we can indeed bring both orders and
+still have a solution that is $0.95$ robust.
+
+If we create a matrix of the possible combinations of containers from
+the two customers with the total number of containers delivered by the
+customers in each entry of the matrix it would look something like this:
+
+\begin{center}
+\begin{tabular}{l||l|l|lll|l|l|}
+\textbf{Containers}   & 1 & 2 & \multicolumn{3}{c|}{$\cdots$} & 99 & 100 \\
+\hline
+\hline
+1  & 2 & 3 & \multicolumn{3}{c|}{$\cdots$} & 100& 101 \\
+\hline
+2  & 3 & 4 & \multicolumn{3}{c|}{$\cdots$} & 101& 102 \\
+\hline
+$\vdots$ &$\vdots$&$\vdots$ &\multicolumn{3}{c|}{$\ddots$}&$\vdots$& $\vdots$\\
+\hline
+99  & 100 & 101 & \multicolumn{3}{c|}{$\cdots$} & 198&199\\
+\hline
+100 & 101 & 102 & \multicolumn{3}{c|}{$\cdots$} & 199&200\\
+\hline
+\end{tabular}
+\end{center}
+
+There are $10,000$ entries in the matrix ($100 \cdot 100$), giving
+each entry a probability of $0.0001$. The important thing is to
+look at the probability of each sum of containers. The probability of
+$n$ containers being delivered is:
+\[
+P(C = n) = 100-(\vert 101-n \vert)\cdot 0.0001,\ n \in [2,200]
+\]
+i.e there is a $0.0001$ probability of 200 containers being delivered
+from the two customers. The sum of containers are a multinomial
+distribution, \cite{sandsynlighed}, and the main picture of the
+distribution can be seen in figure \ref{fig:multinomial}. 
+
+\figur{The distribution of the sum of containers being delivered by
+  the two customers.}{fig:multinomial}{figurer/multinomial.eps}
+With this information we can calculate the
+probability of a certain amount of containers or more being delivered
+from the customers. We now find the maximum amount of containers, $k$,
+that satisfy 
+\[
+\sum_{i=k}^{200} P(C = i) \leq 0.05
+\]
+This happens to be 169 containers, thus if we plan for 168 containers
+being delivered there will be less than $0.05$ probablity that we get more
+containers from the customers. This way we can easily accept the
+orders from both customers since we always have capacity for at least
+168 containers.
+
+The new situtaion is illustrated in figure
+\ref{fig:fat_solution_improved}.
+
+\figur{Improving on the fat solution by considering the sum of
+  containers delivered by the customers. The dark green areas
+  represent the improvement on assumed customer
+  deliveries.}{fig:fat_solution_improved}{figurer/fat_solution_improved.eps}
+\end{example}
+
+One problem with the fat solution is that it requires that the
+stochastic parameters are stochastically independent. For the
+lot-sizing problem this is not necessarily the case and so the fat
+solution is not necessarily robust. But for the knapsack problem it
+works fine.
+
+\section{Stochastic Programming}
+\label{sec:stochastic_programming}
+
+Another approach to solving problems with stochastic elements is to
+use stochastic programming. In stochastic programming it is assumed
+that there is some regularity to the stochastic element, which
+corresponds nicely to our problems, where we assume an underlying
+stochastic model based on primarily normal distributions. Stochastic
+programming has several different approaches to solving the stochastic
+problems. The most commonly mentioned is the two-stage linear programs.
+
+\subsection{Two-stage linear programs}
+In two-stage linear programming, we first make a decision based on
+the information at hand, that is the constant, the variables from
+earlier periods and the distribution of the stochastic
+variables. After this decision has been made we await the outcome of
+the stochastic variables. Once the outcome has been determined we are
+then allowed to make a \emph{recourse} action which will allow us to
+remedy whatever shortcomings our original decision had in the face of
+the actual situation we are in now.
+
+This means that a two-stage linear program has both an optimal
+solution to the first stage problem as well as a number of recourse
+actions for the second stage.
+
+\subsection{Adding recourse to the objective function}
+Another approach is to add the penalty incurred by the different
+recourse actions into the objective function. The problem is then
+converted to a linear program by inserting all possible realizations
+of the stochastic values. This can naturally only be done for bounded
+and finite distributions. The problem can then be solved as a linear
+program. 
+
+\subsection{Summing up on stochastic programming}
+
+Stochastic programming may sound like just the thing for us, but the
+problem is that small changes to the model will result in drastic
+changes in how we solve the problem, and we are looking for a simpler
+more generally applicable method.
+
+In addition to this, stochastic programming works best with discrete
+distributions and we would like to be able to work with continous
+distributions.  
+
+Since our aim is to be able to change both the number
+of stochastic variables as well as how they are distributed,
+stochastic programming does not seem like a feasible method for us.
+
+%\section{Chance Constrained Programming}
+%\label{sec:chance_constrained_programming}
+%Chance constrained programming is a solution method that is very close
+%to SP but differs in a few key aspects.
+% Har droppet det da vi ikke kan skrive noget fornuftigt om det.
+
+\section{Local search}
+As the problem we want to solve has a non-convex solution space, we
+need a solution method that does not require convexity. Local search
+heuristics do not generally require convexity of the solution space.
+Examples of local search algorithms are \emph{genetic algorithms},
+\emph{simulated annealing}, \emph{hill climbing}, and \emph{taboo search}.
+
+Tsutsui and Ghosh applied a genetic algorithm to robust optimization,
+but did not have an absolute requirement regarding the robustness of
+the solutions found, focusing on avoiding ``brittle'' solutions at
+sharp peaks of the solutions space \cite{tsutsui}.
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<some_numbers xmlns="http://www.diku.dk/robust/autogen/test" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.diku.dk/robust/autogen/test ../schema/test/test.xsd ">
+  <numbers a="0" b="0"/>
+</some_numbers>

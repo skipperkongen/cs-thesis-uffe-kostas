@@ -1,0 +1,133 @@
+Legend: 
+"-" = ikke relevant
+"+" = relevant
+
+Best articles: 
+robust_2_international-src.pdf, 
+robust_3_optimization-lin.pdf
+
+Possibly important authors: 
+(2) Dimitris Bertsimas
+(1) Aur´elie Thiele
+(1) Xiaoxia Lin 
+(1) Stacy L. Janak 
+(1) Christodoulos A. Floudas
+(1) Panagiotis Kouvelis
+(1) Genaro J. Gutierrez
+
+
+##############
+Folder: /GA
+##############
+
+- ga_1_random_keys.pdf
+
+#########################
+Folder: /heuristic_lsp
+#########################
+
++ lsp_1_ga4general.pdf
+
+  (Ir)relevance:	Quite relevant because it's a GA applied to LSP with time variance.
+  Problem:		General capacitated lot-sizing problem
+  Keywords: 		Genetic Algorithm, Encode only bin-vars for setup.
+  ---
+  Stochastic:		No
+  Capacitated:		Yes
+  Multi-level:		?
+  Multi-item:		?
+  Multi-resrc:		Yes ?
+  Time-variant:		Yes
+
+- lsp_2_sa-ga-multilevel.pdf
+  
+  (Ir)relevance:	Not relevant because it's not LSP.
+
++ lsp_3_multilevel-heuristic.pdf
+
+  (Ir)relevance:	Slightly relevant because it discusses a heuristic search algorithm for LSP, and has nice quotes.
+  Problem:		Multi-level lot-sizing problem (MLLS)
+  Keywords:		280 variants of stochastic search algorithm, Comparison with problem specific algorithms.
+  ---
+  Stochastic:		No
+  Capacitated:		No ?
+  Multi-level:		?
+  Multi-item:		?
+  Multi-resrc:		No ?
+  Time-variant:		No ?
+  ---
+  Quote:		"The multi-level lot-sizing (MLLS) problem is a combinatorial optimization problem which can only be solved optimally within reasonable delays when small instances are considered."
+  Quote:		"In particular, the MLLS problem has characteristic features that have permitted the development of specific methods: interdependencies exist among stages in the product structure."
+  Quote:		"We find that these techniques (stochastic search alg.), despite their simplicity and the widespread belief that they are generally efficient, only seldom outperform problem-specific algorithms, and when they do so it is usually associated with a much longer execution time. We also exhibit an efficient combination of search and annealing which is found able to produce signi2cant and consistent improvements over problem-specific algorithms.
+
++ lsp_4_multilevel-dynamic-heuristic.pdf
+
+  (Ir)relevance:	Slightly relevant because it's a heuristic for LSP, and maybe because dynamic = stochastic?
+  Problem:		Single level multi-item capacitated dynamic lot sizing problem
+  Keywords:		Heuristic
+  ---
+  Stochastic:		?
+  Dynamic:		Yes, but what does it mean?
+  Capacitated:		Yes
+  Multi-level:		No
+  Multi-item:		Yes
+  Multi-resrc:		No ?
+  Time-variant:		?
+
+#############################
+Folder: /robust_heuristics
+#############################
+
+- robust_1_genetic-multipeak-conv.pdf
+  
+  (Ir)relevance:	Not relevant because by robust they mean robust convergence of algorithm, and it's not LSP.
+  Problem:		Constrained multi-peak optimization problems
+  Short description:	- 
+  Keywords:		Genetic Algorithms, Niche forming, Multi-pass, Constraint penalty, Robustness, Multi-peak
+  ---
+  Stochastic:		No
+
+++ robust_2_international-src.pdf
+
+  (Ir)relevance:	Very relevant because: Description of algorithm for problem with uncertainty of 
+                        parameters (future exchange rate/macroeconomic parameters). Robust solutions sought. Not LSP.
+  Problem:		International sourcing (2)
+  Short description:	Selection of suppliers in various countries to support the demands of the firm's international factory network
+  Keywords:		Algorithm for N best robust solutions (i.e. sourcing networks) to the international sourcing problem
+  ---
+  Stochastic:		Yes
+  Uses simulation:	?
+
+++ robust_3_optimization-lin.pdf
+
+  (Ir)relevance:	Very relevant because: Production scheduling with uncertainty in proc. times of tasks. Determination of golden zone. Finding robust solutions.
+  Problem:		Production scheduling with uncertainty (objective function coefficients, LHS and RHS parameters).
+  Short description:	By introducing a small number of auxiliary variables and constraints, a deterministic robust counterpart problem is formulated.
+  Keywords:		Robust optimization methodology, bounded uncertainty, bounded and symmetric uncertainty.
+  Quote:		Common sources of bounded uncertainty in scheduling problems: 
+                        Processing times of tasks, market demands for products, and prices of products and raw materials
+  ---
+  Golden zone:		Yes, by introducing auxiliary variables and constraints to produce a deterministic counterpart problem.  
+  Stochastic:		Yes
+
++ robust_4_scm.pdf
+
+  (Ir)relevance:	Quite relevant because: Stochastic demand SCM, bit flimsy description of method in abstract though. 
+  Problem:		Supply chain management with stochastic demand in discrete time.
+  ---
+  Stochastic:		Yes
+
++ robust_5_leastsquare.pdf
+
+  (Ir)relevance:	Maybe relevant, if we understood it?
+  Problem:		Least-squares problems with unknown (but bounded) coefficient matrices A and b
+  Description:		(Convex) second-order cone programming, yielding an algorithm with complexity similar 
+                        to one singular value decomposition of A. The method can be interpreted as a Tikhonov 
+                        regularization procedure, with the advantage that it provides an exact bound on the 
+                        robustness of solution and a rigorous way to compute the regularization parameter.
+  ---
+  Huh?:			Yes
+
+- robust_6_rvrpn.ps
+
+- robust_7_heuristic-flow-prob.pdf

@@ -1,0 +1,177 @@
+\chapter{Introduction}
+\label{sec:introduction}
+
+% complicated real world systems, 
+Modeling the real world is the core of many branches of computer
+science. Real world systems are often so complicated, that an analysis
+of the system is difficult. The principal idea of modeling is to
+simplify a real world system, and arrive at a model that is simpler
+than the system. One can then analyze this simpler model, and arrive
+at results which are hopefully applicable in the real world.
+
+% our main goal
+One area of computer science that uses models extensively is the field
+of optimization (also known as operations research). One area of
+optimization is the field of robust optimization, where problems that
+incorporate uncertainty are solved. A robust solution in optimization is
+a solution that holds (is feasible) no matter the outcome of uncertain
+data. In this thesis we will be taking a different approach to finding
+robust solutions, than what we have found described in the
+optimization litterature, in that we will allow for partial
+robustness, i.e. robustness to some degree.
+
+% simplify by omition and assumption
+When building models it is necessary to simplify many things. We may
+simplify by omitting certain data, e.g. the colour of cars may be
+irrelevant when counting the number of passing cars on a stretch of
+road. We also simplify by making assumptions about the data, e.g. we
+do not allow for people to have an arbitrary height, but rather a
+height between 50 and 300 centimeters. These simplifications makes it
+easier to understand and perform computations on a model. 
+
+% problems with assumption
+One simplification that is often used in optimization is that of
+assuming that something has a fixed price, or weight, or height etc.
+This may work well for some problems, but in many real-life situations
+the numbers used in models differ greatly from the numbers seen in
+real-life \cite{bental}. Assumptions about data can be wrong, but
+might be right within certain bounds of uncertainty.
+
+% need for models of uncertainty
+In some cases uncertainty of data has little or no impact on the
+situation that is being modeled and ``reasonable'' values can be used
+\cite{rockafellar}. In other situations even small variation in data
+values has drastic effects on solutions. For instance arriving 5
+minutes early or late for your bus, may be of either no consequence,
+or great consequence, depending on the situation. In the situation
+where there is great consequences, there is a need to quantify the
+uncertainty of the data, by providing a stochastic model that models
+how sure we are of our assumptions. Such a stochastic model of the
+data can be used to arrive at a robust solution.
+
+% what we do
+In this thesis we consider the knapsack problem and the capacitated
+lot-sizing problem under uncertainty. These are problems that are
+normally considered with certain data, and the usual solution methods
+rely on the problems being deterministic.
+
+% example of what we do
+Let us look at an example. We have a cargo ship with an uncertain
+capacity. While the capacity is uncertain, we know that the ship can
+carry between 171 and 270 containers, with an equal probability for
+each capacity. We have two customers who want their orders
+shipped. The sizes of the customers' orders are uniformly distributed
+in the interval $[1,100]$. Our objective is now to bring orders from as many customers
+as possible while still being 95$\%$ certain that the ship will be
+able to carry those orders.
+
+% how example relates to thesis
+This little problem, which can be modelled as a knapsack problem with
+uncertainty, contains all the elements discussed so far. How we would
+arrive at a solution for this and related problems, is the main theme
+of our thesis.
+
+% how we're different 
+Naturally methods to do this exist, which is the subject of robust
+optimization. The approach that is most often taken in the litterature
+is trying to be entirely robust, that is to be feasible no matter the
+outcome of uncertain data. This is generally possible when having
+bounded uncertainty.
+
+We take a different approach, looking for solutions to problems with
+ \emph{unbounded} uncertainty, and namely \emph{partially robust}
+ solutions that have a certain probability of being feasible given the
+ outcome of the uncertain data. A consequence of this is that we look
+ for solutions in solution spaces that are often non-convex, and so
+ methods that can find solutions in non-convex solutions spaces are
+ needed.
+
+We use simulation to estimate bounds on the partial robustness of a
+solution using the statistical method of \emph{hypothesis testing}.
+
+Our goal is to establish a framework in which it is possible to alter
+an existing deterministic problem to account for variability, and to
+produce solutions that have a high probability $\rho$ of being feasible
+given the outcome of the uncertain parameters (e.g. $\rho = 95\%$).
+
+It is our hope that by looking for solutions that are only partially
+robust, we will be able to find solutions with better objective values
+than if we required robustness in the conventional sense. As a bonus
+we are able to solve problems with unbounded uncertainty.
+
+This approach we believe is quite different from those that have
+already been tried.
+
+\section{Motivation}
+% The dilemma
+A reason for us to be interested in partial robustness, as opposed to
+ complete robustness, can be illustrated by the following optimization
+ problem that occurs often in real life.
+
+\begin{example}
+A business supplies a product to its customers. If the business does
+ not meet the demand of its customers on time, a big penalty must be
+ paid as compensation. This gives the business an incentive to be sure
+ to deliver on time. On the other hand, it is a known business
+ mechanic that taking chances often gives a business the competitive
+ edge, because products can be produced cheaper if not all scenarios
+ have to be accounted for. So what is the correct decision?
+
+\begin{enumerate}
+\item Prioritize robustness and avoiding penalties, at the cost of not
+being able to sell the product at a competitive price.
+\item Prioritize competitive pricing, at the cost of paying occasional
+penalties and risk getting a bad reputation.
+\end{enumerate}
+\end{example}
+
+This comes down to what is more profitable, being robust or taking
+your chances. The optimal choice of strategy naturally depends on the
+size of the penalties and the nature of the market.
+
+What we provide is an estimate of the cost of robustness along with
+actual partially robust solutions, which would allow a business to actually
+calculate which strategy is the most profitable.
+
+\section{Intended readers}
+As mentioned our thesis deals with optimization, also known as
+operations research. Some of the basic optimization terms are briefly
+repeated throughout the thesis, but we expect the reader to have at
+least a basic grasp of optimization in advance. For those parts of the
+thesis that are not directly concerned with optimization we assume the
+reader has knowledge equal to that of a B.Sc. in computer science.
+
+\section{Thesis structure}
+
+The thesis has three major parts.
+
+\subsection*{Part 1 - Theoretical framework}
+In this part we introduce theoretical subjects within robust optimization and optimization in general inclucing
+\begin{itemize}
+\item Optimization problems
+\item Robustness
+\item Stochastic Programming
+\item Knapsack Problem
+\item Production planning and in particular the Capacitated Lot-Sizing Problem
+\end{itemize}
+
+\subsection*{Part 2 - Methods}
+In this part we will focus on the methods that we will use to find
+robust solutions, this includes algorithmic subjects like
+\begin{itemize}
+\item Genetic Algorithms
+\item Single point local search
+\item Simulation
+\item Statistics
+\item Seeding
+\end{itemize}
+
+\subsection*{Part 3 - Experimentation, results and conclusion}
+Here we will present some of the data used as well as the analysis of
+these data. Issues treated will be
+\begin{itemize}
+\item Choice of problem instances
+\item Results of algorithms on instances
+\item Future work
+\end{itemize}
+

@@ -1,0 +1,56 @@
+0.0
+Deterministic capacity = 1000
+Deterministic solution = 2289
+Deterministic solution (robustness): [0.49841826171875,0.50427177734375]
+Fat capacity = 590
+Fat solution = 1530
+Fat solution (robustness): [0.9600025585937499,0.9615503125]
+Attaching observers
+Starting solver
+Stepping solver
+- Completed in: 3578 ms
+Best solution: 0.0(obj),0.2041015625(robustness - high),0.163125(robustness - low),0.0(fitness value)
+OBSERVER REPORTING ITERATION: 1
+Stepping solver
+- Completed in: 2297 ms
+Best solution: 1457.0(obj),0.9775(robustness - high),0.9624999999999999(robustness - low),8491396.0(fitness value)
+OBSERVER REPORTING ITERATION: 2
+Stepping solver
+- Completed in: 2516 ms
+Best solution: 1457.0(obj),0.9775(robustness - high),0.9624999999999999(robustness - low),8491396.0(fitness value)
+OBSERVER REPORTING ITERATION: 3
+Stepping solver
+- Completed in: 2422 ms
+Best solution: 1457.0(obj),0.9775(robustness - high),0.9624999999999999(robustness - low),8491396.0(fitness value)
+OBSERVER REPORTING ITERATION: 4
+Stepping solver
+- Completed in: 2344 ms
+Best solution: 1508.0(obj),0.9722500000000001(robustness - high),0.9555546875(robustness - low),9096256.0(fitness value)
+OBSERVER REPORTING ITERATION: 5
+Stepping solver
+- Completed in: 2360 ms
+Best solution: 1508.0(obj),0.9722500000000001(robustness - high),0.9555546875(robustness - low),9096256.0(fitness value)
+OBSERVER REPORTING ITERATION: 6
+Stepping solver
+- Completed in: 2531 ms
+Best solution: 1508.0(obj),0.9722500000000001(robustness - high),0.9555546875(robustness - low),9096256.0(fitness value)
+OBSERVER REPORTING ITERATION: 7
+Stepping solver
+- Completed in: 2547 ms
+Best solution: 1508.0(obj),0.9722500000000001(robustness - high),0.9555546875(robustness - low),9096256.0(fitness value)
+OBSERVER REPORTING ITERATION: 8
+Stepping solver
+- Completed in: 2484 ms
+Best solution: 1508.0(obj),0.9722500000000001(robustness - high),0.9555546875(robustness - low),9096256.0(fitness value)
+OBSERVER REPORTING ITERATION: 9
+Stepping solver
+- Completed in: 2484 ms
+Best solution: 1519.0(obj),0.9737499999999999(robustness - high),0.9575390625(robustness - low),9229444.0(fitness value)
+OBSERVER REPORTING ITERATION: 10
+The best solution has a fitness value of 9229444.0
+It contained the following: 
+true, false, true, false, false, false, false, true, false, false, false, false, false, true, false, true, false, false, true, false, true, true, true, false, false, false, false, true, false, false, true, true, true, true, false, false, true, true, true, false, true, true, true, false, false, false, true, true, true, true, 
+
+Thank you for watching
+Best solution: 1519.0(obj),0.9737499999999999(robustness - high),0.9575390625(robustness - low),9229444.0(fitness value)
+OBSERVER REPORTING ITERATION: 10

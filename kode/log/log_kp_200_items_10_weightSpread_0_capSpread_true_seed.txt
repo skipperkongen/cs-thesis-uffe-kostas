@@ -1,0 +1,420 @@
+Fat Solution. Low Robustness. High Robustness. AvgProfit.
+1.0
+1.0
+8021.0
+0.0
+Deterministic capacity = 4000
+Deterministic solution = 8277
+Deterministic solution (robustness): [0.50899591796875,0.5148494335937499]
+Fat capacity = 4000
+Fat solution = 8021
+Fat solution (robustness): [1.0,1.0]
+Attaching observers
+Starting solver
+Stepping solver
+- Completed in: 12859 ms
+Best solution: 8241.0(obj),0.992(robustness - high),0.984328125(robustness - low),
+OBSERVER REPORTING ITERATION: 1
+Stepping solver
+- Completed in: 8078 ms
+Best solution: 8241.0(obj),0.992(robustness - high),0.984328125(robustness - low),
+OBSERVER REPORTING ITERATION: 2
+Stepping solver
+- Completed in: 8031 ms
+Best solution: 8241.0(obj),0.992(robustness - high),0.984328125(robustness - low),
+OBSERVER REPORTING ITERATION: 3
+Stepping solver
+- Completed in: 8047 ms
+Best solution: 8241.0(obj),0.992(robustness - high),0.984328125(robustness - low),
+OBSERVER REPORTING ITERATION: 4
+Stepping solver
+- Completed in: 8063 ms
+Best solution: 8241.0(obj),0.992(robustness - high),0.984328125(robustness - low),
+OBSERVER REPORTING ITERATION: 5
+Stepping solver
+- Completed in: 7922 ms
+Best solution: 8241.0(obj),0.992(robustness - high),0.984328125(robustness - low),
+OBSERVER REPORTING ITERATION: 6
+Stepping solver
+- Completed in: 7968 ms
+Best solution: 8241.0(obj),0.997(robustness - high),0.994(robustness - low),
+OBSERVER REPORTING ITERATION: 7
+Stepping solver
+- Completed in: 8047 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 8
+Stepping solver
+- Completed in: 8094 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 9
+Stepping solver
+- Completed in: 8094 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 10
+Stepping solver
+- Completed in: 8187 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 11
+Stepping solver
+- Completed in: 8110 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 12
+Stepping solver
+- Completed in: 8062 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 13
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 14
+Stepping solver
+- Completed in: 7828 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 15
+Stepping solver
+- Completed in: 7875 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 16
+Stepping solver
+- Completed in: 7859 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 17
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 18
+Stepping solver
+- Completed in: 8187 ms
+Best solution: 8242.0(obj),0.988(robustness - high),0.9803593749999999(robustness - low),
+OBSERVER REPORTING ITERATION: 19
+Stepping solver
+- Completed in: 8141 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 20
+Stepping solver
+- Completed in: 8078 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 21
+Stepping solver
+- Completed in: 8000 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 22
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.989(robustness - high),0.9813515625(robustness - low),
+OBSERVER REPORTING ITERATION: 23
+Stepping solver
+- Completed in: 7875 ms
+Best solution: 8242.0(obj),0.989(robustness - high),0.9813515625(robustness - low),
+OBSERVER REPORTING ITERATION: 24
+Stepping solver
+- Completed in: 7828 ms
+Best solution: 8242.0(obj),0.989(robustness - high),0.9813515625(robustness - low),
+OBSERVER REPORTING ITERATION: 25
+Stepping solver
+- Completed in: 7812 ms
+Best solution: 8242.0(obj),0.989(robustness - high),0.9813515625(robustness - low),
+OBSERVER REPORTING ITERATION: 26
+Stepping solver
+- Completed in: 7907 ms
+Best solution: 8242.0(obj),0.989(robustness - high),0.9813515625(robustness - low),
+OBSERVER REPORTING ITERATION: 27
+Stepping solver
+- Completed in: 7937 ms
+Best solution: 8242.0(obj),0.983(robustness - high),0.9753984375(robustness - low),
+OBSERVER REPORTING ITERATION: 28
+Stepping solver
+- Completed in: 8250 ms
+Best solution: 8242.0(obj),0.982(robustness - high),0.9744062499999999(robustness - low),
+OBSERVER REPORTING ITERATION: 29
+Stepping solver
+- Completed in: 8141 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 30
+Stepping solver
+- Completed in: 8109 ms
+Best solution: 8242.0(obj),0.984(robustness - high),0.976390625(robustness - low),
+OBSERVER REPORTING ITERATION: 31
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.99(robustness - high),0.98234375(robustness - low),
+OBSERVER REPORTING ITERATION: 32
+Stepping solver
+- Completed in: 7985 ms
+Best solution: 8242.0(obj),0.984(robustness - high),0.976390625(robustness - low),
+OBSERVER REPORTING ITERATION: 33
+Stepping solver
+- Completed in: 7921 ms
+Best solution: 8242.0(obj),0.984(robustness - high),0.976390625(robustness - low),
+OBSERVER REPORTING ITERATION: 34
+Stepping solver
+- Completed in: 7969 ms
+Best solution: 8242.0(obj),0.984(robustness - high),0.976390625(robustness - low),
+OBSERVER REPORTING ITERATION: 35
+Stepping solver
+- Completed in: 8063 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 36
+Stepping solver
+- Completed in: 7937 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 37
+Stepping solver
+- Completed in: 7922 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 38
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 39
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 40
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 41
+Stepping solver
+- Completed in: 8000 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 42
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 43
+Stepping solver
+- Completed in: 7938 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 44
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 45
+Stepping solver
+- Completed in: 7906 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 46
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 47
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 48
+Stepping solver
+- Completed in: 7968 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 49
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 50
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 51
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 52
+Stepping solver
+- Completed in: 7906 ms
+Best solution: 8242.0(obj),0.9964999999999999(robustness - high),0.993(robustness - low),
+OBSERVER REPORTING ITERATION: 53
+Stepping solver
+- Completed in: 7938 ms
+Best solution: 8242.0(obj),0.987(robustness - high),0.9793671875000001(robustness - low),
+OBSERVER REPORTING ITERATION: 54
+Stepping solver
+- Completed in: 7906 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 55
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 56
+Stepping solver
+- Completed in: 7906 ms
+Best solution: 8242.0(obj),0.99(robustness - high),0.98234375(robustness - low),
+OBSERVER REPORTING ITERATION: 57
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 58
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 59
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 60
+Stepping solver
+- Completed in: 7906 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 61
+Stepping solver
+- Completed in: 7938 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 62
+Stepping solver
+- Completed in: 7906 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 63
+Stepping solver
+- Completed in: 7938 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 64
+Stepping solver
+- Completed in: 7890 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 65
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 66
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 67
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 68
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 69
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 70
+Stepping solver
+- Completed in: 7890 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 71
+Stepping solver
+- Completed in: 7954 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 72
+Stepping solver
+- Completed in: 7890 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 73
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 74
+Stepping solver
+- Completed in: 7937 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 75
+Stepping solver
+- Completed in: 7922 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 76
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 77
+Stepping solver
+- Completed in: 7937 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 78
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 79
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 80
+Stepping solver
+- Completed in: 7891 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 81
+Stepping solver
+- Completed in: 7906 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 82
+Stepping solver
+- Completed in: 7937 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 83
+Stepping solver
+- Completed in: 7907 ms
+Best solution: 8242.0(obj),0.986(robustness - high),0.978375(robustness - low),
+OBSERVER REPORTING ITERATION: 84
+Stepping solver
+- Completed in: 7890 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 85
+Stepping solver
+- Completed in: 7922 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 86
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 87
+Stepping solver
+- Completed in: 8000 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 88
+Stepping solver
+- Completed in: 7938 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 89
+Stepping solver
+- Completed in: 8078 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 90
+Stepping solver
+- Completed in: 7922 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 91
+Stepping solver
+- Completed in: 7953 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 92
+Stepping solver
+- Completed in: 7922 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 93
+Stepping solver
+- Completed in: 8078 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 94
+Stepping solver
+- Completed in: 7937 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 95
+Stepping solver
+- Completed in: 7954 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 96
+Stepping solver
+- Completed in: 7906 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 97
+Stepping solver
+- Completed in: 7969 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 98
+Stepping solver
+- Completed in: 8000 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 99
+Stepping solver
+- Completed in: 8015 ms
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 100
+The best solution has a fitness value of 16484.0
+It contained the following: 
+true, false, true, true, false, true, true, false, true, true, false, true, false, true, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, true, true, false, true, true, false, false, true, true, true, true, false, true, true, false, true, false, false, true, true, true, true, true, true, false, true, true, true, true, true, true, true, false, true, true, false, true, true, true, true, true, false, false, true, true, true, true, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, true, true, true, true, false, true, true, true, false, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, true, true, true, true, true, true, false, false, false, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false, true, true, true, true, false, true, true, true, true, true, true, true, true, true, true, true, false, true, true, 
+
+Thank you for watching
+Best solution: 8242.0(obj),0.985(robustness - high),0.9773828124999999(robustness - low),
+OBSERVER REPORTING ITERATION: 100

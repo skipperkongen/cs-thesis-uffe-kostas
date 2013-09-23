@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?><solution xmlns="http://www.diku.dk/robust/autogen/sclsp_solution" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.diku.dk/robust/autogen/sclsp_solution" >
+<global_parameters time_periods="15" resources="1" items="6" />
+<on_stock>
+  <stock_time_period time_period="0">
+  	<item_on_stock item_id="1" amount="11" />
+  </stock_time_period>
+  <stock_time_period time_period="1">
+  	<item_on_stock item_id="1" amount="440" />
+  </stock_time_period>
+  <stock_time_period time_period="2">
+  	<item_on_stock item_id="1" amount="364" />
+  </stock_time_period>
+  <stock_time_period time_period="3">
+  	<item_on_stock item_id="1" amount="248" />
+  </stock_time_period>
+  <stock_time_period time_period="4">
+  	<item_on_stock item_id="1" amount="146" />
+  </stock_time_period>
+  <stock_time_period time_period="5">
+  	<item_on_stock item_id="1" amount="37" />
+  </stock_time_period>
+  <stock_time_period time_period="6">
+  	<item_on_stock item_id="1" amount="485" />
+  </stock_time_period>
+  <stock_time_period time_period="7">
+  	<item_on_stock item_id="1" amount="392" />
+  </stock_time_period>
+  <stock_time_period time_period="8">
+  	<item_on_stock item_id="1" amount="294" />
+  </stock_time_period>
+  <stock_time_period time_period="9">
+  	<item_on_stock item_id="1" amount="201" />
+  </stock_time_period>
+  <stock_time_period time_period="10">
+  	<item_on_stock item_id="1" amount="83" />
+  </stock_time_period>
+  <stock_time_period time_period="12">
+  	<item_on_stock item_id="1" amount="325" />
+  </stock_time_period>
+  <stock_time_period time_period="13">
+  	<item_on_stock item_id="1" amount="248" />
+  </stock_time_period>
+  <stock_time_period time_period="14">
+  	<item_on_stock item_id="1" amount="125" />
+  </stock_time_period>
+  <stock_time_period time_period="0">
+  	<item_on_stock item_id="2" amount="180" />
+  </stock_time_period>
+  <stock_time_period time_period="1">
+  	<item_on_stock item_id="2" amount="95" />
+  </stock_time_period>
+  <stock_time_period time_period="2">
+  	<item_on_stock item_id="2" amount="95" />
+  </stock_time_period>
+  <stock_time_period time_period="5">
+  	<item_on_stock item_id="2" amount="453" />
+  </stock_time_period>
+  <stock_time_period time_period="6">
+  	<item_on_stock item_id="2" amount="333" />
+  </stock_time_period>
+  <stock_time_period time_period="7">
+  	<item_on_stock item_id="2" amount="234" />
+  </stock_time_period>
+  <stock_time_period time_period="8">
+  	<item_on_stock item_id="2" amount="114" />
+  </stock_time_period>
+  <stock_time_period time_period="10">
+  	<item_on_stock item_id="2" amount="456" />
+  </stock_time_period>
+  <stock_time_period time_period="11">
+  	<item_on_stock item_id="2" amount="378" />
+  </stock_time_period>
+  <stock_time_period time_period="12">
+  	<item_on_stock item_id="2" amount="287" />
+  </stock_time_period>
+  <stock_time_period time_period="13">
+  	<item_on_stock item_id="2" amount="201" />
+  </stock_time_period>
+  <stock_time_period time_period="14">
+  	<item_on_stock item_id="2" amount="97" />
+  </stock_time_period>
+  <stock_time_period time_period="0">
+  	<item_on_stock item_id="3" amount="108" />
+  </stock_time_period>
+  <stock_time_period time_period="1">
+  	<item_on_stock item_id="3" amount="108" />
+  </stock_time_period>
+  <stock_time_period time_period="2">
+  	<item_on_stock item_id="3" amount="31" />
+  </stock_time_period>
+  <stock_time_period time_period="3">
+  	<item_on_stock item_id="3" amount="476" />
+  </stock_time_period>
+  <stock_time_period time_period="4">
+  	<item_on_stock item_id="3" amount="370" />
+  </stock_time_period>
+  <stock_time_period time_period="5">
+  	<item_on_stock item_id="3" amount="291" />
+  </stock_time_period>
+  <stock_time_period time_period="6">
+  	<item_on_stock item_id="3" amount="168" />
+  </stock_time_period>
+  <stock_time_period time_period="7">
+  	<item_on_stock item_id="3" amount="61" />
+  </stock_time_period>
+  <stock_time_period time_period="8">
+  	<item_on_stock item_id="3" amount="545" />
+  </stock_time_period>
+  <stock_time_period time_period="9">
+  	<item_on_stock item_id="3" amount="447" />
+  </stock_time_period>
+  <stock_time_period time_period="10">
+  	<item_on_stock item_id="3" amount="342" />
+  </stock_time_period>
+  <stock_time_period time_period="11">
+  	<item_on_stock item_id="3" amount="223" />
+  </stock_time_period>
+  <stock_time_period time_period="12">
+  	<item_on_stock item_id="3" amount="125" />
+  </stock_time_period>
+  <stock_time_period time_period="14">
+  	<item_on_stock item_id="3" amount="109" />
+  </stock_time_period>
+  <stock_time_period time_period="0">
+  	<item_on_stock item_id="4" amount="318" />
+  </stock_time_period>
+  <stock_time_period time_period="1">
+  	<item_on_stock item_id="4" amount="216" />
+  </stock_time_period>
+  <stock_time_period time_period="2">
+  	<item_on_stock item_id="4" amount="115" />
+  </stock_time_period>
+  <stock_time_period time_period="3">
+  	<item_on_stock item_id="4" amount="23" />
+  </stock_time_period>
+  <stock_time_period time_period="4">
+  	<item_on_stock item_id="4" amount="591" />
+  </stock_time_period>
+  <stock_time_period time_period="5">
+  	<item_on_stock item_id="4" amount="473" />
+  </stock_time_period>
+  <stock_time_period time_period="6">
+  	<item_on_stock item_id="4" amount="365" />
+  </stock_time_period>
+  <stock_time_period time_period="7">
+  	<item_on_stock item_id="4" amount="270" />
+  </stock_time_period>
+  <stock_time_period time_period="8">
+  	<item_on_stock item_id="4" amount="192" />
+  </stock_time_period>
+  <stock_time_period time_period="9">
+  	<item_on_stock item_id="4" amount="84" />
+  </stock_time_period>
+  <stock_time_period time_period="11">
+  	<item_on_stock item_id="4" amount="425" />
+  </stock_time_period>
+  <stock_time_period time_period="12">
+  	<item_on_stock item_id="4" amount="304" />
+  </stock_time_period>
+  <stock_time_period time_period="13">
+  	<item_on_stock item_id="4" amount="182" />
+  </stock_time_period>
+  <stock_time_period time_period="14">
+  	<item_on_stock item_id="4" amount="80" />
+  </stock_time_period>
+  <stock_time_period time_period="0">
+  	<item_on_stock item_id="5" amount="86" />
+  </stock_time_period>
+  <stock_time_period time_period="1">
+  	<item_on_stock item_id="5" amount="2" />
+  </stock_time_period>
+  <stock_time_period time_period="2">
+  	<item_on_stock item_id="5" amount="439" />
+  </stock_time_period>
+  <stock_time_period time_period="3">
+  	<item_on_stock item_id="5" amount="352" />
+  </stock_time_period>
+  <stock_time_period time_period="4">
+  	<item_on_stock item_id="5" amount="258" />
+  </stock_time_period>
+  <stock_time_period time_period="5">
+  	<item_on_stock item_id="5" amount="167" />
+  </stock_time_period>
+  <stock_time_period time_period="6">
+  	<item_on_stock item_id="5" amount="77" />
+  </stock_time_period>
+  <stock_time_period time_period="7">
+  	<item_on_stock item_id="5" amount="516" />
+  </stock_time_period>
+  <stock_time_period time_period="8">
+  	<item_on_stock item_id="5" amount="410" />
+  </stock_time_period>
+  <stock_time_period time_period="9">
+  	<item_on_stock item_id="5" amount="293" />
+  </stock_time_period>
+  <stock_time_period time_period="10">
+  	<item_on_stock item_id="5" amount="188" />
+  </stock_time_period>
+  <stock_time_period time_period="11">
+  	<item_on_stock item_id="5" amount="97" />
+  </stock_time_period>
+  <stock_time_period time_period="13">
+  	<item_on_stock item_id="5" amount="186" />
+  </stock_time_period>
+  <stock_time_period time_period="14">
+  	<item_on_stock item_id="5" amount="103" />
+  </stock_time_period>
+  <stock_time_period time_period="0">
+  	<item_on_stock item_id="6" amount="567" />
+  </stock_time_period>
+  <stock_time_period time_period="1">
+  	<item_on_stock item_id="6" amount="478" />
+  </stock_time_period>
+  <stock_time_period time_period="2">
+  	<item_on_stock item_id="6" amount="478" />
+  </stock_time_period>
+  <stock_time_period time_period="3">
+  	<item_on_stock item_id="6" amount="478" />
+  </stock_time_period>
+  <stock_time_period time_period="4">
+  	<item_on_stock item_id="6" amount="395" />
+  </stock_time_period>
+  <stock_time_period time_period="5">
+  	<item_on_stock item_id="6" amount="309" />
+  </stock_time_period>
+  <stock_time_period time_period="6">
+  	<item_on_stock item_id="6" amount="191" />
+  </stock_time_period>
+  <stock_time_period time_period="7">
+  	<item_on_stock item_id="6" amount="83" />
+  </stock_time_period>
+  <stock_time_period time_period="9">
+  	<item_on_stock item_id="6" amount="447" />
+  </stock_time_period>
+  <stock_time_period time_period="10">
+  	<item_on_stock item_id="6" amount="367" />
+  </stock_time_period>
+  <stock_time_period time_period="11">
+  	<item_on_stock item_id="6" amount="268" />
+  </stock_time_period>
+  <stock_time_period time_period="12">
+  	<item_on_stock item_id="6" amount="176" />
+  </stock_time_period>
+  <stock_time_period time_period="13">
+  	<item_on_stock item_id="6" amount="78" />
+  </stock_time_period>
+</on_stock>
+<being_produced>
+  <production_time_period time_period="1">
+  	<item_production item_id="1" amount="548" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="6">
+  	<item_production item_id="1" amount="548" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="12">
+  	<item_production item_id="1" amount="447" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="5">
+  	<item_production item_id="2" amount="554" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="10">
+  	<item_production item_id="2" amount="550" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="3">
+  	<item_production item_id="3" amount="569" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="8">
+  	<item_production item_id="3" amount="569" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="14">
+  	<item_production item_id="3" amount="223" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="4">
+  	<item_production item_id="4" amount="568" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="11">
+  	<item_production item_id="4" amount="536" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="2">
+  	<item_production item_id="5" amount="548" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="7">
+  	<item_production item_id="5" amount="550" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="13">
+  	<item_production item_id="5" amount="293" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="9">
+  	<item_production item_id="6" amount="526" resource_id="1" />
+  </production_time_period>
+  <production_time_period time_period="15">
+  	<item_production item_id="6" amount="95" resource_id="1" />
+  </production_time_period>
+</being_produced>
+<is_setup>
+  <is_setup_time_period time_period="1">
+  	<resource_is_setup item_id="1" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="6">
+  	<resource_is_setup item_id="1" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="12">
+  	<resource_is_setup item_id="1" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="5">
+  	<resource_is_setup item_id="2" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="10">
+  	<resource_is_setup item_id="2" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="3">
+  	<resource_is_setup item_id="3" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="8">
+  	<resource_is_setup item_id="3" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="14">
+  	<resource_is_setup item_id="3" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="4">
+  	<resource_is_setup item_id="4" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="11">
+  	<resource_is_setup item_id="4" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="2">
+  	<resource_is_setup item_id="5" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="7">
+  	<resource_is_setup item_id="5" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="13">
+  	<resource_is_setup item_id="5" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="9">
+  	<resource_is_setup item_id="6" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+  <is_setup_time_period time_period="15">
+  	<resource_is_setup item_id="6" is_setup="1" resource_id="1" />
+  </is_setup_time_period>
+</is_setup>
+<being_setup>
+  <being_setup_time_period time_period="1">
+  	<resource_being_setup item_id="1" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="6">
+  	<resource_being_setup item_id="1" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="12">
+  	<resource_being_setup item_id="1" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="5">
+  	<resource_being_setup item_id="2" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="10">
+  	<resource_being_setup item_id="2" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="3">
+  	<resource_being_setup item_id="3" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="8">
+  	<resource_being_setup item_id="3" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="14">
+  	<resource_being_setup item_id="3" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="4">
+  	<resource_being_setup item_id="4" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="11">
+  	<resource_being_setup item_id="4" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="2">
+  	<resource_being_setup item_id="5" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="7">
+  	<resource_being_setup item_id="5" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="13">
+  	<resource_being_setup item_id="5" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="9">
+  	<resource_being_setup item_id="6" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+  <being_setup_time_period time_period="15">
+  	<resource_being_setup item_id="6" resource_id="1" being_setup="1" />
+  </being_setup_time_period>
+</being_setup>
+</solution>

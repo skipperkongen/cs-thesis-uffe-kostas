@@ -1,0 +1,9 @@
+Kostas - (Elevator pitch) + Agenda
+Uffe   - Purpose
+Kostas - Robustness and uncertainty 
+Uffe   - Knapsack and Lot-sizing
+Kostas - Metaheuristics
+Kostas - Seeding
+Uffe   - Simulation and statistics
+Begge  - Results
+Uffe   - Conclusion

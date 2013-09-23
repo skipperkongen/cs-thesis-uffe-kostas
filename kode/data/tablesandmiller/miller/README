@@ -1,0 +1,8 @@
+xtr24-30.lsp 
+and tr12-30.lsp
+
+Have slightly different LB's than reported in miller:
+17327 instead of 17322
+13131 instead of 13129
+
+xtr12-15 is infeasible? i.e. it uses initial stock, hence LB is MUCH worse.

@@ -1,0 +1,722 @@
+\chapter{Experimentation and Results}
+\label{sec:experimentation_and_results}
+
+In this chapter we will be describing the different experiments we
+have conducted and the results that we have gathered. The primary
+objective of this is of course to see if our approach with a genetic
+algorithm can produce robust solutions with good objective values. 
+
+We can easily find out if the solutions are robust using the methods
+we described in chapter \ref{sec:testing_robustness}. It is a
+different matter when we try to check if we obtain good objecive
+values. The problem is that we do not have data to see how good robust
+solutions have been found on the data that we are working with. This
+is not as big a problem as it might sound. Since our main goal is to
+see if our approach can provide some useful insights, we will simply
+measure our solutions against those that we can easily obtain. That
+is, we will be comparing our solutions with the fat solutions
+described in chapter \ref{sec:fat_solutions} as well as the solutions
+to the problems with no stochasticity.
+
+We will treat the experimentation of the knapsack problem and the
+lot-sizing problem seperately since the results vary greatly and the
+approach is somewhat different although there are significant overlaps.
+
+\section{Knapsack problem experimentation}
+\label{sec:experiments_kp}
+The primary object of our experimentation is to find out if we can
+generate a better solution than the fat solution (see chapter
+\ref{sec:fat_solutions}). We also wish to test if we obtain roughly the
+same results when we run our algorithm several times on the same
+problem as this has some impact on the usefulness of our approach.
+
+Since the fat solution is our naive bid at a robust solution, an
+improvement over this is imperative. We will also be comparing our
+solutions to solving the deterministic knapsack problem where we
+substitute the stochastic variables with their respective mean
+values. This will generally lead to solutions that have a robustness
+of $0.5$ and these solutions will only serve as a reference to how
+much it costs to obtain the additional $0.45$ points of robustness. We
+have no way of proving that the optimal solution to the deterministic
+knapsack problem is an upper bound on the robust solution to the
+stochastic knapsack problem but it is resonable to think that no
+robust solution can be found that will improve on the deterministic
+knapsack problem.
+
+\subsection{Generated instances}
+\label{sec:generated_instances_knapsack}
+For the experiments we have generated a lot of different stochastic
+instances. The different instances have been generated to help us
+identify which parts of the stochastic knapsack problem has the
+greatest influence on the behaviour of our algorithm.
+
+The following list contains the parameters of the stochastic knapsack
+problem that have been augmented from instance to instance and the
+different values they assume.
+\begin{itemize}
+\item Number of items (50 or 200)
+\item Stochastic capacity (yes or no)
+\item Standard deviation of capacity (high or low)
+\item Stochastic weight (yes or no)
+\item Standard deviation of weight  (high or low)
+\item Seeding the algorithm (yes or no)
+\end{itemize}
+Not all combinations of these values make sense, i.e. having high
+standard deviation of the weights when they are not stochastic seems
+silly. Naturally we have not experimented with any of the non-sensical
+combinations but apart from those we have only deselected the
+completely non-stochastic combinations. This still leaves us with 16
+instances with different numerical values, we will be running our
+algorithm on each of these instances twice, once using seeding and
+once without. The instances are presented in table
+\ref{tab:kp_instances}. The instances have been named A-P for easy
+identification. In the remainder of the tables we will be sorting the
+tables according to the information we are analyzing, thus the
+individual instances will appear at different places in the tables, in
+this respect the names should help in finding a particular instance.
+This should not be necessary since the individual instances are rather
+uninteresting and the trends that can be spotted are more interesting.
+
+\begin{align}
+\label{tab:kp_instances}
+\begin{tabular}{llll}
+ \hline 
+Name&Items&Weight Deviation&Capacity Deviation\\ \hline 
+A&50&None&Low\\ \hline 
+B&50&None&High\\ \hline 
+C&50&Low&None\\ \hline 
+D&50&Low&Low\\ \hline 
+E&50&Low&High\\ \hline 
+F&50&High&None\\ \hline 
+G&50&High&Low\\ \hline 
+H&50&High&High\\ \hline 
+I&200&None&Low\\ \hline 
+J&200&None&High\\ \hline 
+K&200&Low&None\\ \hline 
+L&200&Low&Low\\ \hline 
+M&200&Low&High\\ \hline 
+N&200&High&None\\ \hline 
+O&200&High&Low\\ \hline 
+P&200&High&High\\ \hline 
+\end{tabular}
+\end{align}
+
+\subsubsection{Construction of items}
+\label{sec:construction_of_items}
+In constructing the items (profits and weights) for the instances, we
+have chosen to follow the same method as described in \cite{bertsimas}
+where the items in the generated instance have a mean weight randomly
+selected from the interval $[20,29]$ and a profit from the interval
+$[16,77]$. These mean values are evenly distributed along their
+respective intervals, meaning there are (on average) as many items
+with weight 20 as there are items with weight 24.
+
+The weights of each instance have been assigned a standard deviation
+dependent on whether we wanted a high concentration of values aound
+the mean or a more even spread. More specifically the deviation of the
+weight of an item is set so 95$\%$ of the sampled weights will fall in
+an interval that extends 10$\%$ to either side of the mean (low
+deviation) or up to 50$\%$ to either side (high deviation). As an
+example of this we have included figure \ref{fig:low_deviation} to
+show the distribution of weights for an item with mean weight 20 and a
+low deviation and on figure \ref{fig:high_deviation} we have the same
+item with a high deviation.
+
+\figur{Distribution of weight for an item with weight 20 and a low
+  standard deviation.}{fig:low_deviation}{figurer/normal_20_1.eps}
+
+\figur{Distribution of weight for an item with weight 20 and a high
+standard deviation.}{fig:high_deviation}{figurer/normal_20_5.eps}
+
+
+We have included the complete data for instance E in appendix
+\ref{app:kp_scenario} as a reference to how the instances are
+built. Since the instances take up a lot of pages when printed, we
+have not included the remaining 15, if you are interested in seeing
+them, please contact us by e-mail.
+
+\subsection{Observations on the fat solutions}
+In table \ref{tab:kp_fat_solutions} we show the
+deterministic and fat solutions to the 16 instances, described in
+section \ref{sec:generated_instances_knapsack}. In addition to the
+values of the solutions we also show the ratio $\frac{\text{fat
+  solution}}{\text{deterministic solution}}$. The table has been
+sorted according to the value of this ratio (lowest to highest).
+
+\begin{align}
+\label{tab:kp_fat_solutions}
+\begin{tabular}{lllllll}
+\hline 
+Name &Items&$\textbf{Weight}$   &$\textbf{Capacity}$ &Deterministic&Fat     &\multicolumn{1}{c}{$\textbf{Fat}$}\\
+Name &     &$\textbf{Deviation}$&$\textbf{Deviation}$&Solution
+&Solution&\multicolumn{1}{c}{$\overline{\textbf{Deterministic}}$}\\
+\hline
+H&50 &$\textbf{High}$&$\textbf{High}$&2240&1171&$\textbf{0.523}$\\ \hline 
+P&200&$\textbf{High}$&$\textbf{High}$&8600&4777&$\textbf{0.555}$\\ \hline 
+M&200&$\textbf{Low}$&$\textbf{High}$&8763&5832&$\textbf{0.666}$\\ \hline 
+E&50 &$\textbf{Low}$&$\textbf{High}$&2289&1534&$\textbf{0.670}$\\ \hline 
+B&50 &$\textbf{None}$&$\textbf{High}$&2126&1493&$\textbf{0.702}$\\ \hline 
+J&200&$\textbf{None}$&$\textbf{High}$&8314&5841&$\textbf{0.703}$\\ \hline 
+G&50 &$\textbf{High}$&$\textbf{Low}$&2224&1676&$\textbf{0.754}$\\ \hline 
+O&200&$\textbf{High}$&$\textbf{Low}$&8312&6406&$\textbf{0.771}$\\ \hline 
+F&50 &$\textbf{High}$&$\textbf{None}$&2156&1739&$\textbf{0.807}$\\ \hline 
+N&200&$\textbf{High}$&$\textbf{None}$&8738&7150&$\textbf{0.818}$\\ \hline 
+L&200&$\textbf{Low}$&$\textbf{Low}$&8444&7775&$\textbf{0.921}$\\ \hline 
+D&50 &$\textbf{Low}$&$\textbf{Low}$&2233&2082&$\textbf{0.932}$\\ \hline 
+I&200&$\textbf{None}$&$\textbf{Low}$&8379&7983&$\textbf{0.953}$\\ \hline 
+A&50 &$\textbf{None}$&$\textbf{Low}$&2298&2197&$\textbf{0.956}$\\ \hline 
+C&50 &$\textbf{Low}$&$\textbf{None}$&2305&2227&$\textbf{0.966}$\\ \hline 
+K&200&$\textbf{Low}$&$\textbf{None}$&8277&8021&$\textbf{0.969}$\\ \hline 
+\end{tabular}
+\end{align}
+
+As can be seen from the table the fat solutions vary from being only
+half as good as the deterministic solutions to being close to the
+deterministic solutions. The good results for the fat solutions are
+obtained when only weights or capacity is stochastic and when
+the stochastic elements have a low standard deviation. Conversely the
+bad results come from high levels of stochasticity. Since the quality
+of the fat solutions vary so much, we will include the measure
+$\frac{\text{Fat}}{\text{Deterministic}}$ in most of the rest of the results
+that compare our solutions to the fat solution.
+
+\subsection{Effect of seeding}
+\label{sec:effect_of_seeding}
+The first ting we will analyze with regards to our algorithm is the
+effect of seeding. In the following table we have listed the results
+of running our algorithm on the 16 instances, with and without using
+seeds. As can be seen from table \ref{tab:seeds} the algorithm always
+performs better when using seeds. With this result in hand we will
+omit the results of running without seeds from the remainder of the
+experiments.
+
+It is no surprise that running the algorithm with seeds generates
+better results than without seeds. With seeds we start off with
+solutions that are optimal, given a specific scenario. This optimal
+solution may not be robust, but it gives us a strong starting point
+from which to find solutions that are robust.
+
+
+\begin{align}
+\label{tab:seeds}
+\begin{tabular}{lllllll}
+ \hline
+Name&$\textbf{Items}$&Weight   &Capacity &Sol. value & Sol. Value
+&\multicolumn{1}{c}{$\textbf{No seeds}$}\\
+&     &Deviation&Deviation&no seeds
+ &seeds&\multicolumn{1}{c}{$\overline{\textbf{Seeds}}$}\\ \hline
+J&$\textbf{200}$&None&High&5224&5819&$\textbf{0.898}$\\ \hline 
+M&$\textbf{200}$&Low&High&5401&5934&$\textbf{0.910}$\\ \hline 
+P&$\textbf{200}$&High&High&5351&5802&$\textbf{0.922}$\\ \hline 
+L&$\textbf{200}$&Low&Low&7575&8035&$\textbf{0.943}$\\ \hline 
+K&$\textbf{200}$&Low&None&7814&8242&$\textbf{0.948}$\\ \hline 
+N&$\textbf{200}$&High&None&8127&8473&$\textbf{0.959}$\\ \hline 
+B&$\textbf{50}$&None&High&1514&1574&$\textbf{0.962}$\\ \hline 
+O&$\textbf{200}$&High&Low&7435&7647&$\textbf{0.972}$\\ \hline 
+I&$\textbf{200}$&None&Low&7637&7802&$\textbf{0.979}$\\ \hline 
+H&$\textbf{50}$&High&High&1515&1540&$\textbf{0.984}$\\ \hline 
+E&$\textbf{50}$&Low&High&1578&1602&$\textbf{0.985}$\\ \hline 
+G&$\textbf{50}$&High&Low&2056&2084&$\textbf{0.987}$\\ \hline 
+A&$\textbf{50}$&None&Low&2179&2197&$\textbf{0.992}$\\ \hline 
+C&$\textbf{50}$&Low&None&2278&2296&$\textbf{0.992}$\\ \hline 
+F&$\textbf{50}$&High&None&2069&2081&$\textbf{0.994}$\\ \hline 
+D&$\textbf{50}$&Low&Low&2135&2140&$\textbf{0.998}$\\ \hline 
+\end{tabular}
+\end{align}
+
+\subsection{Comparing the algorithm to the fat solution}
+In table \ref{tab:ga_vs_fat} we list the results of the genetic
+algorithm versus the results of the fat
+solution. As can be seen our algorithm doesn't achieve better results in all
+cases. The three cases where our algorithm doesn't outperform the fat
+solution all have one thing in common: only the capacity is
+stochastic. This means that there is in fact only one stochastic
+parameter in the problem, under those circumstances it isn't
+surprising that the fat solution can't be outperformed, it is after
+all an optimal solution to the knapsack problem with a reduced
+capacity and the genetic algorithm hasn't much hope of obtaining a
+better solution. 
+
+\begin{align}
+\label{tab:ga_vs_fat}
+\begin{tabular}{llllllll}
+ \hline 
+Name&Items&$\textbf{Weight}$   &Capacity &\multicolumn{1}{c}{Fat}
+& GA         &\multicolumn{1}{c}{GA}&\multicolumn{1}{c}{$\textbf{GA}$}\\
+    &     &$\textbf{Deviation}$&Deviation&\multicolumn{1}{c}{$\overline{\text{Deterministic}}$}& Sol. Value &\multicolumn{1}{c}{$\overline{\text{Deterministic}}$}&\multicolumn{1}{c}{$\overline{\textbf{Fat}}$}\\ \hline
+I&200&$\textbf{None}$&Low&0.953&7802&0.931&$\textbf{0.978}$\\ \hline 
+J&200&$\textbf{None}$&High&0.703&5819&0.700&$\textbf{0.996}$\\ \hline 
+A&50&$\textbf{None}$&Low&0.956&2197&0.956&$\textbf{1.000}$\\ \hline 
+M&200&$\textbf{Low}$&High&0.667&5934&0.677&$\textbf{1.015}$\\ \hline 
+K&200&$\textbf{Low}$&None&0.969&8242&0.996&$\textbf{1.028}$\\ \hline 
+D&50&$\textbf{Low}$&Low&0.932&2140&0.958&$\textbf{1.028}$\\ \hline 
+C&50&$\textbf{Low}$&None&0.966&2296&0.996&$\textbf{1.031}$\\ \hline 
+L&200&$\textbf{Low}$&Low&0.921&8035&0.952&$\textbf{1.033}$\\ \hline 
+E&50&$\textbf{Low}$&High&0.666&1602&0.700&$\textbf{1.050}$\\ \hline 
+B&50&$\textbf{None}$&High&0.702&1574&0.740&$\textbf{1.054}$\\ \hline 
+N&200&$\textbf{High}$&None&0.819&8473&0.970&$\textbf{1.185}$\\ \hline 
+O&200&$\textbf{High}$&Low&0.771&7647&0.920&$\textbf{1.194}$\\ \hline 
+F&50&$\textbf{High}$&None&0.807&2081&0.965&$\textbf{1.197}$\\ \hline 
+P&200&$\textbf{High}$&High&0.555&5802&0.675&$\textbf{1.215}$\\ \hline 
+G&50&$\textbf{High}$&Low&0.753&2084&0.937&$\textbf{1.245}$\\ \hline 
+H&50&$\textbf{High}$&High&0.523&1540&0.688&$\textbf{1.315}$\\ \hline 
+\end{tabular}
+\end{align}
+
+From looking at the data it seems that we can say something in general
+about the impact of the three parameters, defining each instance on the
+quality of the solution generated by the genetic algorithm compared to
+the fat solution.
+\subsubsection{Stochastic weight}
+\label{sec:kp_exp_stochastic_weight}
+As can be seen from table \ref{tab:ga_vs_fat} there is a very clear
+relationship between the deviation of the the weight of the items and
+the value of $\frac{\text{GA solution}}{\text{fat solution}}$. If we
+disregard the results for 50 items with no weight deviation
+(deterministic weight) and high capacity deviation, we can divide the
+results into three groups based on the weight deviation.
+\begin{itemize}
+\item $\textbf{No weight deviation}$ as remarked earlier, results in
+  poorer results or just the same as the fat solution. The conclusion
+  is that using the algorithm un such problems are, at best, a waste
+  of time.
+\item $\textbf{Low weight deviation}$ has some improvements over the
+  fat solutions. The improvements vary from 1 to 5$\%$, with an
+  average of $3.1\%$, which may not
+  seem like a lot, but some of the fat solutions are within 96$\%$ of
+  the deterministic solution, which makes an improvement of even 1
+  percentage point look a lot better.
+\item $\textbf{High weight deviation}$ achieves the best results and
+  generate improvements between 18 and 31$\%$, with an average of
+  $22.5\%$. The fat solutions we are comparing to are naturally also
+  quite a lot worse than the ones being compared using low weight
+  deviation.
+\end{itemize}
+This might indicate that using our algorithm on problems with high
+weight deviation is the approach that will generate the best results
+overall. However if we evaluate the results with a different
+objective, then the picture is less clear. The first comparison was
+how much we improved on the fat solution, but what if we instead look
+at how much we decrease the difference to the deterministic solution?
+We have already stated that the deterministic solution is not an upper
+bound but it might be useful to use it as such in order to cast some
+more light on the matter. In mathematical terms this is 電電電電電電電電
+If we present the solutions sorted according to how much they decrease
+the gap to the determinist solution, we get table \ref{tab:ga_vs_fat_alt}
+
+\begin{align}
+\label{tab:ga_vs_fat_alt}
+\begin{tabular}{llllll}
+ \hline 
+Name&Items&$\textbf{Weight}$   &$\textbf{Capacity}$
+&\multicolumn{1}{c}{GA}
+&$\textbf{Decrease in}$\\
+    &     &$\textbf{Deviation}$&$\textbf{Deviation}$
+&\multicolumn{1}{c}{$\overline{\text{Fat}}$}
+&$\textbf{gap to Det. Sol.}$\\ \hline
+I&200&$\textbf{None}$&$\textbf{Low}$&0.978&$\textbf{-0.450}$\\ \hline 
+J&200&$\textbf{None}$&$\textbf{High}$&0.996&$\textbf{-0.010}$\\ \hline 
+A&50&$\textbf{None}$&$\textbf{Low}$&1.000&$\textbf{0.000}$\\ \hline 
+M&200&$\textbf{Low}$&$\textbf{High}$&1.015&$\textbf{0.031}$\\ \hline 
+E&50&$\textbf{Low}$&$\textbf{High}$&1.050&$\textbf{0.101}$\\ \hline 
+B&50&$\textbf{None}$&$\textbf{High}$&1.054&$\textbf{0.128}$\\ \hline 
+P&200&$\textbf{High}$&$\textbf{High}$&1.215&$\textbf{0.268}$\\ \hline 
+H&50&$\textbf{High}$&$\textbf{High}$&1.315&$\textbf{0.345}$\\ \hline 
+D&50&$\textbf{Low}$&$\textbf{Low}$&1.028&$\textbf{0.384}$\\ \hline 
+L&200&$\textbf{Low}$&$\textbf{Low}$&1.033&$\textbf{0.387}$\\ \hline 
+O&200&$\textbf{High}$&$\textbf{Low}$&1.194&$\textbf{0.651}$\\ \hline 
+G&50&$\textbf{High}$&$\textbf{Low}$&1.245&$\textbf{0.745}$\\ \hline 
+F&50&$\textbf{High}$&$\textbf{None}$&1.197&$\textbf{0.820}$\\ \hline 
+N&200&$\textbf{High}$&$\textbf{None}$&1.185&$\textbf{0.833}$\\ \hline 
+K&200&$\textbf{Low}$&$\textbf{None}$&1.028&$\textbf{0.863}$\\ \hline 
+C&50&$\textbf{Low}$&$\textbf{None}$&1.031&$\textbf{0.885}$\\ \hline 
+\end{tabular}
+\end{align}
+
+According to table \ref{tab:ga_vs_fat_alt} the relationship between
+improvements on the fat solution and the deviation of the weight is
+not as clear as we concluded from the numbers in table
+\ref{tab:ga_vs_fat}.  Although we still see that a deterministic
+weight leads to the algorithm performing worse than the fat solution,
+we now have a more mixed picture of how low or high deviation affects
+the improvement since the highest improvements are now obtained on
+instances with low weight deviation. Generally we will still say that
+the high deviation allows the algorithm to deliver the best results as
+the improvements on these instances are $61\%$ on average whereas
+they are only $44.2\%$ for the instances with low weight deviation.
+
+\subsubsection{Number of items}
+\label{sec:kp_exp_number_of_items}
+Looking at table \ref{tab:ga_vs_fat} and \ref{tab:ga_vs_fat_alt} there
+is no clear pattern regarding the number of items in the
+instances. When calculating the averages of the performance of the
+genetic algorithm versus the fat solution we arrive at $11.5\%$ for
+the instances with 50 items and $8\%$ for the instances with 200
+items, indicating that the algorithm performs better on smaller
+instances. Calculating the averages of improvement in distance to the
+deterministic solution gives us $42.6\%$ improvement for instances
+with 50 items and $32.1\%$ improvement for the instances with 200
+items, again indicative of the algorithm performing better on smaller
+instances.
+
+That the algorithm performs better on smaller instances may be
+connected to the fact that we are dealing with a smaller search
+space. With only 50 items there are no more than $2^{50} \approx
+1000^{5}$ possible combinations of which items to bring. Another
+explanation may be that more items, and larger capacity may also
+decrease the impact of the discrete nature of the problem, since the
+inability to bring a single item is reduced in impact by a factor of 4.
+
+\subsubsection{Stochastic capacity}
+\label{sec:kp_exp_stochastic_capacity}
+Looking at how our algorithm performs with respect to the deviation of
+the capacity of the knapsack we find the opposite relationship of the
+weights, namely that high deviation leads to less improvement by the
+algorithm. The average improvements for the three types of deviation
+are:
+\begin{description}
+\item[High deviation:] $14.4\%$
+\item[Low deviation:]  $28.6\%$
+\item[Deterministic capacity:]  $85.0\%$
+\end{description}
+
+\subsection{Repeated runs and number of generations}
+We have run the algorithm 10 times using seeding on instance E, as
+with the experiments shown so far we have used 100 generations. The
+purpose was to see if we could benefit from running the algorithm
+several times or perhaps in parallel. The result is shown in table
+\ref{tab:ga_repeat}
+
+\begin{align}
+\label{tab:ga_repeat}
+\begin{tabular}{ll}
+ \hline 
+&GA solution\\ \hline 
+&1575\\ \hline 
+&1593\\ \hline 
+&1609\\ \hline 
+&1612\\ \hline 
+&1606\\ \hline 
+&1612\\ \hline 
+&1618\\ \hline 
+&1619\\ \hline 
+&1624\\ \hline 
+&1631\\ \hline \hline
+Average&1609.9\\ \hline 
+\end{tabular}
+\end{align}
+
+The average is close to the result of 1602 for instance E that we have used in
+table \ref{tab:seeds}, but there does seem to be a lot to be gained if
+we select the best solution.
+
+To see how big an impact the number of generations has as compared to
+starting with the right seeds, we ran the same experiment with 1000
+generations. The results are shown in table \ref{tab:ga_repeat_1000} 
+
+\begin{align}
+\label{tab:ga_repeat_1000}
+\begin{tabular}{ll}
+\hline
+&GA solution\\ \hline 
+&1601\\ \hline 
+&1601\\ \hline 
+&1612\\ \hline 
+&1624\\ \hline 
+&1637\\ \hline 
+&1640\\ \hline 
+&1642\\ \hline 
+&1652\\ \hline 
+&1660\\ \hline 
+&1764\\ \hline \hline
+Average&1643.3\\ \hline 
+\end{tabular}
+\end{align}
+As can be seen the results are significantly better than the results
+with 100 generations. Even discounting the anomalously high solution
+of 1764, the solutions are on average higher. This tells us that a
+high number of generations is more important than restarting the
+algorithm (or running it in parallel). A combined strategy of many
+restarts and many generations seem like a good idea and should provide
+good results. We have not been running with a higher amount of
+generations since our main goal was to prove the feasibility of our
+strategy and not necessarily achieve an exact measure of how well it
+performed.
+
+\subsection{Summing up the knapsack problem results}
+Generally we think that our results with the knapsack problem have
+been good. We have improved on the fat solution, sometimes a lot,
+sometimes not so much. We have seen that our concept of seeding works
+well, and generates better solutions than if we didn't use it.
+We have also seen that we could improve on our results by running the
+algorithm several times 
+
+
+
+%\subsection{Mutation rate}
+%\label{sec:experiments_mutation}
+%
+%\subsection{Running Time}
+%\label{sec:running_time_knapsack}
+
+
+
+
+\section{Capacitated lot-sizing problem experimentation}
+\label{sec:experiments_lsp}
+In order to test our methods for finding robust solutions to the
+capacitated lot-sizing problem with uncertainty, we created a set
+of instances with uncertainty. This set of uncertain instances is
+based on a set of deterministic instances by Miller
+\cite{tablesandmiller}. 
+
+The instances by Miller have either $6$, $12$ or $24$
+items, and either $15$ or $30$ time periods. They are single resource
+instances of the capacitated lot-sizing problem, with setup times. 
+
+We have tried solving all of these deterministic instances using a
+branch-and-cut algorithm developed by Simon Spoorendonk \cite{spooren}
+for his Ph.D. thesis, generally succeeding for instances with $6$
+items and $15$ time periods. We have therefore derived a set of problem
+instances with uncertainty that have $6$ items and $15$ timeperiods
+based on the instance by Miller.
+
+The instances have either uncertain \emph{capacity} (such instances
+use the word ``cap'') or uncertain \emph{setup times} (instances use
+the word ``setup'') or both (instances use the word
+``cap-setup''). The instance marked ``deterministic'' is the original
+instance by Miller. Please consult table \ref{tab:instances} for an
+overview of these instances.
+
+We have modelled uncertainty using \emph{normal distributions}, where
+the mean value for all uncertain data equals the constant value in the
+deterministic instance. We operate with two levels of standard
+deviation. Instances with a ``big'' standard deviation a standard
+deviation on uncertain data that is 25\% of the mean value. These instances have the
+letter ``b'' appended. Instances with a ``small'' standard deviation
+for all uncertain data, have a standard deviation that is 5\% of the
+mean value. These instances have the letter ``s'' appended.
+
+\begin{table}[!hbp]
+\begin{tabular}{lll}
+\hline
+Instance 	& Uncertain capacity  	& Uncertain setup times \\
+\hline
+\hline
+deterministic   &                       &     \\
+cap-b           & yes                   &     \\
+cap-s           & yes                   &     \\
+setup-b         &                       & yes \\
+setup-s         &                       & yes \\
+cap-setup-b     & yes                   & yes \\
+cap-setup-s     & yes                   & yes \\
+\hline
+\end{tabular}
+\caption{Overview of instances with uncertainty. All instances have $6$ items and $15$ timeperiods.}
+\label{tab:instances}
+\end{table}
+
+The goal of the experimentation was to find robust solutions for all
+of the instances listed in table \ref{tab:instances}, and measure the
+increase in cost compared to the deterministic solution.
+
+\subsection{Results for genetic algorithm}
+\label{sec:exp_ga_lsp}
+
+We attempted an implementation of a genetic algorithm for the
+capacitated lot-sizing problem with uncertainty, and ran it on the
+problem instances. Due perhaps to the complexity of the problem we did
+not succeed in getting the algorithm to converge to reasonably priced
+robust solutions, i.e. solutions that produce items instead of simply
+adding items to initial storage (the problem with such solutions being
+that they are very expensive).
+
+We implemented a two stage genetic algorithm, where the objective of
+the first stage was to improve only the robustness of the population
+without considering cost. When a threshold for robust individuals in
+population was reached, we switched to stage two. In the second stage
+of the algorithm, cost was optimized, while attempting to maintain the
+robustness of the solutions found in stage one.
+
+We attempted to seed the genetic algorithm with solutions to randomly
+sampled scenarios, but this did not give us the edge that was needed
+to make the algorithm convergence towards robust low-cost solutions.
+
+\subsection{Results for scenario optimization}
+\label{sec:exp_ga_lsp}
+
+A different approach that we tried for the capacitated lot-sizing
+problem with uncertainty, was scenario optimization
+\cite{rockafellar}. In this approach we generated a set of
+``pessimistic'' deterministic scenarios for each instance and then solved these to
+optimility using the algorithm provided by Simon Spoorendonk. The
+scenarios where constructed in such a way, that it was reasonable to
+expect the optimal solutions to be robust in the instance.
+
+We then used high precision simulation in order to quantify the
+robustness of these solution in each of the instances listed in table
+\ref{tab:instances}. We tried all solutions in all instances, i.e.
+also solutions that had been made specifically for other instances.
+
+Using a varying degree of pessimism when generating the scenarios, and
+then solving these scenarios to optimality, we obtained a fairly diverse set
+of solutions. 
+
+Naturally all the solutions where $100\%$ robust when tested against
+the deterministic instance \emph{deterministic}. 
+
+Looking only at the instances with uncertainty, the deterministic
+solution had the highest robustness in the instance with small
+variation on the setup time, which is not surprising.
+
+The deterministic solution had the lowest robustness in the uncertain
+instance with big variation on the capacity. This is also not
+surprising since uncertain capacity potentially limits the production
+more than uncertain setup times. This is because uncertain capacities
+have higher mean values than the setup times do. This means that
+capacities have a bigger standard deviation in the stochastic model
+and therefore have a bigger absolute span on realized values.
+
+For every uncertain instance, at least one of the solutions obtained
+by solving the pessimistic scenarios, was robust and had a reasonably
+good objective value.
+
+The solution to the original instance by Miller is refered
+to as \emph{opt-deterministic}, while the optimal solutions to the pessimistic
+scenarios use a naming scheme that links to the way the pessimistic
+scenario was generated.
+
+\subsubsection{Generating pessimistic scenarios}
+When generating the pessimistic scenarios, we use values of $\chi \geq
+\rho$, $\chi = \rho$ and $\chi < \rho$ (see section \ref{sec:methods_scenario_optimization} for details on
+generating a pessimistic scenario).
+
+We name the scenarios according to the value of $\chi$ and according to which data
+is considered uncertain. In table \ref{tab:pessimistic_scenarios} we
+give an overview of pessimistic scenarios for just one uncertain
+instance (instance \emph{cap-b}). Pessimistic scenarios for
+other instances use the same naming scheme.
+
+\begin{table}[!hbp]
+\begin{tabular}{lll}
+\hline
+Scenario                 & Optimal solution & Value of $\chi$          \\
+\hline
+\hline
+scenario-nroot-rho-cap-b & nroot-rho-cap-b  & $\chi = \sqrt[n]{\rho}$ \\
+scenario-fat-cap-b       & fat-cap-b        & $\chi = \rho $           \\
+scenario-dim90-cap-b     & dim90-cap-b      & $\chi = \rho \cdot 0.9$  \\
+scenario-dim80-cap-b     & dim80-cap-b      & $\chi = \rho \cdot 0.8$  \\
+scenario-dim70-cap-b     & dim70-cap-b      & $\chi = \rho \cdot 0.7$  \\
+\end{tabular}
+\caption{Naming scheme for pessimistic scenarios derived from instance
+\emph{cap-b}. The same naming scheme applies to pessimistic scenarios
+when other instances are considered. The value $n$ is the number of
+time periods in the lot-sizing problem, which is $15$ for all instances.}
+\label{tab:pessimistic_scenarios}
+\end{table}
+
+It should be noted that we were not able to compute optimal solutions
+to all scenarios, as the running time of the branch-and-cut algorithm
+used is highly irregular, sometimes terminating within seconds and
+other times within hours.
+
+\subsubsection{Testing robustness and comparing objective value}
+
+In table \ref{tab:deterministicsolution_robustness} we have summarized
+the robustness of the deterministic solution in each of the uncertain
+instances, with the understanding that a partial robustness of $0.95$
+is needed in order for at solution to be considered robust. As can be
+seen the deterministic solution is not robust in any of the uncertain
+instances, which is what we expected.
+
+Using simulation we have tested the robustness of all solutions in all
+instances. For each instance we have measured the cost of the cheapest
+robust solution, and compared it to the cost of the deterministic
+solution.
+
+\begin{table}[!hbp]
+\begin{tabular}{lll}
+\hline
+Instance       & Robust & Bounds on partial robustness \\
+\hline
+\hline
+deterministic  & Yes    &  [1.0, 1.0] \\
+setup-s        & No     &  [0.62, 0.63] \\
+setup-b        & No     &  [0.37, 0.39] \\
+cap-s          & No     &  [0.22, 0.24] \\
+cap-setup-s    & No     &  [0.22,  0.23] \\
+cap-setup-b    & No     &  [0.009, 0.011] \\
+cap-b          & No     &  [0.008, 0.011] \\
+\hline
+\end{tabular}
+\caption{Robustness of the optimal deterministic solution. Not
+surprisingly it is $100\%$ robust in the deterministic instance, and
+not robust in any of the instances with uncertainty.}
+\label{tab:deterministicsolution_robustness}
+\end{table}
+
+We have summarized the most robust solution found to each of the
+instances, with data shown for partial robustness and cost compared to
+the cost of the optimal deterministic solution.
+
+\begin{table}[!hbp]
+\begin{tabular}{lllllll}
+\hline
+Instance      & Best solution     & Robust  & Robustness bounds & $cost_0$ & $cost_{det}$ & $\frac{cost_0}{cost_{det}}$ \\
+\hline
+\hline
+deterministic & opt-deterministic & Yes     & [1.0, 1.0]        & 8310429   & 50429   & $1.0$ \\
+cap-b         & nroot-cap-b       & Yes     & [0.95, 0.96]      & 51890237  & 120237  & $6.2$ \\
+cap-s         & nroot-cap-s       & Yes     & [0.97, 0.98]      & 10205879  & 55879   & $1.2$ \\ 
+setup-s       & fat-setup-s 	  & Yes     & [0.99, 1.0]       & 8310810   & 50810   & $1.00005$  \\
+setup-b       & fat-setup-b 	  & Yes     & [0.98, 0.99]      & 8310810   & 50810   & $1.00005$  \\
+cap-setup-s   & dim80-cap-b 	  & Yes     & [0.98, 0.99]      & 12753835  & 53835   & $1.5$  \\
+cap-setup-b   & nroot-cap-s 	  & Yes     & [0.96, 0.97] 	& 10205879  & 55879   & $1.2$  \\
+\hline
+\end{tabular}
+\caption{Lowest cost robust solutions found for each instance of the
+capacitated lot-sizing problem with uncertainty. If no robust solution
+where found for an instance exists, the solution with the highest
+partial robustness is shown. $cost_0$ is the cost of the solution
+including cost of initial stock (which is $10000$ per item). $cost_1$
+is the cost of the solution excluding the cost of initial stock.
+$cost_det$ is the cost of the deterministic solution.}
+\label{tab:instance-results}
+\end{table}
+
+When comparing tables \ref{tab:instance-results} and
+\ref{tab:initial_stock}, it can be seen that the increased cost of a
+robust solution is strongly correlated with the additional initial
+stock used by the solution. While \emph{fat-setup-s} and
+\emph{fat-setup-b} are both solutions which are much more robust than
+the deterministic solution in instances \emph{setup-s} and
+\emph{setup-b} correspondingly, they are not more expensive. This is
+because the increased robustness is gained from a different production
+schedule, rather than adding to initial stock. This is possible
+because there is slack capacity that can be used in all time
+periods. The very small increase in cost in these two solutions is
+caused by shifting production slightly back in time, in order to meet
+the demand. This incurs a small holding cost for storing items
+produced a little earlier.
+
+\begin{table}[!hbp]
+\begin{tabular}{ll}
+\hline
+Best solution      & Initial stock (normalized) \\
+\hline
+\hline
+opt-deterministic  & 1.0  \\
+nroot-cap-b        & 6.3 \\
+nroot-cap-s        & 1.2 \\ 
+fat-setup-s 	   & 1.0  \\
+fat-setup-b 	   & 1.0  \\
+dim80-cap-b 	   & 1.5 \\
+nroot-cap-s 	   & 1.2 \\
+\hline
+\end{tabular}
+\caption{Initial stock used by best solutions.}
+\label{tab:initial_stock}
+\end{table}
+
+

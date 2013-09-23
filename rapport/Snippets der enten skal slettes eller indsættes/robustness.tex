@@ -1,0 +1,184 @@
+\section{Robust solutions}
+\label{sec:robust_solutions}
+
+Our objective is to find a solution $z$ to an instance $I$ of the
+version of MLMR-CLSP described in section
+\ref{sec:sec:extended_problem_formulation} that minimizes cost and is
+95\% certain to succeed (be feasible) given the assumption that a
+selected subset $Q$ of the constants involved in constraints (BLA and
+BLA) are stochastic.
+
+When refering to MLMR-CLSP, we shall mean the version described in
+section \ref{sec:sec:extended_problem_formulation} unless otherwise
+stated.
+
+\subsection{Modelling a Stochastic System}
+\label{sec:distributions}
+We'll associate either a \emph{normal}, \emph{weibull} or \emph{gamma}
+distributions with each constant in $Q$. Furthermore we'll associate \emph{binomial} distributions 
+with a subset of the constants of $Q$, e.g. with the time-dependent capacity $C^k_t$ of resource $k$.
+
+
+\subsection{Methods for finding robust solutions}
+\label{sec:alternative_methods}
+
+The following is an overview of other methods that have been used to
+achieve robustness in production planning. In section
+\ref{sec:our_approach} we'll describe the method we use in this
+thesis.
+
+\begin{itemize}
+
+\item \emph{Stochastic programming} and more precisely the variation
+called \emph{chance constrained-programming}. These techniques are
+presented in section \ref{sec:stochastic_programming}
+
+\item Employing \emph{buffers} on constraints. If a constraint exists
+for variable $x \geq b$ for $x, b \in \mathbb{R}$ in the original
+formulation, employing a buffer means $x \geq b + \epsilon_1$. This
+ensures that $x$ does not assume a value on the boundary of the
+solution space, but it is reasonable to assume that such an approach
+if used without caution would results in socalled ``fat'' solutions
+\cite{kallwallace} \cite{nogetsimonsagde}.
+\end{itemize}
+
+\subsection{Our approach}
+\label{sec:our_approach}
+In our approach we are provided with a black-box deterministic solver
+to MLMR-CLSP. This solver is known to use a heuristic
+large-neighbourhood search and furthermore runs on the assumption that
+all constants can be known a priori.
+
+\subsection{Finding robustness solutions}
+\label{sec:estimating_robustness}
+How do you generate production schedules with a expected high
+real-life robustness using a deterministic solver which uses a
+completely static model of the real world? 
+
+Such a deterministic solver can not take into account many different
+scenarios. The virtue of such a solver is that it is able to quickly
+find good solutions to the problem if constants are assumed to be
+known a priori, which is abolutely crucial because MLMR-CLSP is a very
+hard problem!
+
+An algorithm which can assume that all constants are completely static
+is likely to be far more efficient than an algorithm which has to
+account for even a small degree of stochastic freedom in each
+constant. By that argument we rule out the option for finding an
+algorithm of the latter type for this thesis, while reminding the
+reader about the alternative methods mentioned in section
+\ref{sec:alternative_methods}.
+
+It should be noted that it is not a viable approach to simply increase
+the level of detail of the model. A modeller might try using
+fine-grained time-dependent constants to model variation in production
+costs over time, or the capacities of resources over time, to account
+for phenomena such as \emph{learning-tiredness} \cite{digiesi}. The
+problem remains however that even the most detailed static model
+assumes that all constants are known \emph{a priori} and can
+consequently not account for the \emph{unexpected}. No matter how
+fine-grained a static model is, it models a problem for exactly one
+scenario.
+
+
+\subsubsection{Estimating robustness of solutions}
+\label{sec:estimating_robustness}
+
+We want to estimate the robustness of a solution $z$ to an instance
+$I$ of MLMR-CLSP under the assumption that a selected set of constants
+$Q$ are stochastic. The set $D$ is a set of distributions that
+describes these stochastic variables.
+
+For this thesis we will estimate the robustness of a solution by performing a large number
+of experiments, where each experiment consists of generating a
+\emph{scenario} and testing the feasibility of the solution $z$ in that scenario.
+
+Each experiment is conducted in the follow straight-forward manner:
+
+\begin{itemize}
+
+\item For each constant in $q \in Q$ we generate a sample $\xi$ by
+sampling the distribution $d \in D$ associated with $q$.
+
+\item For each generated sample $\xi$, we substitute the value $\xi$
+for the constant $q$ in $I$ yielding a new instance $I'$ called a
+\emph{scenario}.
+
+\item The feasibility of $z$ is tested with regard to the scenario
+$I'$, recalling that modifying the value of constants in $I$ will
+have yielded constraints in $I'$ that are different from the
+constraints of the original instance $I$, and will possibly (but not necessarily) have
+affected the solution space. Feasibility is tested simply by testing
+the solution $z$ against all affected constraints in $I'$.
+
+\end{itemize}
+
+We require a solution to be feasible in at least $95\%$ of the generated scenarios in order to be labelled robust.
+
+UFFE INDSÆT NOGET OM CONFIDENS INTERVALLER HER.
+
+\subsection{What shall we do with the drunken sailor?}
+\label{sec:search_for_robust_solutions}
+In section \ref{sec:estimating_robustness} we described how we intend
+to estimate the robustness of a solution $z$. Assuming that a
+particular solution $z$ was found to be non-robust and assuming that
+$z$ was generated by a deterministic solver, it does not make sense to
+ask the solver for another solution, as it will provide the exact same
+solution given the same parameters.
+
+Two options seem to present themselves at this point. 
+
+\begin{enumerate}
+
+\item Alter the parameters and the problem instance provided to the
+deterministic solver so that it finds a solution which is more
+robust. This is discussed in section \ref{sec:altering_the_instance}.
+
+\item Pass the solution to another algorithm specialized in searching
+for robust solutions when provided with optimal but non-robust
+ones. This is discussed in section
+\ref{sec:genetic_algorithm_on_solutions}
+
+\end{enumerate}
+
+We will discuss both these xoptions in this thesis.
+
+A third option that seems obvious is to construct an algorithm that is
+efficient at finding solutions that are optimal while subject to
+requirements regarding robustness. MLMR-CLSP however, is a very hard
+problem, which requires a very efficient algorithm to solve. 
+
+An algorithm which can assume that all constants are completely static
+is likely to be far more efficient than an algorithm which has to
+account for even a small degree of stochastic freedom in each
+constant. By that argument we rule out the option for finding such an
+algorithm for this thesis, while reminding the reader about the
+alternative methods mentioned in section
+\ref{sec:alternative_methods}. REPEAT
+
+\subsubsection{Pipe dream 1: Altering the instance}
+\label{sec:altering_the_instance}
+
+An approach which we will discuss is how to coax a deterministic
+solver into providing robust solutions by modifying the instances
+provided to the solver. In this approach the deterministic solver
+computes a solution $z_j$ to an instance $I_j$ of MLMR-CLSP. If this
+solution is non-robust, a new instance $I_{j+1}$ is generated from $I_{j}$ by changing selected constants of $I_j$. 
+
+Let $\mathcal{L}(I)$ mean the solution space of instance $I$, then
+$\mathcal{L}(I_j) \subseteq \mathcal{L}{I_0}$ must hold for all $j$. This is called the subspace property.
+
+We'll iteratively generate new instances $\lbrace I_0, I_1, ... I_j$
+until a solution $z_j$ is found to $I_j$ which is estimated to be
+\emph{robust}. By ensuring the subspace property $z_j$ is guaranteed to be feasible with regard to the original
+instance $I_0$. 
+
+As mentioned the shifting of constants which transforms $I_j$ into
+$I_{j+1}$ must result in an instance where $\mathcal{L}(I_j+1)
+\subseteq \mathcal{L}(I)$, otherwise a solution to $I_{j+1}$ could not
+be guaranteed to be feasible for instance $I$. Furthermore the
+objective of the constraining the solutionspace is to force the
+deterministic solver to find a more robust solution.
+
+
+

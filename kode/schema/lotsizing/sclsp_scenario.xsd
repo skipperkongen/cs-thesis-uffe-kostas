@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.diku.dk/robust/autogen/sclsp_scenario" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.diku.dk/robust/autogen/sclsp_scenario">
+
+    <xsd:element name="instance" type="LotSizingScenario"></xsd:element>
+    
+    <xsd:complexType name="LotSizingScenario">
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element name="text" type="Text" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="stop_criteria" type="StopCriteria" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="global_parameters" type="GlobalParameters" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="resources" type="Resources" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="items" type="Items" maxOccurs="1" minOccurs="1"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Text">
+        <xsd:attribute name="comment" type="xsd:string" use="optional"></xsd:attribute>
+        <xsd:attribute name="name" type="xsd:string" use="optional"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="StopCriteria">
+        <xsd:attribute name="branch_and_bound_nodes" type="xsd:int" use="optional"></xsd:attribute>
+        <xsd:attribute name="cpu_time_millis" type="xsd:int" use="optional"></xsd:attribute>
+        <xsd:attribute name="optimality_gap" type="xsd:float" use="optional"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="GlobalParameters">
+        <xsd:attribute name="time_periods" type="xsd:int" use="required"></xsd:attribute>
+        <xsd:attribute name="num_orders" type="xsd:int" use="required"></xsd:attribute>
+        <xsd:attribute name="num_items" type="xsd:int" use="required"></xsd:attribute>
+        <xsd:attribute name="num_resources" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="Resources">
+        <xsd:sequence maxOccurs="unbounded" minOccurs="1">
+            <xsd:element name="resource" type="Resource" ></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="global_capacity" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="Resource">
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element name="capacities" type="Capacities" maxOccurs="1" minOccurs="1"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="Capacities">
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element name="capacity" type="Capacity" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Capacity">
+        <xsd:attribute name="capacity" type="xsd:int" use="required"></xsd:attribute>
+        <xsd:attribute name="time_period" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="Items">
+        <xsd:sequence maxOccurs="unbounded" minOccurs="1">
+            <xsd:element name="item" type="Item"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Item">
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element name="initial_inventory" type="xsd:int" maxOccurs="1" minOccurs="1"></xsd:element>
+            <xsd:element name="production_costs" type="ProductionCosts" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="inventory_costs" type="InventoryCosts" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="bom_relations" type="BOMRelations" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="demands" type="Demands" maxOccurs="1" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="ProductionCosts">
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element name="cost_on_resource" type="CostOnResource" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="InventoryCosts">
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element name="inventory_cost" type="InventoryCost" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="BOMRelations">
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element name="bom_relation" type="BOMRelation" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="Demands">
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element name="demand" type="Demand" maxOccurs="unbounded" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="CostOnResource">
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element name="cost_at_time" type="CostAtTime" maxOccurs="unbounded" minOccurs="1"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="resource_id" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="CostAtTime">
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element name="unit_production_cost" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="fixed_production_cost" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="startup_cost" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="lead_time" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="unit_capacity" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+            <xsd:element name="setup_capacity" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="time_period" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="InventoryCost">
+        <xsd:sequence maxOccurs="1" minOccurs="1">
+            <xsd:element name="cost" type="xsd:int" maxOccurs="1" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="time_period" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="BOMRelation">
+        <xsd:attribute name="amount" type="xsd:int" use="required"></xsd:attribute>
+        <xsd:attribute name="item_id" type="xsd:int" use="required"></xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="Demand">
+        <xsd:attribute name="time_period" type="xsd:int"></xsd:attribute>
+        <xsd:attribute name="amount" type="xsd:int"></xsd:attribute>
+    </xsd:complexType>
+</xsd:schema>

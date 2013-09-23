@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<instance xmlns="http://www.diku.dk/lotsizing" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.diku.dk/lotsizing lotsizing.xsd ">
+  <text comment="" name="lsp2"/>
+  <stop_criteria branch_and_bound_nodes="0" cpu_time_millis="0" optimality_gap="0.0"/>
+  <global_parameters time_periods="10" num_orders="2" num_items="2" num_resources="2"/>
+  <resources global_capacity="0">
+    <resource id="1">
+      <capacities>
+        <capacity capacity="84" time_period="0"/>
+        <capacity capacity="50" time_period="3"/>
+      </capacities>
+    </resource>
+    <resource id="2">
+      <capacities>
+        <capacity capacity="68" time_period="0"/>
+        <capacity capacity="98" time_period="6"/>
+      </capacities>
+    </resource>
+  </resources>
+  <items>
+    <item id="1">
+      <initial_inventory>3290</initial_inventory>
+      <production_costs>
+        <cost_on_resource resource_id="1">
+          <cost_at_time time_period="1">
+            <unit_production_cost>54</unit_production_cost>
+            <fixed_production_cost>23</fixed_production_cost>
+            <startup_cost>2</startup_cost>
+            <lead_time>2</lead_time>
+            <unit_capacity>45</unit_capacity>
+            <setup_capacity>33</setup_capacity>
+          </cost_at_time>
+	  <cost_at_time time_period="4">
+	    <unit_production_cost>254</unit_production_cost>
+	  </cost_at_time>
+        </cost_on_resource>
+      </production_costs>
+      <inventory_costs>
+        <inventory_cost time_period="1">
+          <cost>12</cost>
+        </inventory_cost>
+      </inventory_costs>
+      <bom_relations>
+        <bom_relation amount="2" item_id="2"/>
+      </bom_relations>
+      <demands>
+        <demand amount="1" time_period="5"/>
+        <demand amount="4" time_period="10"/>
+      </demands>
+    </item>    
+    <item id="2">
+      <initial_inventory>1003</initial_inventory>
+      <production_costs>
+        <cost_on_resource resource_id="1">
+          <cost_at_time time_period="1">
+            <unit_production_cost>22</unit_production_cost>
+            <fixed_production_cost>14</fixed_production_cost>
+            <startup_cost>234</startup_cost>
+            <lead_time>2</lead_time>
+            <unit_capacity>32</unit_capacity>
+            <setup_capacity>53</setup_capacity>
+          </cost_at_time>
+        </cost_on_resource>
+      </production_costs>
+      <production_costs>
+        <cost_on_resource resource_id="2">
+          <cost_at_time time_period="1">
+            <unit_production_cost>23</unit_production_cost>
+            <fixed_production_cost>134</fixed_production_cost>
+            <startup_cost>23</startup_cost>
+            <lead_time>1</lead_time>
+            <unit_capacity>32</unit_capacity>
+            <setup_capacity>23</setup_capacity>
+          </cost_at_time>
+        </cost_on_resource>
+      </production_costs>
+      <inventory_costs>
+        <inventory_cost time_period="1">
+          <cost>10</cost>
+        </inventory_cost>
+        <inventory_cost time_period="3">
+          <cost>23</cost>
+        </inventory_cost>
+      </inventory_costs>
+      <bom_relations>
+      </bom_relations>
+      <demands>
+        <demand amount="3" time_period="8"/>
+      </demands>
+    </item>
+  </items>
+</instance>
